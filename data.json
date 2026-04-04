@@ -37,8 +37,8 @@
   },
   {
     "name": "ACILI EKMEK(HATAY USULÜ)",
-    "price": 600,
-    "discount": 490,
+    "price": 650,
+    "discount": 600,
     "category": "tuzlu",
     "unit": "tepsi",
     "image": "images/acili_ekmek.jpg",
