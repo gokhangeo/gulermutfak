@@ -1,8 +1,8 @@
 [
   {
     "name": "İÇLİ KÖFTE(DIŞI ETLİ)",
-    "price": 790,
-    "discount": 740,
+    "price": 1350,
+    "discount": 1200,
     "category": "tuzlu",
     "unit": "kg",
     "image": "images/icli_kofte_dislietli.jpg",
@@ -169,5 +169,23 @@
     "unit": "kg",
     "image": "images/elazig_icli_kofte.jpg",
     "desc": "Güler Mutfak Lezzetleri’nden Elazığ usulü içli köfte! 🥩🔥\nÖzenle hazırlanan dış hamuru, baharatlarla lezzetlendirilmiş bol kıymalı iç harcı ve özel şekliyle Elazığ mutfağının vazgeçilmez lezzetini sunuyoruz!"
+  },
+  {
+    "name": "PİZZA (Bol Malzemeli)",
+    "price": 250,
+    "discount": 210,
+    "category": "yemek",
+    "unit": "Orta boy",
+    "image": "images/pizza1.jpg",
+    "desc": "Güler Mutfak Lezzetleri’nden bol malzemeli pizza! 🍕🔥\nEv yapımı incecik hamuru, bol kaşar peyniri, sucuk, biber, mantar, mısır, domates ve zeytinle mükemmel bir lezzet şöleni sunuyoruz!"
+  },
+  {
+    "name": "PİZZA (SUCUK, KAŞARLI)",
+    "price": 300,
+    "discount": 190,
+    "category": "yemek",
+    "unit": "Orta boy",
+    "image": "images/pizza2.jpg",
+    "desc": "Güler Mutfak Lezzetleri’nden bol malzemeli pizza! 🍕🔥\nSucuk, kaşar peyniri, siyah zeytin ve mısırın enfes uyumuyla hazırlanan ev yapımı pizzamız, lezzet garantili!"
   }
 ]
