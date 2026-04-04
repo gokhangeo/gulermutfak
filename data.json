@@ -135,15 +135,6 @@
     "desc": "Güler Mutfak Lezzetleri’nden yöresel Harput Köfte! 🍲✨\nElazığ mutfağının en sevilen lezzetlerinden biri olan Harput Köfte, özel baharatlarla yoğrulmuş bulgur ve yağsız kıymanın mükemmel uyumuyla sofralarınızı şenlendirmeye hazır!"
   },
   {
-    "name": "KIYMALI HİNGEL MANTI",
-    "price": 600,
-    "discount": 490,
-    "category": "yemek",
-    "unit": "kg",
-    "image": "images/kiymali_hingel_manti.jpg",
-    "desc": "Güler Mutfak Lezzetleri’nden özel kıymalı hingel mantı! 🥟✨\nEl açması incecik hamurun içine bol kıymalı harç eklenerek özenle şekillendirilen hingel mantımız, sarımsaklı yoğurt ve tereyağlı sos eşliğinde lezzet şöleni sunuyor!"
-  },
-  {
     "name": "FINDIK PORTAKALLI ANNE KURABİYESİ",
     "price": 550,
     "discount": 450,
