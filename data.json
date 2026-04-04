@@ -126,15 +126,6 @@
     "desc": "Güler Mutfak Lezzetleri’nden ferahlatan limon soslu kek! 🍋🍰\nMis gibi limon kokusu, yumuşacık dokusu ve hafif ekşi tatlı uyumuyla çay saatlerinizin favorisi olacak!\nTaptaze ve el yapımı bu lezzeti kaçırmayın!"
   },
   {
-    "name": "PATATESLİ GÖZLEME",
-    "price": 60,
-    "discount": null,
-    "category": "yemek",
-    "unit": "tane",
-    "image": "images/patatesli_gozleme.jpg",
-    "desc": "Güler Mutfak Lezzetleri’nden sıcacık patatesli gözleme! 🥔✨\nİncecik açılmış hamuru, baharatlarla tatlandırılmış bol patatesli iç harcıyla çıtır çıtır bir lezzet deneyimi!\n(10 adet ve üzeri sipariş alınır)"
-  },
-  {
     "name": "HARPUT KÖFTE",
     "price": 550,
     "discount": null,
