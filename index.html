@@ -662,7 +662,7 @@ let productList = [
         const pw = prompt("Yönetici Şifresi:");
         if (pw === "guler") {
           isAdmin = true;
-          localStorage.setItem('isAdmin', 'true'); // Sayfa yenilendiğinde çıkış yapmaması için kaydediyoruz
+          localStorage.setItem('isAdmin', 'true'); 
           alert("Yönetici Modu Aktif Edildi!");
           document.getElementById('floating-add-btn').style.display = 'block';
           document.getElementById('floating-logout-btn').style.display = 'block';
@@ -970,7 +970,7 @@ let productList = [
 
       try {
         const getRes = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}?ref=main&t=${Date.now()}`, {
-          headers: { "Authorization": `Bearer ${tkn}`, "Cache-Control": "no-cache" }
+          headers: { "Authorization": `Bearer ${tkn}` }
         });
         if (!getRes.ok) {
            throw new Error("GitHub bağlantı hatası!");
