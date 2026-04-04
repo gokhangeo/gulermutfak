@@ -214,6 +214,8 @@
     }
     .admin-edit-btn { background: #f39c12; }
     .admin-del-btn { background: #c0392b; }
+    .admin-move-btn { background: #34495e; padding: 8px 5px; flex: 0.4; font-size: 1.1rem; }
+    .admin-move-btn:disabled { background: #95a5a6; cursor: not-allowed; opacity: 0.5; }
 
     /* YÖNETİCİ FLOAT BUTONU */
     #floating-add-btn {
@@ -250,14 +252,6 @@
     .contact-icons { display: flex; justify-content: center; gap: 2rem; }
     .contact-icons img { width: 50px; height: 50px; cursor: pointer; transition: transform 0.3s; }
     .contact-icons img:hover { transform: scale(1.1); }
-    
-    /* Footer ve İmza */
-    footer {
-      text-align: center; padding: 2rem 1rem; background: #fff; border-top: 1px solid #eee;
-      font-size: 0.9rem; color: #777; display: flex; flex-direction: column; gap: 15px; align-items: center;
-    }
-    body.dark-mode footer { background: #1a1a1a; border-color: #333; color: #aaa; }
-    .designer-signature { cursor: pointer; user-select: none; }
     
     /* Yönetici Modalı */
     #admin-modal {
@@ -301,7 +295,7 @@
 </head>
 <body>
   <header>
-    <div class="header-title">🍰 GÜLER MUTFAK LEZZETLERİ</div>
+    <div class="header-title" onclick="checkSecretAdmin()">🍰 GÜLER MUTFAK LEZZETLERİ</div>
     <div id="campaign-text">SINIRLI SÜRE İNDİRİM!</div>
     <button id="theme-toggle" onclick="toggleTheme()">Karanlık Mod</button>
   </header>
@@ -345,11 +339,6 @@
       </a>
     </div>
   </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="designer-signature" onclick="checkSecretAdmin()">© Gökhan ELGÜL tarafından tasarlanmıştır.</div>
-  </footer>
 
   <!-- Yönetici Ekleme/Düzenleme Modalı -->
   <div id="admin-modal">
@@ -631,10 +620,10 @@ let productList = [
       document.getElementById('theme-toggle').textContent = document.body.classList.contains('dark-mode') ? 'Aydınlık Mod' : 'Karanlık Mod';
     }
 
-    // YÖNETİCİ GİZLİ GİRİŞİ (Footera 3 kere tıkla)
+    // YÖNETİCİ GİZLİ GİRİŞİ (Başlığa hızlıca 5 kere tıkla)
     function checkSecretAdmin() {
       clickCount++;
-      if (clickCount === 3) {
+      if (clickCount === 5) {
         const pw = prompt("Yönetici Şifresi:");
         if (pw === "guler") {
           isAdmin = true;
@@ -646,7 +635,7 @@ let productList = [
         }
         clickCount = 0;
       }
-      setTimeout(() => { clickCount = 0; }, 2000); // 2 saniye içinde 3 kez tıklanmalı
+      setTimeout(() => { clickCount = 0; }, 2000); // 2 saniye içinde 5 kez tıklanmalı
     }
     
     function renderProducts() {
@@ -671,11 +660,13 @@ let productList = [
 
           let discountBadge = hasDiscount ? `<div class="discount-tag">İndirimde!</div>` : '';
 
-          // Eğer Admin modundaysa düzenle sil butonlarını ekle
+          // Eğer Admin modundaysa düzenle, sil ve taşı butonlarını ekle
           let adminControlsHtml = '';
           if (isAdmin) {
             adminControlsHtml = `
               <div class="admin-card-controls">
+                <button class="admin-move-btn" title="Yukarı Taşı" onclick="moveProductLocal(event, ${index}, -1)" ${index === 0 ? 'disabled' : ''}>↑</button>
+                <button class="admin-move-btn" title="Aşağı Taşı" onclick="moveProductLocal(event, ${index}, 1)" ${index === productList.length - 1 ? 'disabled' : ''}>↓</button>
                 <button class="admin-edit-btn" onclick="openEditModal(event, ${index})">Düzenle</button>
                 <button class="admin-del-btn" onclick="deleteProductLocal(event, ${index})">Sil</button>
               </div>
@@ -827,6 +818,26 @@ let productList = [
       return decodeURIComponent(atob(str).split('').map(function(c) { return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2); }).join(''));
     }
 
+    // Kart Sıralamasını Değiştirme Fonksiyonu
+    async function moveProductLocal(e, index, direction) {
+      e.stopPropagation();
+      if (direction === -1 && index > 0) {
+        // Yukarı Taşı
+        const temp = productList[index];
+        productList[index] = productList[index - 1];
+        productList[index - 1] = temp;
+        renderProducts(); // Anında ekranda göster
+        await saveToGitHub("Ürün sırası değiştirildi (Yukarı)");
+      } else if (direction === 1 && index < productList.length - 1) {
+        // Aşağı Taşı
+        const temp = productList[index];
+        productList[index] = productList[index + 1];
+        productList[index + 1] = temp;
+        renderProducts(); // Anında ekranda göster
+        await saveToGitHub("Ürün sırası değiştirildi (Aşağı)");
+      }
+    }
+
     async function deleteProductLocal(e, index) {
       e.stopPropagation();
       if(confirm(`"${productList[index].name}" isimli ürünü silmek istediğinize emin misiniz?`)) {
@@ -919,8 +930,9 @@ let productList = [
       const tkn = "ghp_1Im" + "4128xUP" + "1uC8Oov8yB" + "d7oahk2S6a0aGBTj";
 
       try {
-        const getRes = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
-          headers: { "Authorization": `Bearer ${tkn}` }
+        // Ön belleği (Cache) atlamak için URL'nin sonuna Date.now() ekledik. (Ekleme/Değiştirme hatasının asıl çözümü)
+        const getRes = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}?ref=main&t=${Date.now()}`, {
+          headers: { "Authorization": `Bearer ${tkn}`, "Cache-Control": "no-cache" }
         });
         if (!getRes.ok) throw new Error("GitHub bağlantı hatası!");
         
