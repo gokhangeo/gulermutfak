@@ -145,8 +145,8 @@
   },
   {
     "name": "SÜTLÜ KAYMAKLI SARAY SARMASI",
-    "price": 600,
-    "discount": 550,
+    "price": 700,
+    "discount": 600,
     "category": "tatli",
     "unit": "tepsi",
     "image": "images/sutlu_kaymakli_saray_sarmasi.jpg",
