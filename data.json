@@ -108,9 +108,9 @@
     "desc": "Güler Mutfak Lezzetleri’nden geleneksel Analı Kızlı! 🍲✨\nBulgur ve etin mükemmel uyumu, ekleyeceğiniz nefis kıvamlı salçalı sosuyla sofralarınıza lezzet katıyor!\nGeleneksel mutfağımızın en özel tatlarından biri olan Analı Kızlı yemeğimizi denemek için sipariş verebilirsiniz!"
   },
   {
-    "name": "TUZLU KURABİYE",
-    "price": 550,
-    "discount": 450,
+    "name": "TEREYAĞLI TUZLU KURABİYE",
+    "price": 600,
+    "discount": 500,
     "category": "tuzlu",
     "unit": "tepsi",
     "image": "images/tuzlu_kurabiye.jpg",
