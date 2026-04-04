@@ -135,15 +135,6 @@
     "desc": "Güler Mutfak Lezzetleri’nden sıcacık patatesli gözleme! 🥔✨\nİncecik açılmış hamuru, baharatlarla tatlandırılmış bol patatesli iç harcıyla çıtır çıtır bir lezzet deneyimi!\n(10 adet ve üzeri sipariş alınır)"
   },
   {
-    "name": "PEYNİRLİ GÖZLEME",
-    "price": 65,
-    "discount": null,
-    "category": "tuzlu",
-    "unit": "tane",
-    "image": "images/peynirli_gozleme.jpg",
-    "desc": "Güler Mutfak Lezzetleri’nden sıcacık peynirli gözleme! 🧀🔥\nİncecik açılmış hamurun arasına bol peynirli iç harç ekleyerek taş fırında veya sacda pişiriyoruz.\n(10 adet ve üzeri sipariş alınır)"
-  },
-  {
     "name": "HARPUT KÖFTE",
     "price": 550,
     "discount": null,
