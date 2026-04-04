@@ -169,14 +169,5 @@
     "unit": "Orta boy",
     "image": "images/pizza1.jpg",
     "desc": "Güler Mutfak Lezzetleri’nden bol malzemeli pizza! 🍕🔥\nEv yapımı incecik hamuru, bol kaşar peyniri, sucuk, biber, mantar, mısır, domates ve zeytinle mükemmel bir lezzet şöleni sunuyoruz!"
-  },
-  {
-    "name": "PİZZA (SUCUK, KAŞARLI)",
-    "price": 300,
-    "discount": 190,
-    "category": "yemek",
-    "unit": "Orta boy",
-    "image": "images/pizza2.jpg",
-    "desc": "Güler Mutfak Lezzetleri’nden bol malzemeli pizza! 🍕🔥\nSucuk, kaşar peyniri, siyah zeytin ve mısırın enfes uyumuyla hazırlanan ev yapımı pizzamız, lezzet garantili!"
   }
 ]
