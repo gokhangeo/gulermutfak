@@ -1,14 +1,5 @@
 [
   {
-    "name": "İÇLİ KÖFTE(DIŞI ETSİZ)",
-    "price": 650,
-    "discount": 550,
-    "category": "tuzlu",
-    "unit": "kg",
-    "image": "images/icli_kofte.jpg",
-    "desc": "Güler Mutfak Lezzetleri’nden enfes içli köfte! 😋\nİncecik hamuru ve bol iç harcıyla, tam kıvamında hazırlanan içli köftelerimiz sofralarınıza lezzet katıyor.\nEl yapımı, katkısız ve taptaze!"
-  },
-  {
     "name": "İÇLİ KÖFTE(DIŞI ETLİ)",
     "price": 790,
     "discount": 740,
@@ -16,6 +7,15 @@
     "unit": "kg",
     "image": "images/icli_kofte_dislietli.jpg",
     "desc": "Güler Mutfak Lezzetleri’nden bol etli içli köfte! 🥩🔥\nİncecik dış hamuru, bol kıymalı iç harcı ve eşsiz lezzetiyle içli köftelerimiz sofralarınızı şenlendirmeye hazır!\nEl yapımı, katkısız ve taptaze!"
+  },
+  {
+    "name": "İÇLİ KÖFTE(DIŞI ETSİZ)",
+    "price": 650,
+    "discount": 550,
+    "category": "tuzlu",
+    "unit": "kg",
+    "image": "images/icli_kofte.jpg",
+    "desc": "Güler Mutfak Lezzetleri’nden enfes içli köfte! 😋\nİncecik hamuru ve bol iç harcıyla, tam kıvamında hazırlanan içli köftelerimiz sofralarınıza lezzet katıyor.\nEl yapımı, katkısız ve taptaze!"
   },
   {
     "name": "SARAY SARMASI",
