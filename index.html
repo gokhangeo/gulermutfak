@@ -71,6 +71,12 @@
       cursor: pointer;
       border: 1px solid rgba(255, 255, 255, 0.4);
       backdrop-filter: blur(5px);
+      animation: blink 1.5s infinite; /* Yanıp sönme animasyonu eklendi */
+    }
+    
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
     }
     
     /* Hnappur fyrir dökka stillingu */
@@ -350,7 +356,7 @@
   <header>
     <button id="theme-toggle" onclick="toggleTheme()">Karanlık Mod</button>
     <div class="header-title" onclick="checkSecretAdmin()">🍰 GÜLER MUTFAK LEZZETLERİ</div>
-    <div id="campaign-text" onclick="editCampaignText()" title="Yöneticiyseniz değiştirmek için tıklayın">SINIRLI SÜRE İNDİRİM!</div>
+    <div id="campaign-text" onclick="editCampaignText()" title="Yöneticiyseniz değiştirmek için tıklayın">TANIŞMA FİYATLARI!</div>
   </header>
 
   <!-- Leitar- og flokkarflipar -->
@@ -448,7 +454,7 @@
 
   <script>
     let productList = [];
-    let campaignText = "SINIRLI SÜRE İNDİRİM!";
+    let campaignText = "TANIŞMA FİYATLARI!";
     let cart = [];
     let isAdmin = localStorage.getItem('isAdmin') === 'true';
     let clickCount = 0;
@@ -492,7 +498,7 @@
             productList = parsedData;
           } else {
             productList = parsedData.products || [];
-            campaignText = parsedData.campaignText || "SINIRLI SÜRE İNDİRİM!";
+            campaignText = parsedData.campaignText || "TANIŞMA FİYATLARI!";
           }
           
           document.getElementById('campaign-text').textContent = campaignText;
