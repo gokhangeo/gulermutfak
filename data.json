@@ -63,11 +63,11 @@
     "desc": "Güler Mutfak Lezzetleri’nden yumuşacık mayalı poğaça! 🥖✨\nTel tel ayrılan, mis gibi kokan ve lezzetiyle herkesi mest eden poğaçalarımız kahvaltı ve çay saatlerinizin yıldızı olacak!\nSıcak sıcak, taptaze siparişler için hemen bize ulaşın!"
   },
   {
-    "name": "MAYALI POĞAÇA(PEYNİRLİ)",
+    "name": "TEREYAĞLI MAYALI POĞAÇA (PEYNİRLİ)",
     "price": 700,
     "discount": 600,
     "category": "tuzlu",
-    "unit": "tepsi",
+    "unit": "Tepsi",
     "image": "images/mayali_pogaca_peynirli.jpg",
     "desc": "Güler Mutfak Lezzetleri’nden yumuşacık mayalı poğaça! 🥖✨\nTel tel ayrılan, mis gibi kokan ve lezzetiyle herkesi mest eden poğaçalarımız kahvaltı ve çay saatlerinizin yıldızı olacak!\nSıcak sıcak, taptaze siparişler için hemen bize ulaşın!"
   },
