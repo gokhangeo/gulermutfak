@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Tarayıcı önbelleğini (cache) engellemek için kodlar -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
@@ -67,6 +66,7 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
       text-transform: uppercase;
       letter-spacing: 1px;
+      cursor: pointer;
     }
     body.dark-mode #campaign-text { background: #c0392b; }
     
@@ -310,7 +310,7 @@
 <body>
   <header>
     <div class="header-title" onclick="checkSecretAdmin()">🍰 GÜLER MUTFAK LEZZETLERİ</div>
-    <div id="campaign-text">SINIRLI SÜRE İNDİRİM!</div>
+    <div id="campaign-text" onclick="editCampaignText()" title="Yöneticiyseniz değiştirmek için tıklayın">SINIRLI SÜRE İNDİRİM!</div>
     <button id="theme-toggle" onclick="toggleTheme()">Karanlık Mod</button>
   </header>
 
@@ -411,6 +411,7 @@
 
   <script>
     let productList = [];
+    let campaignText = "SINIRLI SÜRE İNDİRİM!";
     let cart = [];
     let isAdmin = localStorage.getItem('isAdmin') === 'true';
     let clickCount = 0;
@@ -430,17 +431,34 @@
       loadData(); 
     };
 
-    // Verileri JSON dosyasından doğrudan ve cache olmadan çekme
+    // GitHub API üzerinden doğrudan okuyarak önbelleği (cache) tamamen atlıyoruz
     async function loadData() {
       try {
-        const dataUrl = `https://raw.githubusercontent.com/gokhangeo/guler-mutfak-lezzetleri/main/data.json?t=${Date.now()}`;
-        const response = await fetch(dataUrl, {
-          cache: "no-store"
+        const repoOwner = "gokhangeo";
+        const repoName = "guler-mutfak-lezzetleri";
+        const filePath = "data.json";
+        const tkn = getGithubToken();
+
+        const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}?t=${Date.now()}`, {
+          headers: { "Authorization": `Bearer ${tkn}` }
         });
+        
         if (response.ok) {
-          productList = await response.json();
+          const fileData = await response.json();
+          const decodedContent = b64DecodeUnicode(fileData.content);
+          const parsedData = JSON.parse(decodedContent);
+          
+          // Eski yapıya (sadece ürün listesi) veya yeni yapıya (ürünler + kampanya yazısı) uygun hale getir
+          if (Array.isArray(parsedData)) {
+            productList = parsedData;
+          } else {
+            productList = parsedData.products || [];
+            campaignText = parsedData.campaignText || "SINIRLI SÜRE İNDİRİM!";
+          }
+          
+          document.getElementById('campaign-text').textContent = campaignText;
         } else {
-          console.error("Veri dosyası bulunamadı. Lütfen 'data.json' dosyasının GitHub'da yüklü olduğundan emin olun.");
+          console.error("Veri dosyası bulunamadı.");
           productList = [];
         }
       } catch (error) {
@@ -448,6 +466,18 @@
         productList = [];
       }
       renderProducts();
+    }
+
+    // Kampanya Yazısını Düzenleme Fonksiyonu
+    function editCampaignText() {
+      if (!isAdmin) return; // Sadece yönetici tıklarsa çalışır
+      
+      const newText = prompt("Yeni Kampanya Yazısını Girin:", campaignText);
+      if (newText !== null && newText.trim() !== "") {
+        campaignText = newText.trim();
+        document.getElementById('campaign-text').textContent = campaignText;
+        saveToGitHub("Kampanya yazısı güncellendi");
+      }
     }
     
     function toggleTheme() {
@@ -772,8 +802,7 @@
 
       try {
         const getRes = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}?t=${Date.now()}`, {
-          headers: { "Authorization": `Bearer ${tkn}` },
-          cache: "no-store"
+          headers: { "Authorization": `Bearer ${tkn}` }
         });
         
         let sha = "";
@@ -782,7 +811,12 @@
            sha = fileData.sha;
         }
         
-        const jsonContent = JSON.stringify(productList, null, 2);
+        const dataToSave = {
+          campaignText: campaignText,
+          products: productList
+        };
+
+        const jsonContent = JSON.stringify(dataToSave, null, 2);
 
         const putBody = {
           message: `Admin: ${commitMessage}`,
@@ -800,7 +834,7 @@
 
         if (putRes.ok) {
           renderProducts();
-          alert("🎉 Harika! İşlem GitHub'a kaydedildi. Veriler anında sayfanızda görünecektir.");
+          alert("🎉 Harika! İşlem GitHub'a kaydedildi ve veriler anında ekranda güncellendi.");
         } else {
           alert("Bir hata oluştu, veriler geçici olarak eklendi ancak GitHub'a kaydedilemedi.");
         }
