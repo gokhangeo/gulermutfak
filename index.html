@@ -354,11 +354,6 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="designer-signature">© Gökhan ELGÜL tarafından tasarlanmıştır.</div>
-  </footer>
-
   <!-- Yönetici Ekleme/Düzenleme Modalı -->
   <div id="admin-modal">
     <div class="admin-content">
@@ -435,17 +430,22 @@
       loadData(); 
     };
 
-    // YENİ: Verileri JSON dosyasından çekme
+    // Verileri JSON dosyasından doğrudan ve cache olmadan çekme
     async function loadData() {
       try {
-        const response = await fetch(`data.json?t=${Date.now()}`);
+        const dataUrl = `https://raw.githubusercontent.com/gokhangeo/guler-mutfak-lezzetleri/main/data.json?t=${Date.now()}`;
+        const response = await fetch(dataUrl, {
+          cache: "no-store"
+        });
         if (response.ok) {
           productList = await response.json();
         } else {
-          console.error("Veri dosyası henüz bulunamadı.");
+          console.error("Veri dosyası bulunamadı. Lütfen 'data.json' dosyasının GitHub'da yüklü olduğundan emin olun.");
+          productList = [];
         }
       } catch (error) {
         console.error("Veri çekme hatası:", error);
+        productList = [];
       }
       renderProducts();
     }
@@ -767,12 +767,13 @@
       
       const repoOwner = "gokhangeo";
       const repoName = "guler-mutfak-lezzetleri";
-      const filePath = "data.json"; // ARTIK SADECE JSON GÜNCELLENİYOR
+      const filePath = "data.json"; 
       const tkn = getGithubToken();
 
       try {
         const getRes = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}?t=${Date.now()}`, {
-          headers: { "Authorization": `Bearer ${tkn}` }
+          headers: { "Authorization": `Bearer ${tkn}` },
+          cache: "no-store"
         });
         
         let sha = "";
@@ -789,7 +790,6 @@
           branch: "main"
         };
         
-        // Eğer dosya önceden varsa güncellemek için SHA gerekir
         if (sha) putBody.sha = sha;
 
         const putRes = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
@@ -800,7 +800,7 @@
 
         if (putRes.ok) {
           renderProducts();
-          alert("🎉 Harika! İşlem GitHub'a kaydedildi. HTML dosyası değişmediği için veriler anında gelecektir.");
+          alert("🎉 Harika! İşlem GitHub'a kaydedildi. Veriler anında sayfanızda görünecektir.");
         } else {
           alert("Bir hata oluştu, veriler geçici olarak eklendi ancak GitHub'a kaydedilemedi.");
         }
