@@ -82,8 +82,8 @@
   },
   {
     "name": "ETLİ YAPRAK SARMA",
-    "price": 650,
-    "discount": 550,
+    "price": 800,
+    "discount": 700,
     "category": "yemek",
     "unit": "kg",
     "image": "images/etli_yaprak_sarma.jpg",
