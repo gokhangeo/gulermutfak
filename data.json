@@ -127,12 +127,12 @@
   },
   {
     "name": "HARPUT KÖFTE",
-    "price": 550,
-    "discount": null,
+    "price": 1100,
+    "discount": 950,
     "category": "yemek",
     "unit": "kg",
     "image": "images/harput_kofte.jpg",
-    "desc": "Güler Mutfak Lezzetleri’nden yöresel Harput Köfte! 🍲✨\nElazığ mutfağının en sevilen lezzetlerinden biri olan Harput Köfte, özel baharatlarla yoğrulmuş bulgur ve etin mükemmel uyumuyla sofralarınızı şenlendirmeye hazır!"
+    "desc": "Güler Mutfak Lezzetleri’nden yöresel Harput Köfte! 🍲✨\nElazığ mutfağının en sevilen lezzetlerinden biri olan Harput Köfte, özel baharatlarla yoğrulmuş bulgur ve yağsız kıymanın mükemmel uyumuyla sofralarınızı şenlendirmeye hazır!"
   },
   {
     "name": "KIYMALI HİNGEL MANTI",
