@@ -136,10 +136,10 @@
   },
   {
     "name": "FINDIK PORTAKALLI ANNE KURABİYESİ",
-    "price": 550,
-    "discount": 450,
+    "price": 650,
+    "discount": 530,
     "category": "tatli",
-    "unit": "tepsi",
+    "unit": "24 adet",
     "image": "images/findik_portakallı_anne_kurabiyesi.jpg",
     "desc": "Güler Mutfak Lezzetleri’nden fındıklı portakallı anne kurabiyesi! 🍊🥜\nMis gibi portakal kokusu ve fındık parçalarıyla taçlandırılmış, yumuşacık kıvamı ve kıyır kıyır dokusuyla çocukluğunuzun lezzetini sunuyoruz!"
   },
