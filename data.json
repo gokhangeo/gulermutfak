@@ -160,14 +160,5 @@
     "unit": "kg",
     "image": "images/elazig_icli_kofte.jpg",
     "desc": "Güler Mutfak Lezzetleri’nden Elazığ usulü içli köfte! 🥩🔥\nÖzenle hazırlanan dış hamuru, baharatlarla lezzetlendirilmiş bol kıymalı iç harcı ve özel şekliyle Elazığ mutfağının vazgeçilmez lezzetini sunuyoruz!"
-  },
-  {
-    "name": "PİZZA (SUCUK, KAŞARLI)",
-    "price": 300,
-    "discount": 190,
-    "category": "yemek",
-    "unit": "Orta boy",
-    "image": "images/pizza2.jpg",
-    "desc": "Güler Mutfak Lezzetleri’nden bol malzemeli pizza! 🍕🔥\nSucuk, kaşar peyniri, siyah zeytin ve mısırın enfes uyumuyla hazırlanan ev yapımı pizzamız, lezzet garantili!"
   }
 ]
