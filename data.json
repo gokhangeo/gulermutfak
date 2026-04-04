@@ -135,6 +135,15 @@
     "desc": "Güler Mutfak Lezzetleri’nden yöresel Harput Köfte! 🍲✨\nElazığ mutfağının en sevilen lezzetlerinden biri olan Harput Köfte, özel baharatlarla yoğrulmuş bulgur ve etin mükemmel uyumuyla sofralarınızı şenlendirmeye hazır!"
   },
   {
+    "name": "KIYMALI HİNGEL MANTI",
+    "price": 600,
+    "discount": 490,
+    "category": "yemek",
+    "unit": "kg",
+    "image": "images/kiymali_hingel_manti.jpg",
+    "desc": "Güler Mutfak Lezzetleri’nden özel kıymalı hingel mantı! 🥟✨\nEl açması incecik hamurun içine bol kıymalı harç eklenerek özenle şekillendirilen hingel mantımız, sarımsaklı yoğurt ve tereyağlı sos eşliğinde lezzet şöleni sunuyor!"
+  },
+  {
     "name": "FINDIK PORTAKALLI ANNE KURABİYESİ",
     "price": 550,
     "discount": 450,
@@ -160,5 +169,14 @@
     "unit": "kg",
     "image": "images/elazig_icli_kofte.jpg",
     "desc": "Güler Mutfak Lezzetleri’nden Elazığ usulü içli köfte! 🥩🔥\nÖzenle hazırlanan dış hamuru, baharatlarla lezzetlendirilmiş bol kıymalı iç harcı ve özel şekliyle Elazığ mutfağının vazgeçilmez lezzetini sunuyoruz!"
+  },
+  {
+    "name": "PİZZA (SUCUK, KAŞARLI)",
+    "price": 300,
+    "discount": 190,
+    "category": "yemek",
+    "unit": "Orta boy",
+    "image": "images/pizza2.jpg",
+    "desc": "Güler Mutfak Lezzetleri’nden bol malzemeli pizza! 🍕🔥\nSucuk, kaşar peyniri, siyah zeytin ve mısırın enfes uyumuyla hazırlanan ev yapımı pizzamız, lezzet garantili!"
   }
 ]
