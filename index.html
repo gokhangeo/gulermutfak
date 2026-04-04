@@ -3,6 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Tarayıcı önbelleğini (cache) engellemek için kodlar -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  
   <title>Güler Mutfak Lezzetleri</title>
 
   <!-- Favicon ve Mobil Ana Ekran İkonu -->
@@ -256,19 +261,11 @@
     .order-btn:hover { background: #c0392b; }
 
     /* İletişim Bölümü */
-    #contact { text-align: center; margin: 2rem auto; padding-bottom: 2rem;}
+    #contact { text-align: center; margin: 2rem auto; padding-bottom: 3rem;}
     #contact h2 { margin-bottom: 1rem; font-size: 1.4rem; color: #7f8c8d; }
     .contact-icons { display: flex; justify-content: center; gap: 2rem; }
     .contact-icons img { width: 50px; height: 50px; cursor: pointer; transition: transform 0.3s; }
     .contact-icons img:hover { transform: scale(1.1); }
-    
-    /* Footer ve İmza */
-    footer {
-      text-align: center; padding: 2rem 1rem; background: #fff; border-top: 1px solid #eee;
-      font-size: 0.9rem; color: #777; display: flex; flex-direction: column; gap: 15px; align-items: center;
-    }
-    body.dark-mode footer { background: #1a1a1a; border-color: #333; color: #aaa; }
-    .designer-signature { user-select: none; font-weight: 500; }
     
     /* Yönetici Modalı */
     #admin-modal {
@@ -412,224 +409,13 @@
 
   <div id="loader">
     <div class="spinner"></div>
-    <span id="loader-text">İşlem yapılıyor. GitHub güncelleniyor, lütfen bekleyin...</span>
+    <span id="loader-text">İşlem yapılıyor. Veriler güncelleniyor, lütfen bekleyin...</span>
   </div>
 
   <div id="notification"></div>
 
   <script>
-    // --- PRODUCT DATA START ---
-let productList = [
-  {
-    "name": "İÇLİ KÖFTE(DIŞI ETLİ)",
-    "price": 790,
-    "discount": 740,
-    "category": "tuzlu",
-    "unit": "kg",
-    "image": "images/icli_kofte_dislietli.jpg",
-    "desc": "Güler Mutfak Lezzetleri’nden bol etli içli köfte! 🥩🔥\nİncecik dış hamuru, bol kıymalı iç harcı ve eşsiz lezzetiyle içli köftelerimiz sofralarınızı şenlendirmeye hazır!\nEl yapımı, katkısız ve taptaze!"
-  },
-  {
-    "name": "İÇLİ KÖFTE(DIŞI ETSİZ)",
-    "price": 650,
-    "discount": 550,
-    "category": "tuzlu",
-    "unit": "kg",
-    "image": "images/icli_kofte.jpg",
-    "desc": "Güler Mutfak Lezzetleri’nden enfes içli köfte! 😋\nİncecik hamuru ve bol iç harcıyla, tam kıvamında hazırlanan içli köftelerimiz sofralarınıza lezzet katıyor.\nEl yapımı, katkısız ve taptaze!"
-  },
-  {
-    "name": "SARAY SARMASI",
-    "price": 550,
-    "discount": 480,
-    "category": "tatli",
-    "unit": "tepsi",
-    "image": "images/saray_sarmasi.jpg",
-    "desc": "Güler Mutfak Lezzetleri’nden enfes Saray Sarması! 🍫✨\nYumuşacık kıvamı, bol kreması ve yoğun çikolata lezzetiyle tatlı keyfinizi taçlandırıyoruz.\nHindistan ceviziyle kaplı bu lezzeti mutlaka denemelisiniz!"
-  },
-  {
-    "name": "PROFİTEROL",
-    "price": 480,
-    "discount": 440,
-    "category": "tatli",
-    "unit": "kg",
-    "image": "images/profiterol.jpg",
-    "desc": "Güler Mutfak Lezzetleri’nden nefis profiterol! 🍫😍\nDışı çıtır, içi bol kremalı, üstü yoğun çikolata sosuyla kaplı bu eşsiz lezzet tatlı krizlerinize birebir!\nHer lokmada mutluluk garantili!"
-  },
-  {
-    "name": "ACILI EKMEK(HATAY USULÜ)",
-    "price": 600,
-    "discount": 490,
-    "category": "tuzlu",
-    "unit": "tepsi",
-    "image": "images/acili_ekmek.jpg",
-    "desc": "Hatay usulü acılı ekmek! 🔥🍞\nBol baharatlı, ev yapımı salça, nefis kıvamlı harcı ve yumuşacık hamuruyla sofralarınıza lezzet katıyoruz!\nÇay saatine, kahvaltıya, her öğüne yakışan bu özel tat şimdi sipariş için hazır!"
-  },
-  {
-    "name": "ELMALI KURABİYE",
-    "price": 550,
-    "discount": 490,
-    "category": "tatli",
-    "unit": "tepsi",
-    "image": "images/elmali_kurabiye.jpg",
-    "desc": "Güler Mutfak Lezzetleri’nden mis gibi elmalı kurabiye! 🍏🍪\nAğızda dağılan hamuru, tarçınlı ve bol cevizli elma harcıyla çay saatlerinin vazgeçilmezi!\nMis gibi kokusu ve lezzetiyle herkesi mest edecek bu kurabiyeleri denemek için hemen sipariş verin!"
-  },
-  {
-    "name": "MAYALI POĞAÇA(SADE)",
-    "price": 550,
-    "discount": 490,
-    "category": "tuzlu",
-    "unit": "tepsi",
-    "image": "images/mayali_pogaca_sade.jpg",
-    "desc": "Güler Mutfak Lezzetleri’nden yumuşacık mayalı poğaça! 🥖✨\nTel tel ayrılan, mis gibi kokan ve lezzetiyle herkesi mest eden poğaçalarımız kahvaltı ve çay saatlerinizin yıldızı olacak!\nSıcak sıcak, taptaze siparişler için hemen bize ulaşın!"
-  },
-  {
-    "name": "MAYALI POĞAÇA(PEYNİRLİ)",
-    "price": 600,
-    "discount": 550,
-    "category": "tuzlu",
-    "unit": "tepsi",
-    "image": "images/mayali_pogaca_peynirli.jpg",
-    "desc": "Güler Mutfak Lezzetleri’nden yumuşacık mayalı poğaça! 🥖✨\nTel tel ayrılan, mis gibi kokan ve lezzetiyle herkesi mest eden poğaçalarımız kahvaltı ve çay saatlerinizin yıldızı olacak!\nSıcak sıcak, taptaze siparişler için hemen bize ulaşın!"
-  },
-  {
-    "name": "ZEYTİNYAĞLI SARMA",
-    "price": 550,
-    "discount": 490,
-    "category": "yemek",
-    "unit": "kg",
-    "image": "images/zeytinyagli_sarma.jpg",
-    "desc": "Güler Mutfak Lezzetleri’nden nefis zeytinyağlı sarma! 🍃🍋\nİncecik sarılmış asma yapraklarının, bol iç harcı ve mis gibi zeytinyağı ile buluştuğu eşsiz bir lezzet!\nLokum gibi kıvamıyla sofralarınızı şenlendirecek bu lezzeti kaçırmayın!"
-  },
-  {
-    "name": "ETLİ YAPRAK SARMA",
-    "price": 650,
-    "discount": 550,
-    "category": "yemek",
-    "unit": "kg",
-    "image": "images/etli_yaprak_sarma.jpg",
-    "desc": "Güler Mutfak Lezzetleri’nden enfes etli yaprak sarma! 🍖🍃\nİncecik asma yapraklarına sarılmış, kıymalı ve baharatlarla lezzetlendirilmiş, tam kıvamında pişmiş sarma lezzeti!\nGeleneksel sofralarınız için vazgeçilmez bir tat!"
-  },
-  {
-    "name": "CUP KEK",
-    "price": 530,
-    "discount": 490,
-    "category": "tatli",
-    "unit": "24 adet",
-    "image": "images/cup_kek.jpg",
-    "desc": "Güler Mutfak Lezzetleri’nden nefis çikolatalı cup kek! 🍫🧁\nYumuşacık dokusu, kakao, çikolata damlası ve ceviz parçalarıyla her lokmada mutluluk veren bu cup kekleri denemelisiniz!\nÇay ve kahve saatlerinizin vazgeçilmezi olacak!"
-  },
-  {
-    "name": "ANALI KIZLI",
-    "price": 790,
-    "discount": 750,
-    "category": "yemek",
-    "unit": "kg",
-    "image": "images/anali_kizli.jpg",
-    "desc": "Güler Mutfak Lezzetleri’nden geleneksel Analı Kızlı! 🍲✨\nBulgur ve etin mükemmel uyumu, ekleyeceğiniz nefis kıvamlı salçalı sosuyla sofralarınıza lezzet katıyor!\nGeleneksel mutfağımızın en özel tatlarından biri olan Analı Kızlı yemeğimizi denemek için sipariş verebilirsiniz!"
-  },
-  {
-    "name": "TUZLU KURABİYE",
-    "price": 550,
-    "discount": 450,
-    "category": "tuzlu",
-    "unit": "tepsi",
-    "image": "images/tuzlu_kurabiye.jpg",
-    "desc": "Güler Mutfak Lezzetleri’nden kıyır kıyır tuzlu kurabiye! 🥨✨\nAğızda dağılan nefis kıvamı, susam, çörek otu ve çekirdek içiyle lezzetlendirilmiş harika tuzlu kurabiyeler çay saatlerinize eşlik etmeye hazır!"
-  },
-  {
-    "name": "LİMON SOSLU KEK",
-    "price": 550,
-    "discount": 490,
-    "category": "tatli",
-    "unit": "bütün",
-    "image": "images/limon_soslu_kek.jpg",
-    "desc": "Güler Mutfak Lezzetleri’nden ferahlatan limon soslu kek! 🍋🍰\nMis gibi limon kokusu, yumuşacık dokusu ve hafif ekşi tatlı uyumuyla çay saatlerinizin favorisi olacak!\nTaptaze ve el yapımı bu lezzeti kaçırmayın!"
-  },
-  {
-    "name": "PATATESLİ GÖZLEME",
-    "price": 60,
-    "discount": null,
-    "category": "yemek",
-    "unit": "tane",
-    "image": "images/patatesli_gozleme.jpg",
-    "desc": "Güler Mutfak Lezzetleri’nden sıcacık patatesli gözleme! 🥔✨\nİncecik açılmış hamuru, baharatlarla tatlandırılmış bol patatesli iç harcıyla çıtır çıtır bir lezzet deneyimi!\n(10 adet ve üzeri sipariş alınır)"
-  },
-  {
-    "name": "PEYNİRLİ GÖZLEME",
-    "price": 65,
-    "discount": null,
-    "category": "tuzlu",
-    "unit": "tane",
-    "image": "images/peynirli_gozleme.jpg",
-    "desc": "Güler Mutfak Lezzetleri’nden sıcacık peynirli gözleme! 🧀🔥\nİncecik açılmış hamurun arasına bol peynirli iç harç ekleyerek taş fırında veya sacda pişiriyoruz.\n(10 adet ve üzeri sipariş alınır)"
-  },
-  {
-    "name": "HARPUT KÖFTE",
-    "price": 550,
-    "discount": null,
-    "category": "yemek",
-    "unit": "kg",
-    "image": "images/harput_kofte.jpg",
-    "desc": "Güler Mutfak Lezzetleri’nden yöresel Harput Köfte! 🍲✨\nElazığ mutfağının en sevilen lezzetlerinden biri olan Harput Köfte, özel baharatlarla yoğrulmuş bulgur ve etin mükemmel uyumuyla sofralarınızı şenlendirmeye hazır!"
-  },
-  {
-    "name": "KIYMALI HİNGEL MANTI",
-    "price": 600,
-    "discount": 490,
-    "category": "yemek",
-    "unit": "kg",
-    "image": "images/kiymali_hingel_manti.jpg",
-    "desc": "Güler Mutfak Lezzetleri’nden özel kıymalı hingel mantı! 🥟✨\nEl açması incecik hamurun içine bol kıymalı harç eklenerek özenle şekillendirilen hingel mantımız, sarımsaklı yoğurt ve tereyağlı sos eşliğinde lezzet şöleni sunuyor!"
-  },
-  {
-    "name": "FINDIK PORTAKALLI ANNE KURABİYESİ",
-    "price": 550,
-    "discount": 450,
-    "category": "tatli",
-    "unit": "tepsi",
-    "image": "images/findik_portakallı_anne_kurabiyesi.jpg",
-    "desc": "Güler Mutfak Lezzetleri’nden fındıklı portakallı anne kurabiyesi! 🍊🥜\nMis gibi portakal kokusu ve fındık parçalarıyla taçlandırılmış, yumuşacık kıvamı ve kıyır kıyır dokusuyla çocukluğunuzun lezzetini sunuyoruz!"
-  },
-  {
-    "name": "SÜTLÜ KAYMAKLI SARAY SARMASI",
-    "price": 600,
-    "discount": 550,
-    "category": "tatli",
-    "unit": "tepsi",
-    "image": "images/sutlu_kaymakli_saray_sarmasi.jpg",
-    "desc": "Güler Mutfak Lezzetleri’nden sütlü kaymaklı Saray Sarması! 🥛🍰\nYumuşacık kıvamı, bol kaymak dolgusu ve hindistan ceviziyle kaplanmış lezzetiyle ağızda eriyen bir tatlı keyfi sunuyoruz!"
-  },
-  {
-    "name": "ELAZIĞ İÇLİ KÖFTE",
-    "price": 790,
-    "discount": 740,
-    "category": "yemek",
-    "unit": "kg",
-    "image": "images/elazig_icli_kofte.jpg",
-    "desc": "Güler Mutfak Lezzetleri’nden Elazığ usulü içli köfte! 🥩🔥\nÖzenle hazırlanan dış hamuru, baharatlarla lezzetlendirilmiş bol kıymalı iç harcı ve özel şekliyle Elazığ mutfağının vazgeçilmez lezzetini sunuyoruz!"
-  },
-  {
-    "name": "PİZZA (Sucuk, Kaşarlı)",
-    "price": 220,
-    "discount": 190,
-    "category": "yemek",
-    "unit": "Orta boy",
-    "image": "images/pizza2.jpg",
-    "desc": "Güler Mutfak Lezzetleri’nden bol malzemeli pizza! 🍕🔥\nSucuk, kaşar peyniri, siyah zeytin ve mısırın enfes uyumuyla hazırlanan ev yapımı pizzamız, lezzet garantili!"
-  },
-  {
-    "name": "PİZZA (BOL MALZEMELI)",
-    "price": 300,
-    "discount": 210,
-    "category": "yemek",
-    "unit": "Orta boy",
-    "image": "images/pizza1.jpg",
-    "desc": "Güler Mutfak Lezzetleri’nden bol malzemeli pizza! 🍕🔥\nEv yapımı incecik hamuru, bol kaşar peyniri, sucuk, biber, mantar, mısır, domates ve zeytinle mükemmel bir lezzet şöleni sunuyoruz!"
-  }
-];
-// --- PRODUCT DATA END ---
-
+    let productList = [];
     let cart = [];
     let isAdmin = localStorage.getItem('isAdmin') === 'true';
     let clickCount = 0;
@@ -646,8 +432,23 @@ let productList = [
         document.getElementById('floating-add-btn').style.display = 'block';
         document.getElementById('floating-logout-btn').style.display = 'block';
       }
-      renderProducts(); 
+      loadData(); 
     };
+
+    // YENİ: Verileri JSON dosyasından çekme
+    async function loadData() {
+      try {
+        const response = await fetch(`data.json?t=${Date.now()}`);
+        if (response.ok) {
+          productList = await response.json();
+        } else {
+          console.error("Veri dosyası henüz bulunamadı.");
+        }
+      } catch (error) {
+        console.error("Veri çekme hatası:", error);
+      }
+      renderProducts();
+    }
     
     function toggleTheme() {
       document.body.classList.toggle('dark-mode');
@@ -907,7 +708,8 @@ let productList = [
           headers: { "Authorization": `Bearer ${tkn}`, "Content-Type": "application/json" },
           body: JSON.stringify({
             message: `Admin Panel: Görsel eklendi -> ${safeName}.jpg`,
-            content: base64Content
+            content: base64Content,
+            branch: "main"
           })
         });
 
@@ -961,47 +763,50 @@ let productList = [
 
     async function saveToGitHub(commitMessage) {
       document.getElementById('loader').style.display = 'flex';
-      document.getElementById('loader-text').textContent = "Sayfa yapısı güncelleniyor, lütfen bekleyin...";
+      document.getElementById('loader-text').textContent = "Veriler güncelleniyor, lütfen bekleyin...";
       
       const repoOwner = "gokhangeo";
       const repoName = "guler-mutfak-lezzetleri";
-      const filePath = "index.html";
+      const filePath = "data.json"; // ARTIK SADECE JSON GÜNCELLENİYOR
       const tkn = getGithubToken();
 
       try {
-        const getRes = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}?ref=main&t=${Date.now()}`, {
+        const getRes = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}?t=${Date.now()}`, {
           headers: { "Authorization": `Bearer ${tkn}` }
         });
-        if (!getRes.ok) {
-           throw new Error("GitHub bağlantı hatası!");
+        
+        let sha = "";
+        if (getRes.ok) {
+           const fileData = await getRes.json();
+           sha = fileData.sha;
         }
         
-        const fileData = await getRes.json();
-        const decodedContent = b64DecodeUnicode(fileData.content);
+        const jsonContent = JSON.stringify(productList, null, 2);
 
-        const regex = /\/\/ --- PRODUCT DATA START ---[\s\S]*?\/\/ --- PRODUCT DATA END ---/;
-        const newCodeBlock = `// --- PRODUCT DATA START ---\nlet productList = ${JSON.stringify(productList, null, 2)};\n// --- PRODUCT DATA END ---`;
-        const updatedContent = decodedContent.replace(regex, newCodeBlock);
+        const putBody = {
+          message: `Admin: ${commitMessage}`,
+          content: b64EncodeUnicode(jsonContent),
+          branch: "main"
+        };
+        
+        // Eğer dosya önceden varsa güncellemek için SHA gerekir
+        if (sha) putBody.sha = sha;
 
         const putRes = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
           method: "PUT",
           headers: { "Authorization": `Bearer ${tkn}`, "Content-Type": "application/json" },
-          body: JSON.stringify({
-            message: `Admin: ${commitMessage}`,
-            content: b64EncodeUnicode(updatedContent),
-            sha: fileData.sha
-          })
+          body: JSON.stringify(putBody)
         });
 
         if (putRes.ok) {
           renderProducts();
-          alert("🎉 Harika! İşlem GitHub'a kaydedildi. Sitenin güncellenmesi 1-2 dakika sürebilir.");
+          alert("🎉 Harika! İşlem GitHub'a kaydedildi. HTML dosyası değişmediği için veriler anında gelecektir.");
         } else {
-          alert("Bir hata oluştu, geçici olarak eklendi ancak GitHub'a kaydedilemedi.");
+          alert("Bir hata oluştu, veriler geçici olarak eklendi ancak GitHub'a kaydedilemedi.");
         }
       } catch (error) {
         console.error(error);
-        alert("Bağlantı hatası! Lütfen Token bilgilerinizi veya internetinizi kontrol edin.");
+        alert("Bağlantı hatası! Lütfen internetinizi kontrol edin.");
       } finally {
         document.getElementById('loader').style.display = 'none';
       }
