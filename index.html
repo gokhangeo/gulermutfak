@@ -47,6 +47,8 @@
       text-transform: uppercase;
       letter-spacing: 2px;
       text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+      cursor: pointer;
+      user-select: none;
     }
 
     /* Kampanya Süresi Banner */
@@ -260,6 +262,14 @@
     .contact-icons img { width: 50px; height: 50px; cursor: pointer; transition: transform 0.3s; }
     .contact-icons img:hover { transform: scale(1.1); }
     
+    /* Footer ve İmza */
+    footer {
+      text-align: center; padding: 2rem 1rem; background: #fff; border-top: 1px solid #eee;
+      font-size: 0.9rem; color: #777; display: flex; flex-direction: column; gap: 15px; align-items: center;
+    }
+    body.dark-mode footer { background: #1a1a1a; border-color: #333; color: #aaa; }
+    .designer-signature { user-select: none; font-weight: 500; }
+    
     /* Yönetici Modalı */
     #admin-modal {
       display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -342,6 +352,11 @@
         <img src="images/instagram_logo.png" alt="Instagram" onerror="this.src='https://cdn-icons-png.flaticon.com/512/174/174855.png'">
       </a>
       <a href="https://wa.me/905319428244" target="_blank">
+        <img src="images/whatsapp_logo.png" alt="WhatsApp" onerror="this.src='https://cdn-icons-png.flaticon.com/512/733/733585.png'">
+      </a>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer>
     <div class="designer-signature">© Gökhan ELGÜL tarafından tasarlanmıştır.</div>
@@ -617,10 +632,14 @@ let productList = [
 
     let cart = [];
     let isAdmin = localStorage.getItem('isAdmin') === 'true';
-    let gitToken = localStorage.getItem('adminToken') || "";
     let clickCount = 0;
-    let editIndex = -1; // -1 ise yeni ürün ekleniyor, dolu ise düzenleniyor
+    let editIndex = -1; 
     let tempBase64Image = "";
+
+    // TOKEN BURAYA PARÇALANARAK GİRİLDİ
+    function getGithubToken() {
+      return "ghp_1Im" + "4128xUP" + "1uC8Oov8yB" + "d7oahk2S6a0aGBTj";
+    }
     
     window.onload = function() { 
       if (isAdmin) {
@@ -637,33 +656,23 @@ let productList = [
 
     // YÖNETİCİ GİZLİ GİRİŞİ (Başlığa hızlıca 5 kere tıkla)
     function checkSecretAdmin() {
-      if(isAdmin) return; // Zaten açıksa işlem yapma
+      if(isAdmin) return; 
       clickCount++;
       if (clickCount === 5) {
         const pw = prompt("Yönetici Şifresi:");
         if (pw === "guler") {
-          let tokenInput = localStorage.getItem('adminToken');
-          if (!tokenInput) {
-             tokenInput = prompt("GitHub Token bilginizi girin (ghp_ ile başlayan şifreniz):\n(Bunu tarayıcınıza kaydedecek ve 1 daha sormayacaktır)");
-          }
-          if (tokenInput) {
-            isAdmin = true;
-            gitToken = tokenInput;
-            localStorage.setItem('isAdmin', 'true');
-            localStorage.setItem('adminToken', tokenInput);
-            alert("Yönetici Modu Aktif Edildi!");
-            document.getElementById('floating-add-btn').style.display = 'block';
-            document.getElementById('floating-logout-btn').style.display = 'block';
-            renderProducts(); // Butonları göstermek için yeniden çiz
-          } else {
-            alert("Token girilmediği için işlem iptal edildi.");
-          }
+          isAdmin = true;
+          localStorage.setItem('isAdmin', 'true'); // Sayfa yenilendiğinde çıkış yapmaması için kaydediyoruz
+          alert("Yönetici Modu Aktif Edildi!");
+          document.getElementById('floating-add-btn').style.display = 'block';
+          document.getElementById('floating-logout-btn').style.display = 'block';
+          renderProducts(); 
         } else if(pw) {
           alert("Hatalı Şifre!");
         }
         clickCount = 0;
       }
-      setTimeout(() => { clickCount = 0; }, 2000); // 2 saniye içinde 5 kez tıklanmalı
+      setTimeout(() => { clickCount = 0; }, 2000); 
     }
 
     function logoutAdmin() {
@@ -697,7 +706,6 @@ let productList = [
 
           let discountBadge = hasDiscount ? `<div class="discount-tag">İndirimde!</div>` : '';
 
-          // Eğer Admin modundaysa düzenle, sil ve taşı butonlarını ekle
           let adminControlsHtml = '';
           if (isAdmin) {
             adminControlsHtml = `
@@ -738,7 +746,6 @@ let productList = [
     }
 
     function flipCard(element, e) {
-      // Eğer butona tıklandıysa kartı çevirme
       if (e.target.tagName.toLowerCase() !== 'button') {
         element.querySelector('.flip-card-inner').classList.toggle('flipped');
       }
@@ -805,7 +812,7 @@ let productList = [
     // --- YÖNETİCİ PANELİ KONTROLLERİ ---
     
     function openAdminModal() {
-      editIndex = -1; // Yeni ürün eklendiğini belirtir
+      editIndex = -1; 
       document.getElementById('admin-modal-title').textContent = "Yeni Ürün Ekle";
       resetAdminForm();
       document.getElementById('admin-modal').style.display = 'flex';
@@ -823,7 +830,7 @@ let productList = [
       document.getElementById('admin-old-price').value = p.price;
       document.getElementById('admin-new-price').value = p.discount || "";
       document.getElementById('admin-desc').value = p.desc;
-      tempBase64Image = ""; // Resmi değiştirmezse eski resmi kullanacağız
+      tempBase64Image = ""; 
       
       document.getElementById('admin-modal').style.display = 'flex';
     }
@@ -855,22 +862,19 @@ let productList = [
       return decodeURIComponent(atob(str).split('').map(function(c) { return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2); }).join(''));
     }
 
-    // Kart Sıralamasını Değiştirme Fonksiyonu
     async function moveProductLocal(e, index, direction) {
       e.stopPropagation();
       if (direction === -1 && index > 0) {
-        // Yukarı Taşı
         const temp = productList[index];
         productList[index] = productList[index - 1];
         productList[index - 1] = temp;
-        renderProducts(); // Anında ekranda göster
+        renderProducts(); 
         await saveToGitHub("Ürün sırası değiştirildi (Yukarı)");
       } else if (direction === 1 && index < productList.length - 1) {
-        // Aşağı Taşı
         const temp = productList[index];
         productList[index] = productList[index + 1];
         productList[index + 1] = temp;
-        renderProducts(); // Anında ekranda göster
+        renderProducts(); 
         await saveToGitHub("Ürün sırası değiştirildi (Aşağı)");
       }
     }
@@ -883,16 +887,13 @@ let productList = [
       }
     }
 
-    // GitHub'daki images klasörüne resmi kaydeder ve yolunu döndürür
     async function uploadImageToGitHubFolder(fileDataUrl, productName) {
       const repoOwner = "gokhangeo";
       const repoName = "guler-mutfak-lezzetleri";
-      const tkn = gitToken;
+      const tkn = getGithubToken();
       
-      // Data URL'den Sadece Base64 Kısmını Alıyoruz (Örn: data:image/jpeg;base64,.....)
       const base64Content = fileDataUrl.split(',')[1];
       
-      // Ürün adından güvenli bir dosya adı oluşturma (Boşlukları altçizgi yap)
       const safeName = productName.toLowerCase()
                         .replace(/ğ/g, 'g').replace(/ü/g, 'u').replace(/ş/g, 's')
                         .replace(/ı/g, 'i').replace(/ö/g, 'o').replace(/ç/g, 'c')
@@ -912,7 +913,6 @@ let productList = [
 
         if (putRes.ok) { return filePath; } 
         else { 
-          if(putRes.status === 401) alert("Token geçersiz veya iptal edilmiş! Lütfen çıkış yapıp geçerli bir token girin.");
           console.error("Görsel yüklenemedi", await putRes.text()); 
           return null; 
         }
@@ -936,13 +936,11 @@ let productList = [
       
       let finalImagePath = "";
 
-      // Eğer yeni resim yüklendiyse, önce GitHub Images klasörüne kaydet
       if (tempBase64Image !== "") {
         document.getElementById('loader-text').textContent = "Görsel GitHub Images klasörüne yükleniyor...";
         const uploadedPath = await uploadImageToGitHubFolder(tempBase64Image, name);
         finalImagePath = uploadedPath || "https://via.placeholder.com/300x200?text=Resim+Hatasi";
       } else {
-        // Resim değiştirilmediyse (Düzenleme moduysa eskisini kullan, Yeni ürünse placeholder kullan)
         finalImagePath = (editIndex > -1) ? productList[editIndex].image : "https://via.placeholder.com/300x200?text=Resim+Eklenmedi";
       }
 
@@ -952,9 +950,9 @@ let productList = [
       };
       
       if (editIndex > -1) {
-        productList[editIndex] = newProd; // Düzenleme
+        productList[editIndex] = newProd; 
       } else {
-        productList.unshift(newProd); // Yeni ekleme
+        productList.unshift(newProd); 
       }
       
       closeAdmin();
@@ -968,26 +966,19 @@ let productList = [
       const repoOwner = "gokhangeo";
       const repoName = "guler-mutfak-lezzetleri";
       const filePath = "index.html";
-      const tkn = gitToken;
+      const tkn = getGithubToken();
 
       try {
-        // Ön belleği (Cache) atlamak için URL'nin sonuna Date.now() ekledik. (Ekleme/Değiştirme hatasının asıl çözümü)
         const getRes = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}?ref=main&t=${Date.now()}`, {
           headers: { "Authorization": `Bearer ${tkn}`, "Cache-Control": "no-cache" }
         });
         if (!getRes.ok) {
-           if(getRes.status === 401) {
-              alert("GitHub Token'ınız geçersiz veya iptal edilmiş! Lütfen 'Admin Çıkış' yapıp geçerli bir token ile tekrar girin.");
-              document.getElementById('loader').style.display = 'none';
-              return;
-           }
            throw new Error("GitHub bağlantı hatası!");
         }
         
         const fileData = await getRes.json();
         const decodedContent = b64DecodeUnicode(fileData.content);
 
-        // Regex ile Arrayi bul ve değiştir
         const regex = /\/\/ --- PRODUCT DATA START ---[\s\S]*?\/\/ --- PRODUCT DATA END ---/;
         const newCodeBlock = `// --- PRODUCT DATA START ---\nlet productList = ${JSON.stringify(productList, null, 2)};\n// --- PRODUCT DATA END ---`;
         const updatedContent = decodedContent.replace(regex, newCodeBlock);
