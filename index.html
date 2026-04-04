@@ -225,6 +225,13 @@
     }
     #floating-add-btn:hover { background: #9b59b6; transform: scale(1.1); }
     
+    #floating-logout-btn {
+      display: none; position: fixed; bottom: 30px; left: 30px; height: 40px; padding: 0 15px;
+      background: #c0392b; color: white; border-radius: 20px; font-weight: bold;
+      border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer; z-index: 1000;
+    }
+    #floating-logout-btn:hover { background: #e74c3c; }
+    
     /* Sepet & Sipariş Bölümü */
     #cart {
       background: #fff; padding: 1.5rem; margin: 4rem auto 2rem; max-width: 600px;
@@ -335,10 +342,10 @@
         <img src="images/instagram_logo.png" alt="Instagram" onerror="this.src='https://cdn-icons-png.flaticon.com/512/174/174855.png'">
       </a>
       <a href="https://wa.me/905319428244" target="_blank">
-        <img src="images/whatsapp_logo.png" alt="WhatsApp" onerror="this.src='https://cdn-icons-png.flaticon.com/512/733/733585.png'">
-      </a>
-    </div>
-  </section>
+  <!-- Footer -->
+  <footer>
+    <div class="designer-signature">© Gökhan ELGÜL tarafından tasarlanmıştır.</div>
+  </footer>
 
   <!-- Yönetici Ekleme/Düzenleme Modalı -->
   <div id="admin-modal">
@@ -384,8 +391,9 @@
     </div>
   </div>
 
-  <!-- Yönetici Floating Buton -->
+  <!-- Yönetici Floating Butonları -->
   <button id="floating-add-btn" onclick="openAdminModal()">+</button>
+  <button id="floating-logout-btn" onclick="logoutAdmin()">Admin Çıkış</button>
 
   <div id="loader">
     <div class="spinner"></div>
@@ -608,12 +616,19 @@ let productList = [
 // --- PRODUCT DATA END ---
 
     let cart = [];
-    let isAdmin = false;
+    let isAdmin = localStorage.getItem('isAdmin') === 'true';
+    let gitToken = localStorage.getItem('adminToken') || "";
     let clickCount = 0;
     let editIndex = -1; // -1 ise yeni ürün ekleniyor, dolu ise düzenleniyor
     let tempBase64Image = "";
     
-    window.onload = function() { renderProducts(); };
+    window.onload = function() { 
+      if (isAdmin) {
+        document.getElementById('floating-add-btn').style.display = 'block';
+        document.getElementById('floating-logout-btn').style.display = 'block';
+      }
+      renderProducts(); 
+    };
     
     function toggleTheme() {
       document.body.classList.toggle('dark-mode');
@@ -622,20 +637,42 @@ let productList = [
 
     // YÖNETİCİ GİZLİ GİRİŞİ (Başlığa hızlıca 5 kere tıkla)
     function checkSecretAdmin() {
+      if(isAdmin) return; // Zaten açıksa işlem yapma
       clickCount++;
       if (clickCount === 5) {
         const pw = prompt("Yönetici Şifresi:");
         if (pw === "guler") {
-          isAdmin = true;
-          alert("Yönetici Modu Aktif Edildi!");
-          document.getElementById('floating-add-btn').style.display = 'block';
-          renderProducts(); // Butonları göstermek için yeniden çiz
+          let tokenInput = localStorage.getItem('adminToken');
+          if (!tokenInput) {
+             tokenInput = prompt("GitHub Token bilginizi girin (ghp_ ile başlayan şifreniz):\n(Bunu tarayıcınıza kaydedecek ve 1 daha sormayacaktır)");
+          }
+          if (tokenInput) {
+            isAdmin = true;
+            gitToken = tokenInput;
+            localStorage.setItem('isAdmin', 'true');
+            localStorage.setItem('adminToken', tokenInput);
+            alert("Yönetici Modu Aktif Edildi!");
+            document.getElementById('floating-add-btn').style.display = 'block';
+            document.getElementById('floating-logout-btn').style.display = 'block';
+            renderProducts(); // Butonları göstermek için yeniden çiz
+          } else {
+            alert("Token girilmediği için işlem iptal edildi.");
+          }
         } else if(pw) {
           alert("Hatalı Şifre!");
         }
         clickCount = 0;
       }
       setTimeout(() => { clickCount = 0; }, 2000); // 2 saniye içinde 5 kez tıklanmalı
+    }
+
+    function logoutAdmin() {
+      isAdmin = false;
+      localStorage.removeItem('isAdmin');
+      document.getElementById('floating-add-btn').style.display = 'none';
+      document.getElementById('floating-logout-btn').style.display = 'none';
+      renderProducts();
+      alert("Yönetici modundan çıkıldı.");
     }
     
     function renderProducts() {
@@ -850,7 +887,7 @@ let productList = [
     async function uploadImageToGitHubFolder(fileDataUrl, productName) {
       const repoOwner = "gokhangeo";
       const repoName = "guler-mutfak-lezzetleri";
-      const tkn = "ghp_1Im" + "4128xUP" + "1uC8Oov8yB" + "d7oahk2S6a0aGBTj";
+      const tkn = gitToken;
       
       // Data URL'den Sadece Base64 Kısmını Alıyoruz (Örn: data:image/jpeg;base64,.....)
       const base64Content = fileDataUrl.split(',')[1];
@@ -874,7 +911,11 @@ let productList = [
         });
 
         if (putRes.ok) { return filePath; } 
-        else { console.error("Görsel yüklenemedi", await putRes.text()); return null; }
+        else { 
+          if(putRes.status === 401) alert("Token geçersiz veya iptal edilmiş! Lütfen çıkış yapıp geçerli bir token girin.");
+          console.error("Görsel yüklenemedi", await putRes.text()); 
+          return null; 
+        }
       } catch (error) {
         console.error(error); return null;
       }
@@ -927,14 +968,21 @@ let productList = [
       const repoOwner = "gokhangeo";
       const repoName = "guler-mutfak-lezzetleri";
       const filePath = "index.html";
-      const tkn = "ghp_1Im" + "4128xUP" + "1uC8Oov8yB" + "d7oahk2S6a0aGBTj";
+      const tkn = gitToken;
 
       try {
         // Ön belleği (Cache) atlamak için URL'nin sonuna Date.now() ekledik. (Ekleme/Değiştirme hatasının asıl çözümü)
         const getRes = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}?ref=main&t=${Date.now()}`, {
           headers: { "Authorization": `Bearer ${tkn}`, "Cache-Control": "no-cache" }
         });
-        if (!getRes.ok) throw new Error("GitHub bağlantı hatası!");
+        if (!getRes.ok) {
+           if(getRes.status === 401) {
+              alert("GitHub Token'ınız geçersiz veya iptal edilmiş! Lütfen 'Admin Çıkış' yapıp geçerli bir token ile tekrar girin.");
+              document.getElementById('loader').style.display = 'none';
+              return;
+           }
+           throw new Error("GitHub bağlantı hatası!");
+        }
         
         const fileData = await getRes.json();
         const decodedContent = b64DecodeUnicode(fileData.content);
