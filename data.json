@@ -1,5 +1,14 @@
 [
   {
+    "name": "BROWNİ KURABİYE",
+    "price": 650,
+    "discount": 550,
+    "category": "tatli",
+    "unit": "24-28 Adet",
+    "image": "images/browni__kurabi_ye_1775340561396.jpg",
+    "desc": "Güler Mutfak Lezzetleri’nden enfes Browni Kurabiye! 🍫🍪\nÇikolatanın yoğun ve zengin tadıyla buluştuğu, her bir kurabiyenin özenle hazırlandığı eşsiz bir lezzet!\nTaze fıstıklarla süslenmiş bu nefis kurabiyeler, çay saatlerinizi ve tatlı anlarınızı taçlandıracak!\nBu harika lezzeti denemek için hemen siparişinizi verin!\n\nGüler Mutfak Lezzetleri ile her anı lezzetlendirin!"
+  },
+  {
     "name": "İÇLİ KÖFTE(DIŞI ETLİ)",
     "price": 1350,
     "discount": 1200,
@@ -54,7 +63,7 @@
     "desc": "Güler Mutfak Lezzetleri’nden mis gibi elmalı kurabiye! 🍏🍪\nAğızda dağılan hamuru, tarçınlı ve bol cevizli elma harcıyla çay saatlerinin vazgeçilmezi!\nMis gibi kokusu ve lezzetiyle herkesi mest edecek bu kurabiyeleri denemek için hemen sipariş verin!"
   },
   {
-    "name": "TEREYAĞLI MAYALI POĞAÇA (SADE)",
+    "name": "MAYALI POĞAÇA(SADE)",
     "price": 650,
     "discount": 550,
     "category": "tuzlu",
@@ -63,11 +72,11 @@
     "desc": "Güler Mutfak Lezzetleri’nden yumuşacık mayalı poğaça! 🥖✨\nTel tel ayrılan, mis gibi kokan ve lezzetiyle herkesi mest eden poğaçalarımız kahvaltı ve çay saatlerinizin yıldızı olacak!\nSıcak sıcak, taptaze siparişler için hemen bize ulaşın!"
   },
   {
-    "name": "TEREYAĞLI MAYALI POĞAÇA (PEYNİRLİ)",
+    "name": "MAYALI POĞAÇA(PEYNİRLİ)",
     "price": 700,
     "discount": 600,
     "category": "tuzlu",
-    "unit": "Tepsi",
+    "unit": "tepsi",
     "image": "images/mayali_pogaca_peynirli.jpg",
     "desc": "Güler Mutfak Lezzetleri’nden yumuşacık mayalı poğaça! 🥖✨\nTel tel ayrılan, mis gibi kokan ve lezzetiyle herkesi mest eden poğaçalarımız kahvaltı ve çay saatlerinizin yıldızı olacak!\nSıcak sıcak, taptaze siparişler için hemen bize ulaşın!"
   },
