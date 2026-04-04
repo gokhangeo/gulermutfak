@@ -3,23 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Kóði til að koma í veg fyrir skyndiminni vafra -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
   
   <title>Güler Mutfak Lezzetleri</title>
 
+  <!-- Uppáhaldstákn og heimaskjátákn fyrir farsíma -->
   <link rel="icon" type="image/png" href="images/guler_logo.png">
   <link rel="apple-touch-icon" href="images/guler_logo.png">
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Poppins:wght@400;500;700&display=swap');
 
-    /* Global Reset & Temel Stil */
+    /* Alþjóðleg endurstilling og grunnstíll */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Nunito', 'Poppins', sans-serif;
-      background: #fffaf5; /* Daha sıcak, modern iştah açıcı krem rengi */
+      background: #fffaf5; 
       color: #4a4a4a;
       line-height: 1.6;
       overflow-x: hidden;
@@ -28,7 +30,7 @@
     }
     body.dark-mode { background: #1a1a1a; color: #f0f0f0; }
     
-    /* Modern Başlık (Header) */
+    /* Nútíma haus */
     header {
       background: linear-gradient(135deg, #ff7e5f, #feb47b);
       color: #fff;
@@ -56,6 +58,7 @@
       user-select: none;
     }
 
+    /* Herferðartexti */
     #campaign-text {
       background: rgba(255, 255, 255, 0.2);
       color: white;
@@ -70,6 +73,7 @@
       backdrop-filter: blur(5px);
     }
     
+    /* Hnappur fyrir dökka stillingu */
     #theme-toggle {
       position: absolute;
       top: 20px;
@@ -86,7 +90,33 @@
     }
     #theme-toggle:hover { background: rgba(0, 0, 0, 0.3); }
     
-    /* Arama ve Yeni Kategori Sekmeleri */
+    /* Bakgrunnstákn */
+    .background-icons {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+      opacity: 0.15;
+      pointer-events: none;
+    }
+    .background-icons img {
+      position: absolute;
+      width: 120px;
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float { 
+      0% { transform: translateY(0px) rotate(0deg); } 
+      50% { transform: translateY(-20px) rotate(5deg); } 
+      100% { transform: translateY(0px) rotate(0deg); } 
+    }
+    .icon1 { top: 10%; left: 10%; content: url("images/icon1.png"); }
+    .icon2 { top: 20%; left: 80%; content: url("images/icon2.png"); animation-delay: 1s !important; }
+    .icon3 { top: 40%; left: 20%; content: url("images/icon3.png"); animation-delay: 2s !important; }
+    .icon4 { top: 60%; left: 75%; content: url("images/icon4.png"); animation-delay: 3s !important; }
+    .icon5 { top: 80%; left: 15%; content: url("images/icon5.png"); animation-delay: 4s !important; }
+    .icon6 { top: 85%; left: 85%; content: url("images/icon6.png"); animation-delay: 5s !important; }
+    
+    /* Leitar- og flokkarflipar */
     .controls {
       display: flex;
       flex-direction: column;
@@ -117,7 +147,7 @@
     .search-box input:focus { border-color: #ff7e5f; box-shadow: 0 4px 15px rgba(255,126,95,0.15); }
     body.dark-mode .search-box input { background: #2a2a2a; color: #fff; border-color: #444; }
 
-    /* Modern Gruplandırma Sekmeleri (Pills) */
+    /* Nútíma flokkunarflipar */
     .category-tabs {
       display: flex;
       justify-content: center;
@@ -147,7 +177,7 @@
     body.dark-mode .tab-btn:hover { background: #331a0b; }
     body.dark-mode .tab-btn.active { background: #d35400; color: white; }
 
-    /* Ürünler Grid */
+    /* Vörur Grid */
     #products {
       display: flex;
       flex-wrap: wrap;
@@ -218,7 +248,7 @@
     .flip-card-back p { font-size: 1rem; line-height: 1.6; color: #666; font-weight: 500;}
     body.dark-mode .flip-card-back p { color: #bbb; }
 
-    /* YÖNETİCİ KART KONTROLLERİ */
+    /* STJÓRNENDAKORTASTÝRINGAR */
     .admin-card-controls {
       position: absolute; bottom: -50px; left: 0; width: 100%;
       display: flex; justify-content: space-between; gap: 8px; padding: 0 10px;
@@ -231,7 +261,7 @@
     .admin-move-btn { background: #34495e; padding: 8px 0; flex: 0.4; font-size: 1.1rem; }
     .admin-move-btn:disabled { background: #95a5a6; cursor: not-allowed; opacity: 0.5; }
 
-    /* YÖNETİCİ FLOAT BUTONU */
+    /* STJÓRNANDI FLJÓTANDI HNAPPUR */
     #floating-add-btn {
       display: none; position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
       background: #8e44ad; color: white; border-radius: 50%; font-size: 30px; font-weight: bold;
@@ -244,7 +274,7 @@
       border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer; z-index: 1000;
     }
     
-    /* Sepet Bölümü */
+    /* Körfuhluti */
     #cart {
       background: #fff; padding: 2rem; margin: 4rem auto 2rem; max-width: 700px;
       border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center;
@@ -265,22 +295,14 @@
     .order-btn { background: #2ecc71; }
     .order-btn:hover { background: #27ae60; }
 
-    /* İletişim Bölümü */
+    /* Samskiptahluti */
     #contact { text-align: center; margin: 3rem auto; padding-bottom: 3rem;}
     #contact h2 { margin-bottom: 1.5rem; font-size: 1.6rem; color: #7f8c8d; }
     .contact-icons { display: flex; justify-content: center; gap: 2rem; }
     .contact-icons img { width: 55px; height: 55px; cursor: pointer; transition: transform 0.3s; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));}
     .contact-icons img:hover { transform: scale(1.15); }
     
-    /* Footer ve İmza */
-    footer {
-      text-align: center; padding: 2rem 1rem; background: #fff; border-top: 1px solid #eee;
-      font-size: 0.95rem; color: #777;
-    }
-    body.dark-mode footer { background: #1a1a1a; border-color: #333; color: #aaa; }
-    .designer-signature { user-select: none; font-weight: 600; color: #ff7e5f;}
-    
-    /* Yönetici Modalı */
+    /* Stjórnendamodal */
     #admin-modal {
       display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(0,0,0,0.85); z-index: 2000; justify-content: center; align-items: center;
@@ -301,6 +323,7 @@
     .admin-save-btn { background: #27ae60; color: white; border: none; padding: 12px 25px; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 1rem;}
     .admin-close-btn { background: #e74c3c; color: white; border: none; padding: 12px 25px; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 1rem;}
     
+    /* Hleðsluskjár */
     #loader {
       display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(255,255,255,0.9); z-index: 3000; justify-content: center; align-items: center;
@@ -330,7 +353,7 @@
     <div id="campaign-text" onclick="editCampaignText()" title="Yöneticiyseniz değiştirmek için tıklayın">SINIRLI SÜRE İNDİRİM!</div>
   </header>
 
-  <!-- Arama ve Kategori Sekmeleri -->
+  <!-- Leitar- og flokkarflipar -->
   <div class="controls">
     <div class="search-box">
       <input type="text" id="search-bar" placeholder="Hangi lezzeti arıyorsunuz?..." oninput="renderProducts()">
@@ -343,10 +366,10 @@
     </div>
   </div>
 
-  <!-- Ürünler -->
+  <!-- Vörur -->
   <section id="products"></section>
 
-  <!-- Sepet & Sipariş Bölümü -->
+  <!-- Körfu- og pöntunarhluti -->
   <section id="cart">
     <h2>🛒 Sepetiniz</h2>
     <ul id="cart-items"></ul>
@@ -355,6 +378,7 @@
     <button class="action-btn order-btn" onclick="placeOrder()">WhatsApp'tan Sipariş Ver</button>
   </section>
 
+  <!-- Samskiptahluti -->
   <section id="contact">
     <h2>Bize Ulaşın</h2>
     <div class="contact-icons">
@@ -367,12 +391,7 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="designer-signature">© Gökhan ELGÜL tarafından tasarlanmıştır.</div>
-  </footer>
-
-  <!-- Yönetici Ekleme/Düzenleme Modalı -->
+  <!-- Stjórnendamodal til að bæta við/breyta -->
   <div id="admin-modal">
     <div class="admin-content">
       <h2 id="admin-modal-title">Ürün Ekle</h2>
@@ -416,6 +435,7 @@
     </div>
   </div>
 
+  <!-- Fljótandi hnappar stjórnanda -->
   <button id="floating-add-btn" onclick="openAdminModal()">+</button>
   <button id="floating-logout-btn" onclick="logoutAdmin()">Admin Çıkış</button>
 
@@ -434,8 +454,9 @@
     let clickCount = 0;
     let editIndex = -1; 
     let tempBase64Image = "";
-    let currentCategory = 'all'; // Seçili kategoriyi tutar
+    let currentCategory = 'all'; 
 
+    // TOKEN HÉR
     function getGithubToken() {
       return "ghp_1Im" + "4128xUP" + "1uC8Oov8yB" + "d7oahk2S6a0aGBTj";
     }
@@ -448,7 +469,7 @@
       loadData(); 
     };
 
-    // GitHub API üzerinden tam, hatasız ve doğrudan okuma (Önbelleği Atlar)
+    // Lestu gögn úr JSON
     async function loadData() {
       try {
         const repoOwner = "gokhangeo";
@@ -486,7 +507,7 @@
       renderProducts();
     }
 
-    // Kategori Seçme (Yeni Gruplandırma)
+    // Flokkaval
     function setCategory(cat, btnElement) {
       currentCategory = cat;
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -494,6 +515,7 @@
       renderProducts();
     }
 
+    // Breyta herferðartexta
     function editCampaignText() {
       if (!isAdmin) return; 
       const newText = prompt("Yeni Kampanya Yazısını Girin:", campaignText);
@@ -509,6 +531,7 @@
       document.getElementById('theme-toggle').textContent = document.body.classList.contains('dark-mode') ? 'Aydınlık Mod' : 'Karanlık Mod';
     }
 
+    // LEYNILEG INNSKRÁNING STJÓRNANDA
     function checkSecretAdmin() {
       if(isAdmin) return; 
       clickCount++;
@@ -529,6 +552,7 @@
       setTimeout(() => { clickCount = 0; }, 2000); 
     }
 
+    // Útskráning stjórnanda
     function logoutAdmin() {
       isAdmin = false;
       localStorage.removeItem('isAdmin');
@@ -608,6 +632,7 @@
       }
     }
 
+    // Bæta í körfu
     function addToCart(e, index, price) {
       e.stopPropagation();
       const product = productList[index];
@@ -618,6 +643,7 @@
       showNotification(`${product.name} sepete eklendi!`);
     }
 
+    // Uppfæra körfu
     function updateCart() {
       const cartItems = document.getElementById('cart-items');
       cartItems.innerHTML = '';
@@ -663,8 +689,6 @@
       notif.textContent = msg; notif.style.display = "block";
       setTimeout(() => notif.style.display = "none", 3000);
     }
-
-    // --- YÖNETİCİ KONTROLLERİ ---
     
     function openAdminModal() {
       editIndex = -1; 
