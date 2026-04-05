@@ -187,7 +187,7 @@
     .flip-card {
       background: transparent;
       width: 300px; 
-      height: 420px;
+      height: 440px; 
       perspective: 1000px;
       cursor: pointer;
       position: relative;
@@ -220,7 +220,7 @@
     .card-image-container { width: 100%; height: 200px; position: relative; }
     .card-image-container img { width: 100%; height: 100%; object-fit: cover; }
     
-    .carousel { position: relative; width: 100%; height: 100%; }
+    .carousel { position: relative; width: 100%; height: 100%; touch-action: pan-y; }
     .carousel img { position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.3s ease-in-out; }
     .carousel img.active { opacity: 1; }
     .carousel-btn {
@@ -238,16 +238,25 @@
       box-shadow: 0 4px 10px rgba(231,76,60,0.3); z-index: 20;
     }
     
-    .card-content { padding: 20px 15px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
-    .card-content h3 { font-size: 1.2rem; color: #2c3e50; margin-bottom: 5px; font-weight: 800; }
+    .card-content { padding: 15px 15px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
+    .card-content h3 { font-size: 1.15rem; color: #2c3e50; margin-bottom: 5px; font-weight: 800; }
     body.dark-mode .card-content h3 { color: #fff; }
     
-    .price-area { margin-bottom: 15px; }
+    .price-area { margin-bottom: 10px; }
     .original-price { text-decoration: line-through; color: #a0a0a0; font-size: 0.9rem; display: block; margin-bottom: 2px;}
-    .discount-price-area { font-size: 1.3rem; font-weight: 800; color: #27ae60; display: flex; align-items: center; justify-content: center; gap: 5px; }
+    .discount-price-area { font-size: 1.25rem; font-weight: 800; color: #27ae60; display: flex; align-items: center; justify-content: center; gap: 5px; }
     
+    .click-detail-hint {
+      font-size: 0.75rem;
+      color: #95a5a6;
+      text-align: center;
+      margin-bottom: 8px;
+      font-style: italic;
+    }
+    body.dark-mode .click-detail-hint { color: #7f8c8d; }
+
     .add-to-cart-btn {
-      background: #ff7e5f; color: white; padding: 12px; font-size: 1.05rem; font-weight: 700; border: none; border-radius: 12px; cursor: pointer; width: 80%; margin: 0 auto; transition: 0.3s;
+      background: #ff7e5f; color: white; padding: 10px; font-size: 1rem; font-weight: 700; border: none; border-radius: 12px; cursor: pointer; width: 80%; margin: 0 auto; transition: 0.3s;
       box-shadow: 0 4px 10px rgba(255,126,95,0.2);
     }
     .add-to-cart-btn:hover { background: #e86b4c; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(255,126,95,0.3); }
@@ -324,7 +333,6 @@
     }
     .admin-form-group input:focus, .admin-form-group select:focus, .admin-form-group textarea:focus { border-color: #ff7e5f; outline: none;}
     
-    /* GÖRSEL ÖNİZLEME ALANI STİLLERİ */
     .image-preview-container {
       display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px;
     }
@@ -440,7 +448,6 @@
         <label>Yeni Görsel(ler) Ekle:</label>
         <input type="file" id="admin-image" accept="image/*" multiple>
         <small style="color: #e74c3c; margin-top:5px;">Ctrl veya Shift'e basılı tutarak birden fazla resim seçebilirsiniz.</small>
-        <!-- Görsel önizleme alanı -->
         <div id="admin-image-preview" class="image-preview-container"></div>
       </div>
       <div class="admin-btns">
@@ -467,8 +474,11 @@
     let isAdmin = localStorage.getItem('isAdmin') === 'true';
     let clickCount = 0;
     let editIndex = -1; 
-    let currentEditImages = []; // Düzenleme anında mevcut olan ve yeni eklenen tüm resimleri tutar
+    let currentEditImages = []; 
     let currentCategory = 'all'; 
+
+    let touchStartX = 0;
+    let wasSwiped = false;
 
     function getGithubToken() {
       return "ghp_1Im" + "4128xUP" + "1uC8Oov8yB" + "d7oahk2S6a0aGBTj";
@@ -560,6 +570,33 @@
       showNotification("Yönetici modundan çıkıldı.");
     }
     
+    function handleTouchStart(e) {
+      touchStartX = e.changedTouches[0].screenX;
+      wasSwiped = false;
+    }
+
+    function handleTouchEnd(e, cardIndex) {
+      let touchEndX = e.changedTouches[0].screenX;
+      let xDiff = touchStartX - touchEndX;
+      
+      // Kaydırma mesafesi 40 pikselden büyükse
+      if (Math.abs(xDiff) > 40) {
+        wasSwiped = true;
+        if (xDiff > 0) {
+          changeSlide(null, cardIndex, 1); // Sola kaydır, sonraki resim
+        } else {
+          changeSlide(null, cardIndex, -1); // Sağa kaydır, önceki resim
+        }
+      }
+    }
+
+    function handleCarouselClick(e) {
+      if (wasSwiped) {
+        e.stopPropagation(); // Kaydırma yapıldıysa tıklamayı karta iletme (kart dönmesin)
+        wasSwiped = false;
+      }
+    }
+
     function renderProducts() {
       const container = document.getElementById('products');
       const searchText = document.getElementById('search-bar').value.toLowerCase();
@@ -585,7 +622,7 @@
           let imageHTML = '';
 
           if (imagesArray.length > 1) {
-            imageHTML += `<div class="carousel" id="carousel-${index}">`;
+            imageHTML += `<div class="carousel" id="carousel-${index}" ontouchstart="handleTouchStart(event)" ontouchend="handleTouchEnd(event, ${index})" onclick="handleCarouselClick(event)">`;
             imagesArray.forEach((img, i) => {
               imageHTML += `<img src="${img}" class="${i === 0 ? 'active' : ''}" onerror="this.src='https://via.placeholder.com/300x200?text=Gorsel+Yok'">`;
             });
@@ -620,6 +657,7 @@
                   <div class="card-content">
                     <h3>${product.name}</h3>
                     <div class="price-area">${priceHtml}</div>
+                    <div class="click-detail-hint">Detaylar için karta dokunun 👆</div>
                     <button class="add-to-cart-btn" onclick="addToCart(event, ${index}, ${activePrice})">Sepete Ekle</button>
                   </div>
                 </div>
@@ -647,7 +685,7 @@
     }
 
     function changeSlide(e, cardIndex, direction) {
-      e.stopPropagation(); 
+      if (e) e.stopPropagation(); 
       const carousel = document.getElementById(`carousel-${cardIndex}`);
       const images = carousel.querySelectorAll('img');
       let activeIndex = Array.from(images).findIndex(img => img.classList.contains('active'));
@@ -713,7 +751,6 @@
       setTimeout(() => notif.style.display = "none", 3000);
     }
     
-    // YENİ ÖNİZLEME FONKSİYONLARI
     function renderImagePreviews() {
       const previewContainer = document.getElementById('admin-image-preview');
       previewContainer.innerHTML = '';
@@ -752,7 +789,6 @@
       document.getElementById('admin-new-price').value = p.discount || "";
       document.getElementById('admin-desc').value = p.desc;
       
-      // Mevcut görselleri önizleme alanına yükle
       currentEditImages = Array.isArray(p.image) ? [...p.image] : [p.image];
       renderImagePreviews();
       
@@ -772,7 +808,6 @@
       renderImagePreviews();
     }
 
-    // Bilgisayardan yeni resim seçildiğinde diziye ekle
     document.getElementById('admin-image').addEventListener('change', async function(e) {
       const files = e.target.files;
       if(files.length === 0) return;
@@ -787,7 +822,6 @@
         currentEditImages.push(dataUrl);
       }
       renderImagePreviews();
-      // Aynı dosyayı tekrar seçebilmek için inputu sıfırla
       e.target.value = ""; 
     });
 
@@ -871,21 +905,17 @@
       let finalImagePaths = [];
 
       if (currentEditImages.length > 0) {
-        // Önizleme listesindeki tüm görselleri tek tek kontrol et
         for (let i = 0; i < currentEditImages.length; i++) {
           let imgData = currentEditImages[i];
-          // Yeni eklenen resimler base64 formatında (data:image...) başlar.
           if (imgData.startsWith("data:image")) {
             document.getElementById('loader-text').textContent = `Görsel ${i + 1}/${currentEditImages.length} sisteme yükleniyor...`;
             const uploadedPath = await uploadImageToGitHubFolder(imgData, name, i);
             if (uploadedPath) finalImagePaths.push(uploadedPath);
           } else {
-            // Zaten var olan bir GitHub linkiyse, değiştirmeden listeye geri koy
             finalImagePaths.push(imgData);
           }
         }
       } else {
-        // Eğer tüm resimleri sildiyse
         finalImagePaths = ["https://via.placeholder.com/300x200?text=Gorsel+Yok"];
       }
 
