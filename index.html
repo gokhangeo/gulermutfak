@@ -3,21 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Kóði til að koma í veg fyrir skyndiminni vafra -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
   
   <title>Güler Mutfak Lezzetleri</title>
 
-  <!-- Uppáhaldstákn og heimaskjátákn fyrir farsíma -->
   <link rel="icon" type="image/png" href="images/guler_logo.png">
   <link rel="apple-touch-icon" href="images/guler_logo.png">
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Poppins:wght@400;500;700&display=swap');
 
-    /* Alþjóðleg endurstilling og grunnstíll */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Nunito', 'Poppins', sans-serif;
@@ -30,7 +27,6 @@
     }
     body.dark-mode { background: #1a1a1a; color: #f0f0f0; }
     
-    /* Nútíma haus */
     header {
       background: linear-gradient(135deg, #ff7e5f, #feb47b);
       color: #fff;
@@ -58,7 +54,6 @@
       user-select: none;
     }
 
-    /* Herferðartexti */
     #campaign-text {
       background: rgba(255, 255, 255, 0.2);
       color: white;
@@ -71,7 +66,7 @@
       cursor: pointer;
       border: 1px solid rgba(255, 255, 255, 0.4);
       backdrop-filter: blur(5px);
-      animation: blink 1.5s infinite; /* Yanıp sönme animasyonu eklendi */
+      animation: blink 1.5s infinite;
     }
     
     @keyframes blink {
@@ -79,7 +74,6 @@
       50% { opacity: 0.4; }
     }
     
-    /* Hnappur fyrir dökka stillingu */
     #theme-toggle {
       position: absolute;
       top: 20px;
@@ -96,7 +90,6 @@
     }
     #theme-toggle:hover { background: rgba(0, 0, 0, 0.3); }
     
-    /* Bakgrunnstákn */
     .background-icons {
       position: fixed;
       top: 0; left: 0;
@@ -122,7 +115,6 @@
     .icon5 { top: 80%; left: 15%; content: url("images/icon5.png"); animation-delay: 4s !important; }
     .icon6 { top: 85%; left: 85%; content: url("images/icon6.png"); animation-delay: 5s !important; }
     
-    /* Leitar- og flokkarflipar */
     .controls {
       display: flex;
       flex-direction: column;
@@ -153,7 +145,6 @@
     .search-box input:focus { border-color: #ff7e5f; box-shadow: 0 4px 15px rgba(255,126,95,0.15); }
     body.dark-mode .search-box input { background: #2a2a2a; color: #fff; border-color: #444; }
 
-    /* Nútíma flokkunarflipar */
     .category-tabs {
       display: flex;
       justify-content: center;
@@ -183,7 +174,6 @@
     body.dark-mode .tab-btn:hover { background: #331a0b; }
     body.dark-mode .tab-btn.active { background: #d35400; color: white; }
 
-    /* Vörur Grid */
     #products {
       display: flex;
       flex-wrap: wrap;
@@ -229,10 +219,24 @@
     
     .card-image-container { width: 100%; height: 200px; position: relative; }
     .card-image-container img { width: 100%; height: 100%; object-fit: cover; }
+    
+    /* GÖRSEL GALERİSİ (CAROUSEL) İÇİN STİLLER */
+    .carousel { position: relative; width: 100%; height: 100%; }
+    .carousel img { position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.3s ease-in-out; }
+    .carousel img.active { opacity: 1; }
+    .carousel-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(0,0,0,0.5); color: white; border: none; padding: 5px 10px;
+      cursor: pointer; border-radius: 5px; z-index: 10; font-size: 1rem;
+    }
+    .carousel-btn:hover { background: rgba(0,0,0,0.8); }
+    .carousel-btn.left { left: 5px; }
+    .carousel-btn.right { right: 5px; }
+
     .discount-tag {
       position: absolute; top: 15px; right: -10px; background: #e74c3c; color: white;
       padding: 6px 20px; font-size: 0.85rem; font-weight: bold; border-radius: 20px;
-      box-shadow: 0 4px 10px rgba(231,76,60,0.3);
+      box-shadow: 0 4px 10px rgba(231,76,60,0.3); z-index: 20;
     }
     
     .card-content { padding: 20px 15px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
@@ -254,7 +258,6 @@
     .flip-card-back p { font-size: 1rem; line-height: 1.6; color: #666; font-weight: 500;}
     body.dark-mode .flip-card-back p { color: #bbb; }
 
-    /* STJÓRNENDAKORTASTÝRINGAR */
     .admin-card-controls {
       position: absolute; bottom: -50px; left: 0; width: 100%;
       display: flex; justify-content: space-between; gap: 8px; padding: 0 10px;
@@ -267,7 +270,6 @@
     .admin-move-btn { background: #34495e; padding: 8px 0; flex: 0.4; font-size: 1.1rem; }
     .admin-move-btn:disabled { background: #95a5a6; cursor: not-allowed; opacity: 0.5; }
 
-    /* STJÓRNANDI FLJÓTANDI HNAPPUR */
     #floating-add-btn {
       display: none; position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
       background: #8e44ad; color: white; border-radius: 50%; font-size: 30px; font-weight: bold;
@@ -280,7 +282,6 @@
       border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer; z-index: 1000;
     }
     
-    /* Körfuhluti */
     #cart {
       background: #fff; padding: 2rem; margin: 4rem auto 2rem; max-width: 700px;
       border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center;
@@ -301,14 +302,18 @@
     .order-btn { background: #2ecc71; }
     .order-btn:hover { background: #27ae60; }
 
-    /* Samskiptahluti */
     #contact { text-align: center; margin: 3rem auto; padding-bottom: 3rem;}
     #contact h2 { margin-bottom: 1.5rem; font-size: 1.6rem; color: #7f8c8d; }
     .contact-icons { display: flex; justify-content: center; gap: 2rem; }
     .contact-icons img { width: 55px; height: 55px; cursor: pointer; transition: transform 0.3s; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));}
     .contact-icons img:hover { transform: scale(1.15); }
     
-    /* Stjórnendamodal */
+    footer {
+      text-align: center; padding: 2rem 1rem; background: #fff; border-top: 1px solid #eee;
+      font-size: 0.95rem; color: #777;
+    }
+    body.dark-mode footer { background: #1a1a1a; border-color: #333; color: #aaa; }
+    
     #admin-modal {
       display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(0,0,0,0.85); z-index: 2000; justify-content: center; align-items: center;
@@ -329,7 +334,6 @@
     .admin-save-btn { background: #27ae60; color: white; border: none; padding: 12px 25px; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 1rem;}
     .admin-close-btn { background: #e74c3c; color: white; border: none; padding: 12px 25px; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 1rem;}
     
-    /* Hleðsluskjár */
     #loader {
       display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(255,255,255,0.9); z-index: 3000; justify-content: center; align-items: center;
@@ -359,7 +363,6 @@
     <div id="campaign-text" onclick="editCampaignText()" title="Yöneticiyseniz değiştirmek için tıklayın">TANIŞMA FİYATLARI!</div>
   </header>
 
-  <!-- Leitar- og flokkarflipar -->
   <div class="controls">
     <div class="search-box">
       <input type="text" id="search-bar" placeholder="Hangi lezzeti arıyorsunuz?..." oninput="renderProducts()">
@@ -372,10 +375,8 @@
     </div>
   </div>
 
-  <!-- Vörur -->
   <section id="products"></section>
 
-  <!-- Körfu- og pöntunarhluti -->
   <section id="cart">
     <h2>🛒 Sepetiniz</h2>
     <ul id="cart-items"></ul>
@@ -384,7 +385,6 @@
     <button class="action-btn order-btn" onclick="placeOrder()">WhatsApp'tan Sipariş Ver</button>
   </section>
 
-  <!-- Samskiptahluti -->
   <section id="contact">
     <h2>Bize Ulaşın</h2>
     <div class="contact-icons">
@@ -397,7 +397,6 @@
     </div>
   </section>
 
-  <!-- Stjórnendamodal til að bæta við/breyta -->
   <div id="admin-modal">
     <div class="admin-content">
       <h2 id="admin-modal-title">Ürün Ekle</h2>
@@ -430,9 +429,9 @@
         <textarea id="admin-desc" rows="3" placeholder="Bu ürünün enfes hikayesi..."></textarea>
       </div>
       <div class="admin-form-group">
-        <label>Ürün Resmi Yükle (Değiştirmek istemiyorsan boş bırak):</label>
-        <input type="file" id="admin-image" accept="image/*">
-        <small style="color: #e74c3c; margin-top:5px;">Görsel doğrudan GitHub'a aktarılır.</small>
+        <label>Ürün Görsel(ler)i Yükle (Birden fazla seçebilirsiniz):</label>
+        <input type="file" id="admin-image" accept="image/*" multiple>
+        <small style="color: #e74c3c; margin-top:5px;">Ctrl veya Shift'e basılı tutarak birden fazla resim seçebilirsiniz.</small>
       </div>
       <div class="admin-btns">
         <button class="admin-close-btn" onclick="closeAdmin()">İptal Et</button>
@@ -441,7 +440,6 @@
     </div>
   </div>
 
-  <!-- Fljótandi hnappar stjórnanda -->
   <button id="floating-add-btn" onclick="openAdminModal()">+</button>
   <button id="floating-logout-btn" onclick="logoutAdmin()">Admin Çıkış</button>
 
@@ -459,10 +457,9 @@
     let isAdmin = localStorage.getItem('isAdmin') === 'true';
     let clickCount = 0;
     let editIndex = -1; 
-    let tempBase64Image = "";
+    let tempBase64Images = []; // Birden fazla görseli tutacak dizi
     let currentCategory = 'all'; 
 
-    // TOKEN HÉR
     function getGithubToken() {
       return "ghp_1Im" + "4128xUP" + "1uC8Oov8yB" + "d7oahk2S6a0aGBTj";
     }
@@ -475,45 +472,34 @@
       loadData(); 
     };
 
-    // Lestu gögn úr JSON
+    // GitHub üzerinden anlık olarak veri çekme
     async function loadData() {
       try {
         const repoOwner = "gokhangeo";
         const repoName = "guler-mutfak-lezzetleri";
         const filePath = "data.json";
-        const tkn = getGithubToken();
-
-        const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}?t=${Date.now()}`;
+        const rawUrl = `https://raw.githubusercontent.com/${repoOwner}/${repoName}/main/${filePath}?t=${Date.now()}`;
         
-        const response = await fetch(apiUrl, {
-          headers: { "Authorization": `Bearer ${tkn}` }
-        });
+        const response = await fetch(rawUrl, { cache: "no-store" });
         
         if (response.ok) {
-          const fileData = await response.json();
-          const decodedContent = b64DecodeUnicode(fileData.content);
-          const parsedData = JSON.parse(decodedContent);
-          
+          const parsedData = await response.json();
           if (Array.isArray(parsedData)) {
             productList = parsedData;
           } else {
             productList = parsedData.products || [];
             campaignText = parsedData.campaignText || "TANIŞMA FİYATLARI!";
           }
-          
           document.getElementById('campaign-text').textContent = campaignText;
         } else {
-          console.error("Veri bulunamadı. Lütfen GitHub deponuzda data.json olduğundan emin olun.");
-          productList = [];
+          console.error("Veri dosyası bulunamadı.");
         }
       } catch (error) {
         console.error("Veri çekme hatası:", error);
-        productList = [];
       }
       renderProducts();
     }
 
-    // Flokkaval
     function setCategory(cat, btnElement) {
       currentCategory = cat;
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -521,7 +507,6 @@
       renderProducts();
     }
 
-    // Breyta herferðartexta
     function editCampaignText() {
       if (!isAdmin) return; 
       const newText = prompt("Yeni Kampanya Yazısını Girin:", campaignText);
@@ -537,7 +522,6 @@
       document.getElementById('theme-toggle').textContent = document.body.classList.contains('dark-mode') ? 'Aydınlık Mod' : 'Karanlık Mod';
     }
 
-    // LEYNILEG INNSKRÁNING STJÓRNANDA
     function checkSecretAdmin() {
       if(isAdmin) return; 
       clickCount++;
@@ -558,7 +542,6 @@
       setTimeout(() => { clickCount = 0; }, 2000); 
     }
 
-    // Útskráning stjórnanda
     function logoutAdmin() {
       isAdmin = false;
       localStorage.removeItem('isAdmin');
@@ -589,6 +572,25 @@
 
           let discountBadge = hasDiscount ? `<div class="discount-tag">Fırsat!</div>` : '';
 
+          // Görselleri işle (Eski veriler tek bir string olabilir, onu da dizi gibi davranalım)
+          let imagesArray = Array.isArray(product.image) ? product.image : [product.image];
+          let imageHTML = '';
+
+          if (imagesArray.length > 1) {
+            // Birden fazla görsel varsa kaydırmalı (carousel) yapısı ekle
+            imageHTML += `<div class="carousel" id="carousel-${index}">`;
+            imagesArray.forEach((img, i) => {
+              imageHTML += `<img src="${img}" class="${i === 0 ? 'active' : ''}" onerror="this.src='https://via.placeholder.com/300x200?text=Gorsel+Yok'">`;
+            });
+            imageHTML += `
+              <button class="carousel-btn left" onclick="changeSlide(event, ${index}, -1)">&#10094;</button>
+              <button class="carousel-btn right" onclick="changeSlide(event, ${index}, 1)">&#10095;</button>
+            </div>`;
+          } else {
+            // Tek görsel varsa normal göster
+            imageHTML = `<img src="${imagesArray[0] || 'https://via.placeholder.com/300x200?text=Gorsel+Yok'}" onerror="this.src='https://via.placeholder.com/300x200?text=Gorsel+Yok'">`;
+          }
+
           let adminControlsHtml = '';
           if (isAdmin) {
             adminControlsHtml = `
@@ -606,7 +608,7 @@
               <div class="flip-card-inner">
                 <div class="flip-card-front">
                   <div class="card-image-container">
-                    <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/300x200?text=Lezzet+Gorseli+Yukleniyor'">
+                    ${imageHTML}
                     ${discountBadge}
                   </div>
                   <div class="card-content">
@@ -638,7 +640,18 @@
       }
     }
 
-    // Bæta í körfu
+    // Görsel Kaydırma Mantığı
+    function changeSlide(e, cardIndex, direction) {
+      e.stopPropagation(); // Kartın dönmesini engeller
+      const carousel = document.getElementById(`carousel-${cardIndex}`);
+      const images = carousel.querySelectorAll('img');
+      let activeIndex = Array.from(images).findIndex(img => img.classList.contains('active'));
+      
+      images[activeIndex].classList.remove('active');
+      activeIndex = (activeIndex + direction + images.length) % images.length;
+      images[activeIndex].classList.add('active');
+    }
+
     function addToCart(e, index, price) {
       e.stopPropagation();
       const product = productList[index];
@@ -649,7 +662,6 @@
       showNotification(`${product.name} sepete eklendi!`);
     }
 
-    // Uppfæra körfu
     function updateCart() {
       const cartItems = document.getElementById('cart-items');
       cartItems.innerHTML = '';
@@ -715,7 +727,7 @@
       document.getElementById('admin-old-price').value = p.price;
       document.getElementById('admin-new-price').value = p.discount || "";
       document.getElementById('admin-desc').value = p.desc;
-      tempBase64Image = ""; 
+      tempBase64Images = []; 
       
       document.getElementById('admin-modal').style.display = 'flex';
     }
@@ -723,7 +735,7 @@
     function closeAdmin() { document.getElementById('admin-modal').style.display = 'none'; resetAdminForm(); }
     
     function resetAdminForm() {
-      tempBase64Image = "";
+      tempBase64Images = [];
       document.getElementById('admin-name').value = "";
       document.getElementById('admin-old-price').value = "";
       document.getElementById('admin-new-price').value = "";
@@ -732,12 +744,21 @@
       document.getElementById('admin-image').value = "";
     }
 
-    document.getElementById('admin-image').addEventListener('change', function(e) {
-      const file = e.target.files[0];
-      if(!file) return;
-      const reader = new FileReader();
-      reader.onload = function(evt) { tempBase64Image = evt.target.result; };
-      reader.readAsDataURL(file);
+    // Birden fazla görseli yakala
+    document.getElementById('admin-image').addEventListener('change', async function(e) {
+      tempBase64Images = [];
+      const files = e.target.files;
+      if(files.length === 0) return;
+
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const dataUrl = await new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.onload = (event) => resolve(event.target.result);
+          reader.readAsDataURL(file);
+        });
+        tempBase64Images.push(dataUrl);
+      }
     });
 
     function b64EncodeUnicode(str) {
@@ -772,7 +793,7 @@
       }
     }
 
-    async function uploadImageToGitHubFolder(fileDataUrl, productName) {
+    async function uploadImageToGitHubFolder(fileDataUrl, productName, imageIndex) {
       const repoOwner = "gokhangeo";
       const repoName = "guler-mutfak-lezzetleri";
       const tkn = getGithubToken();
@@ -781,7 +802,7 @@
       const safeName = productName.toLowerCase()
                         .replace(/ğ/g, 'g').replace(/ü/g, 'u').replace(/ş/g, 's')
                         .replace(/ı/g, 'i').replace(/ö/g, 'o').replace(/ç/g, 'c')
-                        .replace(/[^a-z0-9]/g, '_') + '_' + Date.now();
+                        .replace(/[^a-z0-9]/g, '_') + '_' + Date.now() + '_' + imageIndex;
       
       const filePath = `images/${safeName}.jpg`;
       const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`;
@@ -817,19 +838,28 @@
 
       document.getElementById('loader').style.display = 'flex';
       
-      let finalImagePath = "";
+      let finalImagePaths = [];
 
-      if (tempBase64Image !== "") {
-        document.getElementById('loader-text').textContent = "Görsel sisteme yükleniyor...";
-        const uploadedPath = await uploadImageToGitHubFolder(tempBase64Image, name);
-        finalImagePath = uploadedPath || "https://via.placeholder.com/300x200?text=Resim+Yuklenemedi";
+      if (tempBase64Images.length > 0) {
+        // Yeni eklenen tüm görselleri GitHub'a yükle
+        for (let i = 0; i < tempBase64Images.length; i++) {
+          document.getElementById('loader-text').textContent = `Görsel ${i + 1}/${tempBase64Images.length} sisteme yükleniyor...`;
+          const uploadedPath = await uploadImageToGitHubFolder(tempBase64Images[i], name, i);
+          if (uploadedPath) finalImagePaths.push(uploadedPath);
+        }
       } else {
-        finalImagePath = (editIndex > -1) ? productList[editIndex].image : "https://via.placeholder.com/300x200?text=Gorsel+Yok";
+        // Değişiklik yoksa eskisini koru
+        if (editIndex > -1) {
+          const existingImage = productList[editIndex].image;
+          finalImagePaths = Array.isArray(existingImage) ? existingImage : [existingImage];
+        } else {
+          finalImagePaths = ["https://via.placeholder.com/300x200?text=Gorsel+Yok"];
+        }
       }
 
       const newProd = {
         name: name.toUpperCase(), price: oldPrice, discount: discountPrice,
-        category: category, unit: unit, image: finalImagePath, desc: desc
+        category: category, unit: unit, image: finalImagePaths, desc: desc
       };
       
       if (editIndex > -1) {
