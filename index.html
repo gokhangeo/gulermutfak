@@ -220,7 +220,6 @@
     .card-image-container { width: 100%; height: 200px; position: relative; }
     .card-image-container img { width: 100%; height: 100%; object-fit: cover; }
     
-    /* GÖRSEL GALERİSİ (CAROUSEL) İÇİN STİLLER */
     .carousel { position: relative; width: 100%; height: 100%; }
     .carousel img { position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.3s ease-in-out; }
     .carousel img.active { opacity: 1; }
@@ -308,12 +307,6 @@
     .contact-icons img { width: 55px; height: 55px; cursor: pointer; transition: transform 0.3s; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));}
     .contact-icons img:hover { transform: scale(1.15); }
     
-    footer {
-      text-align: center; padding: 2rem 1rem; background: #fff; border-top: 1px solid #eee;
-      font-size: 0.95rem; color: #777;
-    }
-    body.dark-mode footer { background: #1a1a1a; border-color: #333; color: #aaa; }
-    
     #admin-modal {
       display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(0,0,0,0.85); z-index: 2000; justify-content: center; align-items: center;
@@ -330,6 +323,21 @@
       padding: 12px; border: 2px solid #eee; border-radius: 10px; width: 100%; font-family: inherit; font-size: 1rem;
     }
     .admin-form-group input:focus, .admin-form-group select:focus, .admin-form-group textarea:focus { border-color: #ff7e5f; outline: none;}
+    
+    /* GÖRSEL ÖNİZLEME ALANI STİLLERİ */
+    .image-preview-container {
+      display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px;
+    }
+    .image-preview-item {
+      position: relative; width: 70px; height: 70px; border-radius: 8px; overflow: hidden; border: 2px solid #eee;
+    }
+    .image-preview-item img { width: 100%; height: 100%; object-fit: cover; }
+    .image-preview-item button {
+      position: absolute; top: 2px; right: 2px; background: #e74c3c; color: white; border: none; border-radius: 50%;
+      width: 22px; height: 22px; cursor: pointer; font-size: 12px; font-weight: bold; line-height: 22px; text-align: center; padding: 0; box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    }
+    .image-preview-item button:hover { background: #c0392b; }
+
     .admin-btns { display: flex; justify-content: space-between; margin-top: 25px;}
     .admin-save-btn { background: #27ae60; color: white; border: none; padding: 12px 25px; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 1rem;}
     .admin-close-btn { background: #e74c3c; color: white; border: none; padding: 12px 25px; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 1rem;}
@@ -429,9 +437,11 @@
         <textarea id="admin-desc" rows="3" placeholder="Bu ürünün enfes hikayesi..."></textarea>
       </div>
       <div class="admin-form-group">
-        <label>Ürün Görsel(ler)i Yükle (Birden fazla seçebilirsiniz):</label>
+        <label>Yeni Görsel(ler) Ekle:</label>
         <input type="file" id="admin-image" accept="image/*" multiple>
         <small style="color: #e74c3c; margin-top:5px;">Ctrl veya Shift'e basılı tutarak birden fazla resim seçebilirsiniz.</small>
+        <!-- Görsel önizleme alanı -->
+        <div id="admin-image-preview" class="image-preview-container"></div>
       </div>
       <div class="admin-btns">
         <button class="admin-close-btn" onclick="closeAdmin()">İptal Et</button>
@@ -457,7 +467,7 @@
     let isAdmin = localStorage.getItem('isAdmin') === 'true';
     let clickCount = 0;
     let editIndex = -1; 
-    let tempBase64Images = []; // Birden fazla görseli tutacak dizi
+    let currentEditImages = []; // Düzenleme anında mevcut olan ve yeni eklenen tüm resimleri tutar
     let currentCategory = 'all'; 
 
     function getGithubToken() {
@@ -472,7 +482,6 @@
       loadData(); 
     };
 
-    // GitHub üzerinden anlık olarak veri çekme
     async function loadData() {
       try {
         const repoOwner = "gokhangeo";
@@ -572,12 +581,10 @@
 
           let discountBadge = hasDiscount ? `<div class="discount-tag">Fırsat!</div>` : '';
 
-          // Görselleri işle (Eski veriler tek bir string olabilir, onu da dizi gibi davranalım)
           let imagesArray = Array.isArray(product.image) ? product.image : [product.image];
           let imageHTML = '';
 
           if (imagesArray.length > 1) {
-            // Birden fazla görsel varsa kaydırmalı (carousel) yapısı ekle
             imageHTML += `<div class="carousel" id="carousel-${index}">`;
             imagesArray.forEach((img, i) => {
               imageHTML += `<img src="${img}" class="${i === 0 ? 'active' : ''}" onerror="this.src='https://via.placeholder.com/300x200?text=Gorsel+Yok'">`;
@@ -587,7 +594,6 @@
               <button class="carousel-btn right" onclick="changeSlide(event, ${index}, 1)">&#10095;</button>
             </div>`;
           } else {
-            // Tek görsel varsa normal göster
             imageHTML = `<img src="${imagesArray[0] || 'https://via.placeholder.com/300x200?text=Gorsel+Yok'}" onerror="this.src='https://via.placeholder.com/300x200?text=Gorsel+Yok'">`;
           }
 
@@ -640,9 +646,8 @@
       }
     }
 
-    // Görsel Kaydırma Mantığı
     function changeSlide(e, cardIndex, direction) {
-      e.stopPropagation(); // Kartın dönmesini engeller
+      e.stopPropagation(); 
       const carousel = document.getElementById(`carousel-${cardIndex}`);
       const images = carousel.querySelectorAll('img');
       let activeIndex = Array.from(images).findIndex(img => img.classList.contains('active'));
@@ -708,6 +713,25 @@
       setTimeout(() => notif.style.display = "none", 3000);
     }
     
+    // YENİ ÖNİZLEME FONKSİYONLARI
+    function renderImagePreviews() {
+      const previewContainer = document.getElementById('admin-image-preview');
+      previewContainer.innerHTML = '';
+      currentEditImages.forEach((imgSrc, index) => {
+        previewContainer.innerHTML += `
+          <div class="image-preview-item">
+            <img src="${imgSrc}" onerror="this.src='https://via.placeholder.com/70?text=Hata'">
+            <button type="button" onclick="removeEditImage(${index})">X</button>
+          </div>
+        `;
+      });
+    }
+
+    function removeEditImage(index) {
+      currentEditImages.splice(index, 1);
+      renderImagePreviews();
+    }
+
     function openAdminModal() {
       editIndex = -1; 
       document.getElementById('admin-modal-title').textContent = "Yeni Lezzet Ekle";
@@ -727,7 +751,10 @@
       document.getElementById('admin-old-price').value = p.price;
       document.getElementById('admin-new-price').value = p.discount || "";
       document.getElementById('admin-desc').value = p.desc;
-      tempBase64Images = []; 
+      
+      // Mevcut görselleri önizleme alanına yükle
+      currentEditImages = Array.isArray(p.image) ? [...p.image] : [p.image];
+      renderImagePreviews();
       
       document.getElementById('admin-modal').style.display = 'flex';
     }
@@ -735,18 +762,18 @@
     function closeAdmin() { document.getElementById('admin-modal').style.display = 'none'; resetAdminForm(); }
     
     function resetAdminForm() {
-      tempBase64Images = [];
+      currentEditImages = [];
       document.getElementById('admin-name').value = "";
       document.getElementById('admin-old-price').value = "";
       document.getElementById('admin-new-price').value = "";
       document.getElementById('admin-desc').value = "";
       document.getElementById('admin-unit').value = "";
       document.getElementById('admin-image').value = "";
+      renderImagePreviews();
     }
 
-    // Birden fazla görseli yakala
+    // Bilgisayardan yeni resim seçildiğinde diziye ekle
     document.getElementById('admin-image').addEventListener('change', async function(e) {
-      tempBase64Images = [];
       const files = e.target.files;
       if(files.length === 0) return;
 
@@ -757,8 +784,11 @@
           reader.onload = (event) => resolve(event.target.result);
           reader.readAsDataURL(file);
         });
-        tempBase64Images.push(dataUrl);
+        currentEditImages.push(dataUrl);
       }
+      renderImagePreviews();
+      // Aynı dosyayı tekrar seçebilmek için inputu sıfırla
+      e.target.value = ""; 
     });
 
     function b64EncodeUnicode(str) {
@@ -840,21 +870,23 @@
       
       let finalImagePaths = [];
 
-      if (tempBase64Images.length > 0) {
-        // Yeni eklenen tüm görselleri GitHub'a yükle
-        for (let i = 0; i < tempBase64Images.length; i++) {
-          document.getElementById('loader-text').textContent = `Görsel ${i + 1}/${tempBase64Images.length} sisteme yükleniyor...`;
-          const uploadedPath = await uploadImageToGitHubFolder(tempBase64Images[i], name, i);
-          if (uploadedPath) finalImagePaths.push(uploadedPath);
+      if (currentEditImages.length > 0) {
+        // Önizleme listesindeki tüm görselleri tek tek kontrol et
+        for (let i = 0; i < currentEditImages.length; i++) {
+          let imgData = currentEditImages[i];
+          // Yeni eklenen resimler base64 formatında (data:image...) başlar.
+          if (imgData.startsWith("data:image")) {
+            document.getElementById('loader-text').textContent = `Görsel ${i + 1}/${currentEditImages.length} sisteme yükleniyor...`;
+            const uploadedPath = await uploadImageToGitHubFolder(imgData, name, i);
+            if (uploadedPath) finalImagePaths.push(uploadedPath);
+          } else {
+            // Zaten var olan bir GitHub linkiyse, değiştirmeden listeye geri koy
+            finalImagePaths.push(imgData);
+          }
         }
       } else {
-        // Değişiklik yoksa eskisini koru
-        if (editIndex > -1) {
-          const existingImage = productList[editIndex].image;
-          finalImagePaths = Array.isArray(existingImage) ? existingImage : [existingImage];
-        } else {
-          finalImagePaths = ["https://via.placeholder.com/300x200?text=Gorsel+Yok"];
-        }
+        // Eğer tüm resimleri sildiyse
+        finalImagePaths = ["https://via.placeholder.com/300x200?text=Gorsel+Yok"];
       }
 
       const newProd = {
