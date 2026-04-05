@@ -23,9 +23,11 @@
       "name": "İÇLİ KÖFTE(DIŞI ETSİZ)",
       "price": 1100,
       "discount": 850,
-      "category": "tuzlu",
+      "category": "yemek",
       "unit": "kg",
-      "image": "images/icli_kofte.jpg",
+      "image": [
+        "images/i_cli__kofte_disi_etsi_z__1775395761614_0.jpg"
+      ],
       "desc": "Güler Mutfak Lezzetleri’nden enfes içli köfte! 😋\nİncecik hamuru ve bol iç harcıyla, tam kıvamında hazırlanan içli köftelerimiz sofralarınıza lezzet katıyor.\nEl yapımı, katkısız ve taptaze!"
     },
     {
