@@ -495,7 +495,7 @@
     async function loadData() {
       try {
         const repoOwner = "gokhangeo";
-        const repoName = "guler-mutfak-lezzetleri";
+        const repoName = "gulermutfak";
         const filePath = "data.json";
         const rawUrl = `https://raw.githubusercontent.com/${repoOwner}/${repoName}/main/${filePath}?t=${Date.now()}`;
         
@@ -579,20 +579,19 @@
       let touchEndX = e.changedTouches[0].screenX;
       let xDiff = touchStartX - touchEndX;
       
-      // Kaydırma mesafesi 40 pikselden büyükse
       if (Math.abs(xDiff) > 40) {
         wasSwiped = true;
         if (xDiff > 0) {
-          changeSlide(null, cardIndex, 1); // Sola kaydır, sonraki resim
+          changeSlide(null, cardIndex, 1);
         } else {
-          changeSlide(null, cardIndex, -1); // Sağa kaydır, önceki resim
+          changeSlide(null, cardIndex, -1);
         }
       }
     }
 
     function handleCarouselClick(e) {
       if (wasSwiped) {
-        e.stopPropagation(); // Kaydırma yapıldıysa tıklamayı karta iletme (kart dönmesin)
+        e.stopPropagation(); 
         wasSwiped = false;
       }
     }
@@ -859,7 +858,7 @@
 
     async function uploadImageToGitHubFolder(fileDataUrl, productName, imageIndex) {
       const repoOwner = "gokhangeo";
-      const repoName = "guler-mutfak-lezzetleri";
+      const repoName = "gulermutfak";
       const tkn = getGithubToken();
       
       const base64Content = fileDataUrl.split(',')[1];
@@ -939,7 +938,7 @@
       document.getElementById('loader-text').textContent = "Menü kaydediliyor, lütfen bekleyin...";
       
       const repoOwner = "gokhangeo";
-      const repoName = "guler-mutfak-lezzetleri";
+      const repoName = "gulermutfak";
       const filePath = "data.json"; 
       const tkn = getGithubToken();
       const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`;
