@@ -98,12 +98,15 @@
     },
     {
       "name": "TEREYAĞLI ELMALI KURABİYE",
-      "price": 750,
-      "discount": 650,
+      "price": 800,
+      "discount": 700,
       "category": "tatli",
       "unit": "Tepsi",
-      "image": "images/elmali_kurabiye.jpg",
-      "desc": "Güler Mutfak Lezzetleri’nden mis gibi elmalı kurabiye! 🍏🍪\nAğızda dağılan hamuru, tarçınlı ve bol cevizli elma harcıyla çay saatlerinin vazgeçilmezi!\nMis gibi kokusu ve lezzetiyle herkesi mest edecek bu kurabiyeleri denemek için hemen sipariş verin!"
+      "image": [
+        "images/elmali_kurabiye.jpg",
+        "images/tereyagli_elmali_kurabi_ye_1775941777911_1.jpg"
+      ],
+      "desc": "Güler Mutfak Lezzetleri’nden mis gibi elmalı kurabiye! 🍏🍪 Ağızda dağılan hamuru, tarçınlı ve bol cevizli elma harcıyla çay saatlerinin vazgeçilmezi! Mis gibi kokusu ve lezzetiyle herkesi mest edecek bu kurabiyeleri denemek için hemen sipariş verin!"
     },
     {
       "name": "MAYALI POĞAÇA(SADE)",
