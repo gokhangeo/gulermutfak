@@ -42,7 +42,6 @@
     .spinning-plate {
       font-size: 5rem;
       animation: spin-plate 2s linear infinite;
-      filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
     }
     @keyframes spin-plate {
       0% { transform: rotate(0deg); }
@@ -99,52 +98,22 @@
       animation: blink 1.5s infinite;
     }
     
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
     
     #theme-toggle {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      padding: 6px 15px;
-      font-size: 0.8rem;
-      font-weight: bold;
-      background: rgba(0, 0, 0, 0.15);
-      color: white;
-      border: 1px solid rgba(255,255,255,0.3);
-      border-radius: 20px;
-      cursor: pointer;
-      transition: 0.3s;
+      position: absolute; top: 20px; right: 20px; padding: 6px 15px; font-size: 0.8rem;
+      background: rgba(0, 0, 0, 0.15); color: white; border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px; cursor: pointer; transition: 0.3s;
     }
-    #theme-toggle:hover { background: rgba(0, 0, 0, 0.3); }
-    
-    .background-icons {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: -1;
-      opacity: 0.15;
-      pointer-events: none;
+
+    .section-title {
+      width: 100%; text-align: center; margin: 2rem 0 1rem; font-size: 1.8rem; font-weight: 800;
+      color: #ff7e5f; position: relative; display: flex; align-items: center; justify-content: center; gap: 10px;
     }
-    .background-icons img {
-      position: absolute;
-      width: 120px;
-      animation: float 6s ease-in-out infinite;
-    }
-    @keyframes float { 
-      0% { transform: translateY(0px) rotate(0deg); } 
-      50% { transform: translateY(-20px) rotate(5deg); } 
-      100% { transform: translateY(0px) rotate(0deg); } 
-    }
-    .icon1 { top: 10%; left: 10%; content: url("images/icon1.png"); }
-    .icon2 { top: 20%; left: 80%; content: url("images/icon2.png"); animation-delay: 1s !important; }
-    .icon3 { top: 40%; left: 20%; content: url("images/icon3.png"); animation-delay: 2s !important; }
-    .icon4 { top: 60%; left: 75%; content: url("images/icon4.png"); animation-delay: 3s !important; }
-    .icon5 { top: 80%; left: 15%; content: url("images/icon5.png"); animation-delay: 4s !important; }
-    .icon6 { top: 85%; left: 85%; content: url("images/icon6.png"); animation-delay: 5s !important; }
-    
+    .section-title::before, .section-title::after { content: ""; flex: 1; height: 2px; background: #ffe0d2; max-width: 100px; }
+    .fav-title { color: #f1c40f; } 
+
+    /* Arama ve Filtreleme Düzeni */
     .controls {
       display: flex;
       flex-direction: column;
@@ -175,6 +144,7 @@
     .search-box input:focus { border-color: #ff7e5f; box-shadow: 0 4px 15px rgba(255,126,95,0.15); }
     body.dark-mode .search-box input { background: #2a2a2a; color: #fff; border-color: #444; }
 
+    /* Buton Tasarımları (Kategoriler) */
     .category-tabs {
       display: flex;
       justify-content: center;
@@ -204,71 +174,55 @@
     body.dark-mode .tab-btn:hover { background: #331a0b; }
     body.dark-mode .tab-btn.active { background: #d35400; color: white; }
 
-    #products {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 1.5rem;
-      gap: 30px;
-      max-width: 1250px;
-      margin: 0 auto;
+    /* Ürün Kartları Genel Düzen */
+    #products, #favorites-section {
+      display: flex; flex-wrap: wrap; justify-content: center; padding: 1.5rem; gap: 30px; max-width: 1250px; margin: 0 auto;
     }
 
     .flip-card {
-      background: transparent;
-      width: 300px; 
-      height: 440px; 
-      perspective: 1000px;
-      cursor: pointer;
-      position: relative;
+      background: transparent; width: 300px; height: 440px; perspective: 1000px; cursor: pointer; position: relative;
     }
     .flip-card-inner {
-      position: relative;
-      width: 100%; height: 100%;
-      text-align: center;
-      transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
-      transform-style: preserve-3d;
+      position: relative; width: 100%; height: 100%; text-align: center;
+      transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1); transform-style: preserve-3d;
     }
     .flip-card-inner.flipped { transform: rotateY(180deg); }
     
     .flip-card-front, .flip-card-back {
-      position: absolute;
-      width: 100%; height: 100%;
-      backface-visibility: hidden;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-      background: #fff;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      border: 1px solid rgba(0,0,0,0.03);
+      position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+      border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); background: #fff;
+      display: flex; flex-direction: column; overflow: hidden; border: 1px solid rgba(0,0,0,0.03);
     }
-    body.dark-mode .flip-card-front, body.dark-mode .flip-card-back {
-      background: #242424; color: #f0f0f0; border-color: #333; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    }
+    .flip-card-back { transform: rotateY(180deg); padding: 25px; justify-content: center; align-items: center; }
+    
+    body.dark-mode .flip-card-front, body.dark-mode .flip-card-back { background: #242424; color: #f0f0f0; border-color: #333; }
     
     .card-image-container { width: 100%; height: 200px; position: relative; }
     .card-image-container img { width: 100%; height: 100%; object-fit: cover; }
     
+    /* Çoklu Resim (Carousel) Yapısı */
     .carousel { position: relative; width: 100%; height: 100%; touch-action: pan-y; }
-    .carousel img { position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.3s ease-in-out; }
+    .carousel img { position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.3s; }
     .carousel img.active { opacity: 1; }
     .carousel-btn {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      background: rgba(0,0,0,0.5); color: white; border: none; padding: 5px 10px;
-      cursor: pointer; border-radius: 5px; z-index: 10; font-size: 1rem;
+      position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.4);
+      color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px; z-index: 10;
     }
-    .carousel-btn:hover { background: rgba(0,0,0,0.8); }
     .carousel-btn.left { left: 5px; }
     .carousel-btn.right { right: 5px; }
 
     .discount-tag {
       position: absolute; top: 15px; right: -10px; background: #e74c3c; color: white;
-      padding: 6px 20px; font-size: 0.85rem; font-weight: bold; border-radius: 20px;
-      box-shadow: 0 4px 10px rgba(231,76,60,0.3); z-index: 20;
+      padding: 6px 20px; font-size: 0.85rem; font-weight: bold; border-radius: 20px; z-index: 20;
     }
     
-    .card-content { padding: 15px 15px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
+    .favorite-badge {
+      position: absolute; top: 15px; left: 15px; background: #f1c40f; color: white;
+      width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 20; font-size: 1.2rem;
+    }
+
+    .card-content { padding: 15px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
     .card-content h3 { font-size: 1.15rem; color: #2c3e50; margin-bottom: 5px; font-weight: 800; }
     body.dark-mode .card-content h3 { color: #fff; }
     
@@ -276,53 +230,32 @@
     .original-price { text-decoration: line-through; color: #a0a0a0; font-size: 0.9rem; display: block; margin-bottom: 2px;}
     .discount-price-area { font-size: 1.25rem; font-weight: 800; color: #27ae60; display: flex; align-items: center; justify-content: center; gap: 5px; }
     
-    .click-detail-hint {
-      font-size: 0.75rem;
-      color: #95a5a6;
-      text-align: center;
-      margin-bottom: 8px;
-      font-style: italic;
-    }
-    body.dark-mode .click-detail-hint { color: #7f8c8d; }
+    .click-detail-hint { font-size: 0.75rem; color: #95a5a6; margin-bottom: 8px; font-style: italic; }
 
     .add-to-cart-btn {
-      background: #ff7e5f; color: white; padding: 10px; font-size: 1rem; font-weight: 700; border: none; border-radius: 12px; cursor: pointer; width: 80%; margin: 0 auto; transition: 0.3s;
-      box-shadow: 0 4px 10px rgba(255,126,95,0.2);
+      background: #ff7e5f; color: white; padding: 10px; font-size: 1rem; border: none; border-radius: 12px; cursor: pointer; width: 80%; margin: 0 auto; font-weight: bold;
     }
-    .add-to-cart-btn:hover { background: #e86b4c; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(255,126,95,0.3); }
     
-    .flip-card-back { transform: rotateY(180deg); padding: 25px; justify-content: center; align-items: center; }
     .flip-card-back h3 { margin-bottom: 15px; color: #ff7e5f; font-size: 1.4rem;}
     .flip-card-back p { font-size: 1rem; line-height: 1.6; color: #666; font-weight: 500;}
     body.dark-mode .flip-card-back p { color: #bbb; }
 
+    /* Yönetici Kontrolleri */
     .admin-card-controls {
-      position: absolute; bottom: -50px; left: 0; width: 100%;
-      display: flex; justify-content: space-between; gap: 8px; padding: 0 10px;
+      position: absolute; bottom: -50px; left: 0; width: 100%; display: flex; justify-content: space-between; gap: 8px; padding: 0 10px;
     }
-    .admin-card-controls button {
-      flex: 1; padding: 8px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; color: white;
-    }
+    .admin-card-controls button { flex: 1; padding: 8px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; color: white; }
     .admin-edit-btn { background: #f39c12; }
     .admin-del-btn { background: #c0392b; }
-    .admin-move-btn { background: #34495e; padding: 8px 0; flex: 0.4; font-size: 1.1rem; }
-    .admin-move-btn:disabled { background: #95a5a6; cursor: not-allowed; opacity: 0.5; }
 
     #floating-add-btn {
       display: none; position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
-      background: #8e44ad; color: white; border-radius: 50%; font-size: 30px; font-weight: bold;
-      border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer; z-index: 1000;
+      background: #8e44ad; color: white; border-radius: 50%; font-size: 30px; border: none; z-index: 1000; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
     
-    #floating-logout-btn {
-      display: none; position: fixed; bottom: 30px; left: 30px; height: 40px; padding: 0 15px;
-      background: #c0392b; color: white; border-radius: 20px; font-weight: bold;
-      border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer; z-index: 1000;
-    }
-    
+    /* Sepet Kısmı */
     #cart {
-      background: #fff; padding: 2rem; margin: 4rem auto 2rem; max-width: 700px;
-      border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center;
+      background: #fff; padding: 2rem; margin: 4rem auto 2rem; max-width: 700px; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     }
     body.dark-mode #cart { background: #242424; color: #f0f0f0; box-shadow: 0 10px 30px rgba(0,0,0,0.2);}
     #cart h2 { margin-bottom: 1.5rem; font-size: 1.8rem; color: #ff7e5f; }
@@ -339,134 +272,111 @@
     .action-btn:hover { background: #e86b4c; }
     .order-btn { background: #2ecc71; }
     .order-btn:hover { background: #27ae60; }
-
-    #contact { text-align: center; margin: 3rem auto; padding-bottom: 3rem;}
-    #contact h2 { margin-bottom: 1.5rem; font-size: 1.6rem; color: #7f8c8d; }
-    .contact-icons { display: flex; justify-content: center; gap: 2rem; }
-    .contact-icons img { width: 55px; height: 55px; cursor: pointer; transition: transform 0.3s; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));}
-    .contact-icons img:hover { transform: scale(1.15); }
     
-    .location-text {
-      margin-top: 15px;
-      font-size: 1.1rem;
-      color: #7f8c8d;
-      font-weight: 600;
-    }
-    body.dark-mode .location-text {
-      color: #bbb;
+    #notification {
+      position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%); background: #2c3e50; color: white;
+      padding: 14px 30px; border-radius: 30px; display: none; z-index: 4000; font-weight: bold;
     }
 
+    /* Modal / Admin Form */
     #admin-modal {
       display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(0,0,0,0.85); z-index: 2000; justify-content: center; align-items: center;
-      backdrop-filter: blur(5px);
     }
     .admin-content {
       background: white; padding: 30px; border-radius: 20px; width: 90%; max-width: 550px;
-      max-height: 90vh; overflow-y: auto; color: #333; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      max-height: 90vh; overflow-y: auto; color: #333;
     }
-    .admin-content h2 { margin-bottom: 20px; color: #2c3e50; text-align: center; font-weight: 800;}
+    .admin-content h2 { margin-bottom: 20px; color: #2c3e50; text-align: center; }
     .admin-form-group { margin-bottom: 15px; display: flex; flex-direction: column; text-align: left;}
-    .admin-form-group label { font-weight: 700; margin-bottom: 8px; font-size: 0.95rem; color: #4a4a4a;}
+    .admin-form-group label { font-weight: bold; margin-bottom: 8px; font-size: 0.95rem; }
     .admin-form-group input, .admin-form-group select, .admin-form-group textarea {
-      padding: 12px; border: 2px solid #eee; border-radius: 10px; width: 100%; font-family: inherit; font-size: 1rem;
+      padding: 12px; border: 2px solid #eee; border-radius: 10px; width: 100%; font-family: inherit;
     }
-    .admin-form-group input:focus, .admin-form-group select:focus, .admin-form-group textarea:focus { border-color: #ff7e5f; outline: none;}
-    
-    .image-preview-container {
-      display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px;
-    }
-    .image-preview-item {
-      position: relative; width: 70px; height: 70px; border-radius: 8px; overflow: hidden; border: 2px solid #eee;
-    }
+    .image-preview-container { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+    .image-preview-item { position: relative; width: 70px; height: 70px; border-radius: 8px; overflow: hidden; border: 2px solid #eee; }
     .image-preview-item img { width: 100%; height: 100%; object-fit: cover; }
     .image-preview-item button {
       position: absolute; top: 2px; right: 2px; background: #e74c3c; color: white; border: none; border-radius: 50%;
-      width: 22px; height: 22px; cursor: pointer; font-size: 12px; font-weight: bold; line-height: 22px; text-align: center; padding: 0; box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+      width: 22px; height: 22px; cursor: pointer; font-size: 12px; font-weight: bold;
     }
-    .image-preview-item button:hover { background: #c0392b; }
-
     .admin-btns { display: flex; justify-content: space-between; margin-top: 25px;}
-    .admin-save-btn { background: #27ae60; color: white; border: none; padding: 12px 25px; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 1rem;}
-    .admin-close-btn { background: #e74c3c; color: white; border: none; padding: 12px 25px; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 1rem;}
-    
-    #loader {
-      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(255,255,255,0.9); z-index: 3000; justify-content: center; align-items: center;
-      flex-direction: column; font-weight: 800; color: #ff7e5f; font-size: 1.3rem; text-align: center; padding: 20px;
-    }
-    .spinner { border: 6px solid #ffe0d2; border-top: 6px solid #ff7e5f; border-radius: 50%; width: 60px; height: 60px; animation: spin 1s linear infinite; margin-bottom: 20px;}
-    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-    #notification {
-      position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%); background: #2c3e50; color: white;
-      padding: 14px 30px; border-radius: 30px; display: none; z-index: 4000; font-weight: 700; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    }
+    .admin-save-btn { background: #27ae60; color: white; border: none; padding: 12px 25px; border-radius: 10px; cursor: pointer; font-weight: bold;}
+    .admin-close-btn { background: #e74c3c; color: white; border: none; padding: 12px 25px; border-radius: 10px; cursor: pointer; font-weight: bold;}
     
     @media (max-width: 768px) {
-      .flip-card { width: 100%; max-width: 320px; margin-bottom: 25px; }
-      .header-title { font-size: 1.6rem; }
-      #theme-toggle { top: 15px; right: 15px; }
-      .category-tabs { gap: 8px; }
-      .tab-btn { padding: 8px 16px; font-size: 0.85rem; }
+      #products, #favorites-section { padding: 1rem 0.5rem; gap: 10px; }
+      .flip-card { width: calc(50% - 5px); height: 380px; }
+      .card-image-container { height: 130px; }
+      .card-content { padding: 10px 8px; }
+      .card-content h3 { font-size: 0.95rem; }
+      .add-to-cart-btn { font-size: 0.85rem; width: 100%; padding: 8px 5px;}
+      .discount-price-area { font-size: 1.05rem; }
+      .admin-card-controls { bottom: -45px; gap: 4px; padding: 0 5px; }
+      .admin-card-controls button { padding: 5px; font-size: 0.85rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Sayfa Açılış Animasyonu -->
   <div id="page-loader">
     <div class="spinning-plate">🥗</div>
-    <div class="loading-text">Lezzetler Hazırlanıyor...</div>
+    <div class="loading-text">Güler Mutfak Hazırlanıyor...</div>
   </div>
 
   <header>
-    <button id="theme-toggle" onclick="toggleTheme()">Karanlık Mod</button>
+    <button id="theme-toggle" onclick="toggleTheme()">Mod</button>
     <div class="header-title" onclick="checkSecretAdmin()">🍰 GÜLER MUTFAK LEZZETLERİ</div>
-    <div id="campaign-text" onclick="editCampaignText()" title="Yöneticiyseniz değiştirmek için tıklayın">TANIŞMA FİYATLARI!</div>
+    <div id="campaign-text" onclick="editCampaignText()">YÜKLENİYOR...</div>
   </header>
 
   <div class="controls">
     <div class="search-box">
-      <input type="text" id="search-bar" placeholder="Hangi lezzeti arıyorsunuz?..." oninput="renderProducts()">
+      <input type="text" id="search-bar" placeholder="Lezzet ara..." oninput="renderProducts()">
     </div>
     <div class="category-tabs">
-      <button class="tab-btn active" onclick="setCategory('all', this)">Tüm Ürünler</button>
+      <button class="tab-btn active" onclick="setCategory('all', this)">Hepsi</button>
       <button class="tab-btn" onclick="setCategory('tatli', this)">Tatlılar</button>
       <button class="tab-btn" onclick="setCategory('tuzlu', this)">Tuzlular</button>
       <button class="tab-btn" onclick="setCategory('yemek', this)">Yemekler</button>
     </div>
   </div>
 
+  <!-- En Çok Sevilenler Bölümü -->
+  <div id="favorites-container" style="display:none;">
+    <h2 class="section-title fav-title">⭐ En Çok Sevilenler</h2>
+    <section id="favorites-section"></section>
+  </div>
+
+  <h2 class="section-title" id="main-list-title">🍴 Menümüz</h2>
   <section id="products"></section>
 
   <section id="cart">
     <h2>🛒 Sepetiniz</h2>
     <ul id="cart-items"></ul>
     <p id="total-price">Toplam: 0₺</p>
-    <button class="action-btn" onclick="copyCart()">Sepeti Kopyala</button>
     <button class="action-btn order-btn" onclick="placeOrder()">WhatsApp'tan Sipariş Ver</button>
   </section>
 
-  <section id="contact">
+  <section id="contact" style="text-align:center; padding-bottom:3rem;">
     <h2>Bize Ulaşın</h2>
-    <div class="contact-icons">
-      <a href="https://www.instagram.com/guler_mutfak_lezzetleri?igsh=MTI1Nzdpa254enhtZA==" target="_blank">
-        <img src="images/instagram_logo.png" alt="Instagram" onerror="this.src='https://cdn-icons-png.flaticon.com/512/174/174855.png'">
-      </a>
-      <a href="https://wa.me/905319428244" target="_blank">
-        <img src="images/whatsapp_logo.png" alt="WhatsApp" onerror="this.src='https://cdn-icons-png.flaticon.com/512/733/733585.png'">
-      </a>
+    <div class="contact-icons" style="display:flex; justify-content:center; gap:20px; margin-top:1rem;">
+      <a href="https://www.instagram.com/guler_mutfak_lezzetleri" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" width="40"></a>
+      <a href="https://wa.me/905319428244" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" width="40"></a>
     </div>
-    <div class="location-text">📍 Mersin / Mezitli</div>
+    <p style="margin-top:1rem; font-weight:bold;">📍 Mersin / Mezitli</p>
   </section>
 
   <div id="admin-modal">
     <div class="admin-content">
-      <h2 id="admin-modal-title">Ürün Ekle</h2>
+      <h2 id="admin-modal-title">Ürün Ekle/Düzenle</h2>
       <div class="admin-form-group">
         <label>Ürün Adı:</label>
-        <input type="text" id="admin-name" placeholder="Örn: Ev Yapımı Kısır">
+        <input type="text" id="admin-name">
+      </div>
+      <div class="admin-form-group" style="flex-direction:row; align-items:center; gap:10px;">
+        <input type="checkbox" id="admin-is-favorite" style="width:20px; height:20px;">
+        <label for="admin-is-favorite">⭐ En Çok Sevilenler Bölümünde Göster</label>
       </div>
       <div class="admin-form-group">
         <label>Kategori:</label>
@@ -477,40 +387,39 @@
         </select>
       </div>
       <div class="admin-form-group">
-        <label>Birim (Örn: 1 kg, 1 tepsi, Adet):</label>
-        <input type="text" id="admin-unit" placeholder="1 kg">
+        <label>Birim (Örn: 1 kg, Adet):</label>
+        <input type="text" id="admin-unit">
       </div>
       <div class="admin-form-group">
-        <label>Eski Fiyat (₺):</label>
-        <input type="number" id="admin-old-price" placeholder="Örn: 300">
+        <label>Fiyat (₺):</label>
+        <input type="number" id="admin-old-price">
       </div>
       <div class="admin-form-group">
-        <label>İndirimli Fiyat (₺) (Opsiyonel):</label>
-        <input type="number" id="admin-new-price" placeholder="Örn: 250 (Yoksa boş bırak)">
+        <label>İndirimli Fiyat (Yoksa boş bırak):</label>
+        <input type="number" id="admin-new-price">
       </div>
       <div class="admin-form-group">
-        <label>Açıklama (Kart arkası için):</label>
-        <textarea id="admin-desc" rows="3" placeholder="Bu ürünün enfes hikayesi..."></textarea>
+        <label>Açıklama:</label>
+        <textarea id="admin-desc" rows="2"></textarea>
       </div>
       <div class="admin-form-group">
-        <label>Yeni Görsel(ler) Ekle:</label>
-        <input type="file" id="admin-image" accept="image/*" multiple>
-        <small style="color: #e74c3c; margin-top:5px;">Ctrl veya Shift'e basılı tutarak birden fazla resim seçebilirsiniz.</small>
+        <label>Görseller:</label>
+        <input type="file" id="admin-image" multiple accept="image/*">
         <div id="admin-image-preview" class="image-preview-container"></div>
       </div>
       <div class="admin-btns">
-        <button class="admin-close-btn" onclick="closeAdmin()">İptal Et</button>
-        <button class="admin-save-btn" onclick="saveProduct()">Kaydet ve Yayına Al</button>
+        <button class="admin-close-btn" onclick="closeAdmin()">İptal</button>
+        <button class="admin-save-btn" onclick="saveProduct()">Kaydet</button>
       </div>
     </div>
   </div>
 
   <button id="floating-add-btn" onclick="openAdminModal()">+</button>
-  <button id="floating-logout-btn" onclick="logoutAdmin()">Admin Çıkış</button>
+  <button id="floating-logout-btn" style="display:none; position:fixed; bottom:30px; left:30px; padding:10px; border-radius:20px; background:#c0392b; color:white; border:none; z-index:1000;" onclick="logoutAdmin()">Çıkış</button>
 
-  <div id="loader">
-    <div class="spinner"></div>
-    <span id="loader-text">İşlem yapılıyor. Veriler güncelleniyor, lütfen bekleyin...</span>
+  <div id="loader" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(255,255,255,0.8); z-index:9999; flex-direction:column; align-items:center; justify-content:center;">
+    <div class="spinner" style="border: 6px solid #ffe0d2; border-top: 6px solid #ff7e5f; border-radius: 50%; width: 60px; height: 60px; animation: spin-plate 1s linear infinite; margin-bottom: 20px;"></div>
+    <p style="font-weight:bold; color:#ff7e5f; font-size:1.2rem;">GitHub Güncelleniyor...</p>
   </div>
 
   <div id="notification"></div>
@@ -520,530 +429,290 @@
     let campaignText = "TANIŞMA FİYATLARI!";
     let cart = [];
     let isAdmin = localStorage.getItem('isAdmin') === 'true';
-    let clickCount = 0;
     let editIndex = -1; 
     let currentEditImages = []; 
-    let currentCategory = 'all'; 
-
+    let currentCategory = 'all';
     let touchStartX = 0;
-    let wasSwiped = false;
 
     function getGithubToken() {
       return "ghp_1Im" + "4128xUP" + "1uC8Oov8yB" + "d7oahk2S6a0aGBTj";
     }
-    
-    window.onload = function() { 
-      if (isAdmin) {
-        document.getElementById('floating-add-btn').style.display = 'block';
-        document.getElementById('floating-logout-btn').style.display = 'block';
-      }
-      loadData(); 
-    };
+
+    window.onload = loadData;
 
     async function loadData() {
       try {
         const repoOwner = "gokhangeo";
         const repoName = "gulermutfak";
-        const filePath = "data.json";
-        const rawUrl = `https://raw.githubusercontent.com/${repoOwner}/${repoName}/main/${filePath}?t=${Date.now()}`;
-        
+        const rawUrl = `https://raw.githubusercontent.com/${repoOwner}/${repoName}/main/data.json?t=${Date.now()}`;
         const response = await fetch(rawUrl, { cache: "no-store" });
-        
         if (response.ok) {
           const parsedData = await response.json();
-          if (Array.isArray(parsedData)) {
-            productList = parsedData;
-          } else {
-            productList = parsedData.products || [];
-            campaignText = parsedData.campaignText || "TANIŞMA FİYATLARI!";
-          }
+          if (Array.isArray(parsedData)) productList = parsedData;
+          else { productList = parsedData.products || []; campaignText = parsedData.campaignText || "TANIŞMA FİYATLARI!"; }
           document.getElementById('campaign-text').textContent = campaignText;
-        } else {
-          console.error("Veri dosyası bulunamadı.");
         }
-      } catch (error) {
-        console.error("Veri çekme hatası:", error);
-      }
+      } catch (e) { console.error("Yükleme hatası:", e); }
       
+      sortAndRender();
+      if (isAdmin) {
+        document.getElementById('floating-add-btn').style.display = 'block';
+        document.getElementById('floating-logout-btn').style.display = 'block';
+      }
+      setTimeout(() => { 
+        document.getElementById('page-loader').style.opacity = '0';
+        setTimeout(() => document.getElementById('page-loader').style.display = 'none', 500); 
+      }, 1500);
+    }
+
+    function sortAndRender() {
+      productList.sort((a, b) => {
+        const getRoot = (name) => name.split(' ').pop().toLowerCase();
+        const rootA = getRoot(a.name);
+        const rootB = getRoot(b.name);
+        if (rootA === rootB) return a.name.localeCompare(b.name, 'tr');
+        return a.name.localeCompare(b.name, 'tr');
+      });
       renderProducts();
-      
-      setTimeout(() => {
-        const loader = document.getElementById('page-loader');
-        if (loader) {
-          loader.style.opacity = '0';
-          setTimeout(() => loader.style.display = 'none', 500);
-        }
-      }, 2500); 
-    }
-
-    function setCategory(cat, btnElement) {
-      currentCategory = cat;
-      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-      btnElement.classList.add('active');
-      renderProducts();
-    }
-
-    function editCampaignText() {
-      if (!isAdmin) return; 
-      const newText = prompt("Yeni Kampanya Yazısını Girin:", campaignText);
-      if (newText !== null && newText.trim() !== "") {
-        campaignText = newText.trim();
-        document.getElementById('campaign-text').textContent = campaignText;
-        saveToGitHub("Kampanya yazısı güncellendi");
-      }
-    }
-    
-    function toggleTheme() {
-      document.body.classList.toggle('dark-mode');
-      document.getElementById('theme-toggle').textContent = document.body.classList.contains('dark-mode') ? 'Aydınlık Mod' : 'Karanlık Mod';
-    }
-
-    function checkSecretAdmin() {
-      if(isAdmin) return; 
-      clickCount++;
-      if (clickCount === 5) {
-        const pw = prompt("Yönetici Şifresi:");
-        if (pw === "guler") {
-          isAdmin = true;
-          localStorage.setItem('isAdmin', 'true'); 
-          alert("Yönetici Modu Aktif Edildi!");
-          document.getElementById('floating-add-btn').style.display = 'block';
-          document.getElementById('floating-logout-btn').style.display = 'block';
-          renderProducts(); 
-        } else if(pw) {
-          alert("Hatalı Şifre!");
-        }
-        clickCount = 0;
-      }
-      setTimeout(() => { clickCount = 0; }, 2000); 
-    }
-
-    function logoutAdmin() {
-      isAdmin = false;
-      localStorage.removeItem('isAdmin');
-      document.getElementById('floating-add-btn').style.display = 'none';
-      document.getElementById('floating-logout-btn').style.display = 'none';
-      renderProducts();
-      showNotification("Yönetici modundan çıkıldı.");
-    }
-    
-    function handleTouchStart(e) {
-      touchStartX = e.changedTouches[0].screenX;
-      wasSwiped = false;
-    }
-
-    function handleTouchEnd(e, cardIndex) {
-      let touchEndX = e.changedTouches[0].screenX;
-      let xDiff = touchStartX - touchEndX;
-      
-      if (Math.abs(xDiff) > 40) {
-        wasSwiped = true;
-        if (xDiff > 0) {
-          changeSlide(null, cardIndex, 1);
-        } else {
-          changeSlide(null, cardIndex, -1);
-        }
-      }
-    }
-
-    function handleCarouselClick(e) {
-      if (wasSwiped) {
-        e.stopPropagation(); 
-        wasSwiped = false;
-      }
     }
 
     function renderProducts() {
-      const container = document.getElementById('products');
-      const searchText = document.getElementById('search-bar').value.toLowerCase();
+      const mainContainer = document.getElementById('products');
+      const favContainer = document.getElementById('favorites-section');
+      const favWrapper = document.getElementById('favorites-container');
+      const search = document.getElementById('search-bar').value.toLowerCase();
       
-      container.innerHTML = '';
-      
+      mainContainer.innerHTML = '';
+      favContainer.innerHTML = '';
+      let hasFavs = false;
+
       productList.forEach((product, index) => {
-        const matchesSearch = product.name.toLowerCase().includes(searchText);
-        const matchesCat = currentCategory === 'all' || product.category === currentCategory;
-        
-        if(matchesSearch && matchesCat) {
-          const hasDiscount = product.discount && product.discount < product.price;
-          const activePrice = hasDiscount ? product.discount : product.price;
-          
-          let priceHtml = hasDiscount 
-            ? `<span class="original-price">${product.price}₺ (${product.unit})</span>
-               <div class="discount-price-area"> ${product.discount}₺ <span style="font-size:0.9rem; font-weight:normal; color:#888;">(${product.unit})</span></div>`
-            : `<div class="discount-price-area" style="color:#555;">${product.price}₺ <span style="font-size:0.9rem; font-weight:normal;">(${product.unit})</span></div>`;
+        if (!product.name.toLowerCase().includes(search)) return;
+        if (currentCategory !== 'all' && product.category !== currentCategory) return;
 
-          let discountBadge = hasDiscount ? `<div class="discount-tag">Fırsat!</div>` : '';
+        const hasDiscount = product.discount && product.discount < product.price;
+        const priceHtml = hasDiscount 
+          ? `<span class="original-price">${product.price}₺</span><div class="discount-price-area">${product.discount}₺ <span style="font-size:0.8rem;color:#888;">(${product.unit})</span></div>`
+          : `<div class="discount-price-area">${product.price}₺ <span style="font-size:0.8rem;color:#888;">(${product.unit})</span></div>`;
 
-          let imagesArray = Array.isArray(product.image) ? product.image : [product.image];
-          let imageHTML = '';
+        let images = Array.isArray(product.image) ? product.image : [product.image];
+        let carouselHtml = `<div class="carousel" id="carousel-${index}" ontouchstart="tS(event)" ontouchend="tE(event, ${index})" onclick="cClick(event)">`;
+        images.forEach((img, i) => { carouselHtml += `<img src="${img}" class="${i===0?'active':''}" onerror="this.src='https://via.placeholder.com/300x200?text=Resim+Yok'">`; });
+        if(images.length > 1) carouselHtml += `<button class="carousel-btn left" onclick="cS(event, ${index}, -1)">&#10094;</button><button class="carousel-btn right" onclick="cS(event, ${index}, 1)">&#10095;</button>`;
+        carouselHtml += `</div>`;
 
-          if (imagesArray.length > 1) {
-            imageHTML += `<div class="carousel" id="carousel-${index}" ontouchstart="handleTouchStart(event)" ontouchend="handleTouchEnd(event, ${index})" onclick="handleCarouselClick(event)">`;
-            imagesArray.forEach((img, i) => {
-              imageHTML += `<img src="${img}" class="${i === 0 ? 'active' : ''}" onerror="this.src='https://via.placeholder.com/300x200?text=Gorsel+Yok'">`;
-            });
-            imageHTML += `
-              <button class="carousel-btn left" onclick="changeSlide(event, ${index}, -1)">&#10094;</button>
-              <button class="carousel-btn right" onclick="changeSlide(event, ${index}, 1)">&#10095;</button>
-            </div>`;
-          } else {
-            imageHTML = `<img src="${imagesArray[0] || 'https://via.placeholder.com/300x200?text=Gorsel+Yok'}" onerror="this.src='https://via.placeholder.com/300x200?text=Gorsel+Yok'">`;
-          }
-
-          let adminControlsHtml = '';
-          if (isAdmin) {
-            adminControlsHtml = `
-              <div class="admin-card-controls">
-                <button class="admin-move-btn" title="Yukarı Taşı" onclick="moveProductLocal(event, ${index}, -1)" ${index === 0 ? 'disabled' : ''}>↑</button>
-                <button class="admin-move-btn" title="Aşağı Taşı" onclick="moveProductLocal(event, ${index}, 1)" ${index === productList.length - 1 ? 'disabled' : ''}>↓</button>
-                <button class="admin-edit-btn" onclick="openEditModal(event, ${index})">Düzenle</button>
-                <button class="admin-del-btn" onclick="deleteProductLocal(event, ${index})">Sil</button>
-              </div>
-            `;
-          }
-
-          const cardHtml = `
-            <div class="flip-card" onclick="flipCard(this, event)">
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <div class="card-image-container">
-                    ${imageHTML}
-                    ${discountBadge}
-                  </div>
-                  <div class="card-content">
-                    <h3>${product.name}</h3>
-                    <div class="price-area">${priceHtml}</div>
-                    <div class="click-detail-hint">Detaylar için karta dokunun 👆</div>
-                    <button class="add-to-cart-btn" onclick="addToCart(event, ${index}, ${activePrice})">Sepete Ekle</button>
-                  </div>
+        const card = `
+          <div class="flip-card" onclick="flip(this, event)">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="card-image-container">
+                  ${carouselHtml}
+                  ${product.isFavorite ? '<div class="favorite-badge">⭐</div>' : ''}
+                  ${hasDiscount ? '<div class="discount-tag">Fırsat!</div>' : ''}
                 </div>
-                <div class="flip-card-back">
-                  <h3>Detaylar</h3>
-                  <p>${product.desc.replace(/\n/g, '<br>')}</p>
+                <div class="card-content">
+                  <h3>${product.name}</h3>
+                  <div class="price-area">${priceHtml}</div>
+                  <div class="click-detail-hint">Detaylar için karta dokun 👆</div>
+                  <button class="add-to-cart-btn" onclick="addCart(event, ${index})">Sepete Ekle</button>
                 </div>
               </div>
-              ${adminControlsHtml}
+              <div class="flip-card-back">
+                <h3>Detaylar</h3>
+                <p>${product.desc ? product.desc.replace(/\n/g, '<br>') : 'Özel tarifimizle hazırlandı.'}</p>
+              </div>
             </div>
-          `;
-          container.insertAdjacentHTML('beforeend', cardHtml);
+            ${isAdmin ? `<div class="admin-card-controls"><button class="admin-edit-btn" onclick="openEdit(event, ${index})">Düzenle</button><button class="admin-del-btn" onclick="delProd(event, ${index})">Sil</button></div>` : ''}
+          </div>
+        `;
+
+        if (product.isFavorite && search === "" && currentCategory === 'all') {
+          favContainer.insertAdjacentHTML('beforeend', card);
+          hasFavs = true;
         }
+        mainContainer.insertAdjacentHTML('beforeend', card);
       });
 
-      if(container.innerHTML === '') {
-        container.innerHTML = '<h3 style="color:#888; margin-top:20px;">Bu kategoride ürün bulunamadı.</h3>';
+      favWrapper.style.display = hasFavs ? 'block' : 'none';
+      if(mainContainer.innerHTML === '') mainContainer.innerHTML = '<h3 style="color:#888; margin-top:20px;">Kayıt bulunamadı.</h3>';
+    }
+
+    let wasSwiped = false;
+    function tS(e) { touchStartX = e.changedTouches[0].screenX; wasSwiped = false; }
+    function tE(e, idx) { 
+      let x = e.changedTouches[0].screenX; 
+      if (Math.abs(touchStartX - x) > 40) {
+        wasSwiped = true;
+        cS(null, idx, touchStartX > x ? 1 : -1); 
       }
     }
-
-    function flipCard(element, e) {
-      if (e.target.tagName.toLowerCase() !== 'button') {
-        element.querySelector('.flip-card-inner').classList.toggle('flipped');
-      }
+    function cClick(e) { if(wasSwiped) { e.stopPropagation(); wasSwiped = false; } }
+    
+    function cS(e, idx, dir) {
+      if(e) e.stopPropagation();
+      const imgs = document.querySelectorAll(`#carousel-${idx} img`);
+      if(imgs.length === 0) return;
+      let cur = Array.from(imgs).findIndex(i => i.classList.contains('active'));
+      if(cur === -1) cur = 0;
+      imgs[cur].classList.remove('active');
+      imgs[(cur + dir + imgs.length) % imgs.length].classList.add('active');
     }
+    
+    function flip(el, e) { if (e.target.tagName !== 'BUTTON') el.querySelector('.flip-card-inner').classList.toggle('flipped'); }
 
-    function changeSlide(e, cardIndex, direction) {
-      if (e) e.stopPropagation(); 
-      const carousel = document.getElementById(`carousel-${cardIndex}`);
-      const images = carousel.querySelectorAll('img');
-      let activeIndex = Array.from(images).findIndex(img => img.classList.contains('active'));
-      
-      images[activeIndex].classList.remove('active');
-      activeIndex = (activeIndex + direction + images.length) % images.length;
-      images[activeIndex].classList.add('active');
-    }
-
-    function addToCart(e, index, price) {
+    function addCart(e, idx) {
       e.stopPropagation();
-      const product = productList[index];
-      const existing = cart.find(item => item.name === product.name);
-      if (existing) { existing.quantity++; }
-      else { cart.push({ name: product.name, price: price, unit: product.unit, quantity: 1 }); }
+      const p = productList[idx];
+      const price = p.discount || p.price;
+      const exist = cart.find(i => i.name === p.name);
+      if (exist) exist.qty++; else cart.push({ name: p.name, price: price, unit: p.unit, qty: 1 });
       updateCart();
-      showNotification(`${product.name} sepete eklendi!`);
+      showNotif(`${p.name} sepete eklendi!`);
     }
 
     function updateCart() {
-      const cartItems = document.getElementById('cart-items');
-      cartItems.innerHTML = '';
-      let total = 0;
-      cart.forEach((item, idx) => {
-        const li = document.createElement('li');
-        li.innerHTML = `
-          <div class="cart-item-info">${item.name} - ${item.price}₺</div>
-          <div class="cart-item-quantity">
-            <button class="quantity-btn" onclick="cart[${idx}].quantity > 1 ? (cart[${idx}].quantity--, updateCart()) : removeFromCart(${idx})">-</button>
-            <span>${item.quantity}</span>
-            <button class="quantity-btn" onclick="cart[${idx}].quantity++, updateCart()">+</button>
-            <button class="remove-button" onclick="removeFromCart(${idx})">Sil</button>
-          </div>
-        `;
-        cartItems.appendChild(li);
-        total += item.price * item.quantity;
+      const items = document.getElementById('cart-items');
+      items.innerHTML = ''; let total = 0;
+      cart.forEach((i, idx) => {
+        items.innerHTML += `<li>${i.name} - ${i.price}₺ x ${i.qty} <button class="remove-button" onclick="cart.splice(${idx},1);updateCart()">X</button></li>`;
+        total += i.price * i.qty;
       });
       document.getElementById('total-price').textContent = `Toplam: ${total}₺`;
     }
 
-    function removeFromCart(index) {
-      if(confirm(`${cart[index].name} sepetten çıkarılsın mı?`)){ cart.splice(index, 1); updateCart(); }
-    }
-
-    function copyCart() {
-      if(cart.length===0) return showNotification("Sepetiniz boş!");
-      let text = "Merhaba, siparişim:\n\n";
-      cart.forEach(i => text += `▪ ${i.name} - ${i.price}₺ x ${i.quantity} (${i.unit})\n`);
-      navigator.clipboard.writeText(text).then(() => showNotification("Sipariş Kopyalandı! İşleme devam edebilirsiniz.")).catch(()=>alert("Kopyalanamadı."));
-    }
-
     function placeOrder() {
-      if(cart.length===0) return showNotification("Sepetiniz boş!");
-      let text = "Merhaba, Güler Mutfak Lezzetleri! Siparişim:\n\n";
-      cart.forEach(i => text += `▪ ${i.name} - ${i.price}₺ x ${i.quantity} (${i.unit})\n`);
-      const encoded = encodeURIComponent(text);
-      window.open(`https://wa.me/905319428244?text=${encoded}`, "_blank");
+      if (!cart.length) return alert("Sepet boş!");
+      let msg = "Merhaba, siparişim:\n";
+      cart.forEach(i => msg += `• ${i.name} (${i.qty} adet)\n`);
+      window.open(`https://wa.me/905319428244?text=${encodeURIComponent(msg)}`, "_blank");
     }
 
-    function showNotification(msg) {
-      const notif = document.getElementById('notification');
-      notif.textContent = msg; notif.style.display = "block";
-      setTimeout(() => notif.style.display = "none", 3000);
-    }
-    
-    function renderImagePreviews() {
-      const previewContainer = document.getElementById('admin-image-preview');
-      previewContainer.innerHTML = '';
-      currentEditImages.forEach((imgSrc, index) => {
-        previewContainer.innerHTML += `
-          <div class="image-preview-item">
-            <img src="${imgSrc}" onerror="this.src='https://via.placeholder.com/70?text=Hata'">
-            <button type="button" onclick="removeEditImage(${index})">X</button>
-          </div>
-        `;
-      });
-    }
-
-    function removeEditImage(index) {
-      currentEditImages.splice(index, 1);
-      renderImagePreviews();
-    }
-
-    function openAdminModal() {
-      editIndex = -1; 
-      document.getElementById('admin-modal-title').textContent = "Yeni Lezzet Ekle";
-      resetAdminForm();
-      document.getElementById('admin-modal').style.display = 'flex';
-    }
-
-    function openEditModal(e, index) {
-      e.stopPropagation();
-      editIndex = index;
-      const p = productList[index];
-      
-      document.getElementById('admin-modal-title').textContent = "Lezzeti Düzenle";
+    function openEdit(e, idx) {
+      e.stopPropagation(); editIndex = idx;
+      const p = productList[idx];
       document.getElementById('admin-name').value = p.name;
       document.getElementById('admin-category').value = p.category;
       document.getElementById('admin-unit').value = p.unit;
       document.getElementById('admin-old-price').value = p.price;
       document.getElementById('admin-new-price').value = p.discount || "";
-      document.getElementById('admin-desc').value = p.desc;
-      
+      document.getElementById('admin-desc').value = p.desc || "";
+      document.getElementById('admin-is-favorite').checked = p.isFavorite || false;
       currentEditImages = Array.isArray(p.image) ? [...p.image] : [p.image];
-      renderImagePreviews();
-      
+      renderPreviews();
       document.getElementById('admin-modal').style.display = 'flex';
-    }
-
-    function closeAdmin() { document.getElementById('admin-modal').style.display = 'none'; resetAdminForm(); }
-    
-    function resetAdminForm() {
-      currentEditImages = [];
-      document.getElementById('admin-name').value = "";
-      document.getElementById('admin-old-price').value = "";
-      document.getElementById('admin-new-price').value = "";
-      document.getElementById('admin-desc').value = "";
-      document.getElementById('admin-unit').value = "";
-      document.getElementById('admin-image').value = "";
-      renderImagePreviews();
-    }
-
-    document.getElementById('admin-image').addEventListener('change', async function(e) {
-      const files = e.target.files;
-      if(files.length === 0) return;
-
-      for (let i = 0; i < files.length; i++) {
-        const file = files[i];
-        const dataUrl = await new Promise((resolve) => {
-          const reader = new FileReader();
-          reader.onload = (event) => resolve(event.target.result);
-          reader.readAsDataURL(file);
-        });
-        currentEditImages.push(dataUrl);
-      }
-      renderImagePreviews();
-      e.target.value = ""; 
-    });
-
-    function b64EncodeUnicode(str) {
-      return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function toSolidBytes(match, p1) { return String.fromCharCode('0x' + p1); }));
-    }
-    function b64DecodeUnicode(str) {
-      return decodeURIComponent(atob(str).split('').map(function(c) { return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2); }).join(''));
-    }
-
-    async function moveProductLocal(e, index, direction) {
-      e.stopPropagation();
-      if (direction === -1 && index > 0) {
-        const temp = productList[index];
-        productList[index] = productList[index - 1];
-        productList[index - 1] = temp;
-        renderProducts(); 
-        await saveToGitHub("Ürün sırası değiştirildi (Yukarı)");
-      } else if (direction === 1 && index < productList.length - 1) {
-        const temp = productList[index];
-        productList[index] = productList[index + 1];
-        productList[index + 1] = temp;
-        renderProducts(); 
-        await saveToGitHub("Ürün sırası değiştirildi (Aşağı)");
-      }
-    }
-
-    async function deleteProductLocal(e, index) {
-      e.stopPropagation();
-      if(confirm(`"${productList[index].name}" lezzetini menüden kaldırmak istediğinize emin misiniz?`)) {
-        productList.splice(index, 1);
-        await saveToGitHub("Ürün silindi");
-      }
-    }
-
-    async function uploadImageToGitHubFolder(fileDataUrl, productName, imageIndex) {
-      const repoOwner = "gokhangeo";
-      const repoName = "gulermutfak";
-      const tkn = getGithubToken();
-      
-      const base64Content = fileDataUrl.split(',')[1];
-      const safeName = productName.toLowerCase()
-                        .replace(/ğ/g, 'g').replace(/ü/g, 'u').replace(/ş/g, 's')
-                        .replace(/ı/g, 'i').replace(/ö/g, 'o').replace(/ç/g, 'c')
-                        .replace(/[^a-z0-9]/g, '_') + '_' + Date.now() + '_' + imageIndex;
-      
-      const filePath = `images/${safeName}.jpg`;
-      const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`;
-
-      try {
-        const putRes = await fetch(apiUrl, {
-          method: "PUT",
-          headers: { "Authorization": `Bearer ${tkn}`, "Content-Type": "application/json" },
-          body: JSON.stringify({
-            message: `Admin: Yeni görsel eklendi -> ${safeName}.jpg`,
-            content: base64Content,
-            branch: "main"
-          })
-        });
-
-        if (putRes.ok) { return filePath; } 
-        else { console.error("Görsel yüklenemedi"); return null; }
-      } catch (error) {
-        console.error(error); return null;
-      }
     }
 
     async function saveProduct() {
       const name = document.getElementById('admin-name').value;
-      const category = document.getElementById('admin-category').value;
-      const unit = document.getElementById('admin-unit').value || "Adet";
-      const oldPrice = parseFloat(document.getElementById('admin-old-price').value);
-      const newPriceStr = document.getElementById('admin-new-price').value;
-      const discountPrice = newPriceStr ? parseFloat(newPriceStr) : null;
-      const desc = document.getElementById('admin-desc').value;
-
-      if(!name || !oldPrice) return alert("Lütfen Ürün Adı ve Fiyatı alanlarını doldurunuz!");
+      if(!name) return alert("İsim gerekli!");
+      
+      const pData = {
+        name: name.toUpperCase(),
+        category: document.getElementById('admin-category').value,
+        unit: document.getElementById('admin-unit').value || "Adet",
+        price: parseFloat(document.getElementById('admin-old-price').value) || 0,
+        discount: parseFloat(document.getElementById('admin-new-price').value) || null,
+        desc: document.getElementById('admin-desc').value,
+        isFavorite: document.getElementById('admin-is-favorite').checked,
+        image: []
+      };
 
       document.getElementById('loader').style.display = 'flex';
       
-      let finalImagePaths = [];
-
-      if (currentEditImages.length > 0) {
-        for (let i = 0; i < currentEditImages.length; i++) {
-          let imgData = currentEditImages[i];
-          if (imgData.startsWith("data:image")) {
-            document.getElementById('loader-text').textContent = `Görsel ${i + 1}/${currentEditImages.length} sisteme yükleniyor...`;
-            const uploadedPath = await uploadImageToGitHubFolder(imgData, name, i);
-            if (uploadedPath) finalImagePaths.push(uploadedPath);
-          } else {
-            finalImagePaths.push(imgData);
-          }
+      if(currentEditImages.length === 0) {
+        pData.image = ["https://via.placeholder.com/300x200?text=Resim+Yok"];
+      } else {
+        for(let i=0; i<currentEditImages.length; i++) {
+          if (currentEditImages[i].startsWith("data:")) {
+            const path = await uploadImg(currentEditImages[i], name, i);
+            if (path) pData.image.push(path);
+          } else pData.image.push(currentEditImages[i]);
         }
-      } else {
-        finalImagePaths = ["https://via.placeholder.com/300x200?text=Gorsel+Yok"];
       }
 
-      const newProd = {
-        name: name.toUpperCase(), price: oldPrice, discount: discountPrice,
-        category: category, unit: unit, image: finalImagePaths, desc: desc
-      };
-      
-      if (editIndex > -1) {
-        productList[editIndex] = newProd; 
-      } else {
-        productList.unshift(newProd); 
-      }
+      if (editIndex > -1) productList[editIndex] = pData; else productList.push(pData);
       
       closeAdmin();
-      await saveToGitHub(`Menü güncellendi: ${name}`);
+      await saveToGit("Ürün güncellendi");
     }
 
-    async function saveToGitHub(commitMessage) {
-      document.getElementById('loader').style.display = 'flex';
-      document.getElementById('loader-text').textContent = "Menü kaydediliyor, lütfen bekleyin...";
-      
-      const repoOwner = "gokhangeo";
-      const repoName = "gulermutfak";
-      const filePath = "data.json"; 
+    async function uploadImg(base64, name, idx) {
       const tkn = getGithubToken();
-      const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`;
+      const safe = name.replace(/[^a-z0-9]/gi, '_').toLowerCase() + "_" + Date.now() + "_" + idx;
+      const url = `https://api.github.com/repos/gokhangeo/gulermutfak/contents/images/${safe}.jpg`;
+      const res = await fetch(url, {
+        method: "PUT",
+        headers: { "Authorization": `Bearer ${tkn}` },
+        body: JSON.stringify({ message: "Görsel yükle", content: base64.split(',')[1], branch: "main" })
+      });
+      return res.ok ? `images/${safe}.jpg` : null;
+    }
 
-      try {
-        const getRes = await fetch(`${apiUrl}?t=${Date.now()}`, {
-          headers: { "Authorization": `Bearer ${tkn}` }
-        });
-        
-        let sha = "";
-        if (getRes.ok) {
-           const fileData = await getRes.json();
-           sha = fileData.sha;
-        }
-        
-        const dataToSave = {
-          campaignText: campaignText,
-          products: productList
-        };
+    async function saveToGit(msg) {
+      const tkn = getGithubToken();
+      const url = `https://api.github.com/repos/gokhangeo/gulermutfak/contents/data.json`;
+      const get = await fetch(url, { headers: { "Authorization": `Bearer ${tkn}` }, cache: "no-store" });
+      let sha = "";
+      if(get.ok) { const fd = await get.json(); sha = fd.sha; }
+      
+      const content = { campaignText, products: productList };
+      await fetch(url, {
+        method: "PUT",
+        headers: { "Authorization": `Bearer ${tkn}` },
+        body: JSON.stringify({ message: msg, content: btoa(unescape(encodeURIComponent(JSON.stringify(content, null, 2)))), sha: sha, branch: "main" })
+      });
+      document.getElementById('loader').style.display = 'none';
+      sortAndRender();
+      showNotif("Başarıyla kaydedildi!");
+    }
 
-        const jsonContent = JSON.stringify(dataToSave, null, 2);
-
-        const putBody = {
-          message: `Admin: ${commitMessage}`,
-          content: b64EncodeUnicode(jsonContent),
-          branch: "main"
-        };
-        
-        if (sha) putBody.sha = sha;
-
-        const putRes = await fetch(apiUrl, {
-          method: "PUT",
-          headers: { "Authorization": `Bearer ${tkn}`, "Content-Type": "application/json" },
-          body: JSON.stringify(putBody)
-        });
-
-        if (putRes.ok) {
-          renderProducts();
-          showNotification("🎉 Değişiklikler anında menüye yansıdı!");
-        } else {
-          alert("Kayıt işlemi sırasında bir hata oluştu.");
-        }
-      } catch (error) {
-        console.error(error);
-        alert("İnternet bağlantınızda veya sistemde bir sorun oluştu.");
-      } finally {
-        document.getElementById('loader').style.display = 'none';
+    function setCategory(c, b) {
+      currentCategory = c;
+      document.querySelectorAll('.tab-btn').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      renderProducts();
+    }
+    
+    function toggleTheme() { document.body.classList.toggle('dark-mode'); }
+    function closeAdmin() { document.getElementById('admin-modal').style.display = 'none'; }
+    function openAdminModal() { editIndex = -1; document.getElementById('admin-modal').style.display='flex'; document.getElementById('admin-name').value=""; document.getElementById('admin-is-favorite').checked = false; currentEditImages=[]; renderPreviews(); }
+    
+    function renderPreviews() {
+      const div = document.getElementById('admin-image-preview'); div.innerHTML = '';
+      currentEditImages.forEach((img, i) => {
+        div.innerHTML += `<div class="image-preview-item"><img src="${img}"><button type="button" onclick="currentEditImages.splice(${i},1);renderPreviews()">X</button></div>`;
+      });
+    }
+    
+    document.getElementById('admin-image').addEventListener('change', async (e) => {
+      for (let f of e.target.files) {
+        const r = new FileReader();
+        r.onload = (ev) => { currentEditImages.push(ev.target.result); renderPreviews(); };
+        r.readAsDataURL(f);
       }
+    });
+    
+    function checkSecretAdmin() {
+      let c = parseInt(this.dataset.c || 0) + 1; this.dataset.c = c;
+      if (c === 5) {
+        if (prompt("Şifre:") === "guler") {
+          isAdmin = true; localStorage.setItem('isAdmin', 'true');
+          location.reload();
+        }
+        this.dataset.c = 0;
+      }
+      setTimeout(() => this.dataset.c = 0, 2000);
+    }
+    
+    function logoutAdmin() { localStorage.removeItem('isAdmin'); location.reload(); }
+    function showNotif(m) { const n = document.getElementById('notification'); n.textContent = m; n.style.display = "block"; setTimeout(() => n.style.display="none", 3000); }
+    async function delProd(e, idx) { e.stopPropagation(); if(confirm("Silinsin mi?")) { productList.splice(idx, 1); await saveToGit("Ürün silindi"); } }
+    function b64DecodeUnicode(str) { return decodeURIComponent(atob(str).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join('')); }
+    
+    async function editCampaignText() {
+      if(!isAdmin) return;
+      const t = prompt("Kampanya yazısı:", campaignText);
+      if(t) { campaignText = t; await saveToGit("Kampanya güncellendi"); }
     }
   </script>
 </body>
