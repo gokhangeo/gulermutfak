@@ -15,6 +15,19 @@
       ]
     },
     {
+      "name": "İÇLİ KÖFTE(DIŞI ETLİ)",
+      "category": "yemek",
+      "unit": "kg",
+      "price": 1350,
+      "discount": 1200,
+      "desc": "MALATYA(POLAT) İÇLİ KÖFTE. Güler Mutfak Lezzetleri’nden bol kıymalı ve özel baharatları ile içli köfte! 🥩🔥\nİncecik dış hamuru, bol kıymalı iç harcı ve eşsiz lezzetiyle içli köftelerimiz sofralarınızı şenlendirmeye hazır!\nEl yapımı, katkısız ve taptaze!",
+      "isFavorite": true,
+      "image": [
+        "images/i_cli__kofte_disi_etli___1775938951250_1.jpg",
+        "images/i_cli__kofte_disi_etli___1775939117923_1.jpg"
+      ]
+    },
+    {
       "name": "ACILI EKMEK(HATAY USULÜ)",
       "price": 700,
       "discount": 600,
@@ -112,30 +125,18 @@
       "desc": "Güler Mutfak Lezzetleri’nden yöresel Harput Köfte! 🍲✨\nElazığ mutfağının en sevilen lezzetlerinden biri olan Harput Köfte, özel baharatlarla yoğrulmuş bulgur ve yağsız kıymanın mükemmel uyumuyla sofralarınızı şenlendirmeye hazır!"
     },
     {
-      "name": "İÇLİ KÖFTE(DIŞI ETLİ)",
+      "name": "İÇLİ KÖFTE(DİYARBAKIR)",
       "category": "yemek",
       "unit": "kg",
-      "price": 1350,
-      "discount": 1200,
-      "desc": "MALATYA(POLAT) İÇLİ KÖFTE. Güler Mutfak Lezzetleri’nden bol kıymalı ve özel baharatları ile içli köfte! 🥩🔥\nİncecik dış hamuru, bol kıymalı iç harcı ve eşsiz lezzetiyle içli köftelerimiz sofralarınızı şenlendirmeye hazır!\nEl yapımı, katkısız ve taptaze!",
-      "isFavorite": true,
-      "image": [
-        "images/i_cli__kofte_disi_etli___1775938951250_1.jpg",
-        "images/i_cli__kofte_disi_etli___1775939117923_1.jpg"
-      ]
-    },
-    {
-      "name": "İÇLİ KÖFTE(DİYARBAKIR)",
       "price": 1100,
       "discount": 850,
-      "category": "yemek",
-      "unit": "kg",
+      "desc": "Güler Mutfak Lezzetleri’nden enfes içli köfte! 😋\nİncecik hamuru ve bol iç harcıyla, tam kıvamında hazırlanan içli köftelerimiz, ister haşlama, ister haşlayıp yumurtada kızartılarak sunabilirsiniz. El yapımı, katkısız ve taptaze!(Pişirilmeden verilecektir.)",
+      "isFavorite": true,
       "image": [
         "images/i_cli__kofte_disi_etsi_z__1775395761614_0.jpg",
         "images/i_cli__kofte_di_yarbakir__1775939777683_1.jpg",
         "images/i_cli__kofte_di_yarbakir__1775939778821_2.jpg"
-      ],
-      "desc": "Güler Mutfak Lezzetleri’nden enfes içli köfte! 😋\nİncecik hamuru ve bol iç harcıyla, tam kıvamında hazırlanan içli köftelerimiz, ister haşlama, ister haşlayıp yumurtada kızartılarak sunabilirsiniz. El yapımı, katkısız ve taptaze!(Pişirilmeden verilecektir.)"
+      ]
     },
     {
       "name": "LİMON SOSLU KEK",
