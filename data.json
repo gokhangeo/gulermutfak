@@ -12,15 +12,16 @@
     },
     {
       "name": "ANALI KIZLI",
-      "price": 1200,
-      "discount": 1050,
       "category": "yemek",
       "unit": "kg",
+      "price": 1200,
+      "discount": 1050,
+      "desc": "Güler Mutfak Lezzetleri’nden Malatya yöresine ait Analı Kızlı! 🍲✨Bulgur ve içi dışı kıymalı etin mükemmel uyumu, ekleyeceğiniz nefis kıvamlı salçalı sosuyla sofralarınıza lezzet katıyor!\nGeleneksel mutfağımızın en özel tatlarından biri olan Analı Kızlı yemeğimizi denemek için sipariş verebilirsiniz!",
+      "isFavorite": true,
       "image": [
         "images/anali_kizli.jpg",
         "images/anali_kizli_1775940300539_1.jpg"
-      ],
-      "desc": "Güler Mutfak Lezzetleri’nden Malatya yöresine ait Analı Kızlı! 🍲✨Bulgur ve içi dışı kıymalı etin mükemmel uyumu, ekleyeceğiniz nefis kıvamlı salçalı sosuyla sofralarınıza lezzet katıyor!\nGeleneksel mutfağımızın en özel tatlarından biri olan Analı Kızlı yemeğimizi denemek için sipariş verebilirsiniz!"
+      ]
     },
     {
       "name": "BROWNİ KURABİYE",
@@ -204,6 +205,19 @@
       "desc": "Güler Mutfak Lezzetleri’nden mis gibi köy tereyağlı elmalı kurabiye! 🍏🍪 Ağızda dağılan hamuru, tarçınlı ve bol cevizli elma harcıyla çay saatlerinin vazgeçilmezi! Mis gibi kokusu ve lezzetiyle herkesi mest edecek bu kurabiyeleri denemek için hemen sipariş verin!"
     },
     {
+      "name": "TEREYAĞLI MINI SADE POĞAÇA",
+      "category": "tuzlu",
+      "unit": "Tepsi",
+      "price": 700,
+      "discount": 600,
+      "desc": "Fırından yeni çıkmış, üzeri nar gibi kızarmış bu minik lezzet topları tam bir iştah kabartıcı! Pamuk gibi yumuşacık dokusu ve ağızda dağılan kıvamıyla, çay saatlerinizin ve kahvaltı sofralarınızın vazgeçilmez eşlikçisi olacak. Sofralarınızı şenlendirecek bu lezzeti kaçırmayın!",
+      "isFavorite": false,
+      "image": [
+        "images/tereya_l__mini_sade_po_a_a_1775943497305_0.jpg",
+        "images/tereya_l__mini_sade_po_a_a_1775943498454_1.jpg"
+      ]
+    },
+    {
       "name": "TEREYAĞLI TUZLU KURABİYE",
       "price": 600,
       "discount": 500,
@@ -231,19 +245,6 @@
       "unit": "kg",
       "image": "images/zeytinyagli_sarma.jpg",
       "desc": "Güler Mutfak Lezzetleri’nden nefis zeytinyağlı sarma! 🍃🍋\nİncecik sarılmış asma yapraklarının, bol iç harcı ve mis gibi zeytinyağı ile buluştuğu eşsiz bir lezzet!\nLokum gibi kıvamıyla sofralarınızı şenlendirecek bu lezzeti kaçırmayın!"
-    },
-    {
-      "name": "TEREYAĞLI MINI SADE POĞAÇA",
-      "category": "tuzlu",
-      "unit": "Tepsi",
-      "price": 700,
-      "discount": 600,
-      "desc": "Fırından yeni çıkmış, üzeri nar gibi kızarmış bu minik lezzet topları tam bir iştah kabartıcı! Pamuk gibi yumuşacık dokusu ve ağızda dağılan kıvamıyla, çay saatlerinizin ve kahvaltı sofralarınızın vazgeçilmez eşlikçisi olacak. Sofralarınızı şenlendirecek bu lezzeti kaçırmayın!",
-      "isFavorite": false,
-      "image": [
-        "images/tereya_l__mini_sade_po_a_a_1775943497305_0.jpg",
-        "images/tereya_l__mini_sade_po_a_a_1775943498454_1.jpg"
-      ]
     }
   ]
 }
