@@ -2,6 +2,17 @@
   "campaignText": "TANIŞMA FİYATLARI!",
   "products": [
     {
+      "name": "TIRAMISU",
+      "price": 1100,
+      "discount": 900,
+      "category": "tatli",
+      "unit": "Adet(25 cm)",
+      "image": [
+        "images/tiramisu_1775937752639_0.jpg"
+      ],
+      "desc": "Taze kahve çekirdeklerinin aromasıyla hazırladığımız bu muazzam Tiramisu Keki, mascarpone kremasının ve kakao tozunun eşsiz uyumunu sofralarınıza taşıyor. Her bir diliminde Güler Mutfak Lezzetleri'nin o bilindik samimiyetini ve lezzetini hissedeceksiniz. En kaliteli malzemelerle, sevgiyle ve özenle hazırlanan bu tatlı, çay saatlerinizi ve özel anlarınızı taçlandırmak için bekliyor. Biz bu lezzete bayıldık, peki ya siz denemeye hazır mısınız?"
+    },
+    {
       "name": "ÇIKOLATA GANAJLI TART PASTA",
       "price": 950,
       "discount": 800,
