@@ -28,6 +28,20 @@
       ]
     },
     {
+      "name": "İÇLİ KÖFTE(DİYARBAKIR)",
+      "category": "yemek",
+      "unit": "kg",
+      "price": 1100,
+      "discount": 850,
+      "desc": "Güler Mutfak Lezzetleri’nden enfes içli köfte! 😋\nİncecik hamuru ve bol iç harcıyla, tam kıvamında hazırlanan içli köftelerimiz, ister haşlama, ister haşlayıp yumurtada kızartılarak sunabilirsiniz. El yapımı, katkısız ve taptaze!(Pişirilmeden verilecektir.)",
+      "isFavorite": true,
+      "image": [
+        "images/i_cli__kofte_disi_etsi_z__1775395761614_0.jpg",
+        "images/i_cli__kofte_di_yarbakir__1775939777683_1.jpg",
+        "images/i_cli__kofte_di_yarbakir__1775939778821_2.jpg"
+      ]
+    },
+    {
       "name": "ACILI EKMEK(HATAY USULÜ)",
       "price": 700,
       "discount": 600,
@@ -38,12 +52,15 @@
     },
     {
       "name": "BROWNİ KURABİYE",
-      "price": 650,
-      "discount": 550,
       "category": "tatli",
       "unit": "24-28 Adet",
-      "image": "images/browni__kurabi_ye_1775341077492.jpg",
-      "desc": "Güler Mutfak Lezzetleri’nden enfes Browni Kurabiye! 🍫🍪\nÇikolatanın yoğun ve zengin tadıyla buluştuğu, her bir kurabiyenin özenle hazırlandığı eşsiz bir lezzet!\nTaze fıstıklarla süslenmiş bu nefis kurabiyeler, çay saatlerinizi ve tatlı anlarınızı taçlandıracak!\nBu harika lezzeti denemek için hemen siparişinizi verin!\n\nGüler Mutfak Lezzetleri ile her anı lezzetlendirin!"
+      "price": 650,
+      "discount": 550,
+      "desc": "Güler Mutfak Lezzetleri’nden enfes Browni Kurabiye! 🍫🍪\nÇikolatanın yoğun ve zengin tadıyla buluştuğu, her bir kurabiyenin özenle hazırlandığı eşsiz bir lezzet!\nTaze fıstıklarla süslenmiş bu nefis kurabiyeler, çay saatlerinizi ve tatlı anlarınızı taçlandıracak!\nBu harika lezzeti denemek için hemen siparişinizi verin!\n\nGüler Mutfak Lezzetleri ile her anı lezzetlendirin!",
+      "isFavorite": true,
+      "image": [
+        "images/browni__kurabi_ye_1775341077492.jpg"
+      ]
     },
     {
       "name": "COCOSTAR PASTA",
@@ -123,20 +140,6 @@
       "unit": "kg",
       "image": "images/harput_kofte.jpg",
       "desc": "Güler Mutfak Lezzetleri’nden yöresel Harput Köfte! 🍲✨\nElazığ mutfağının en sevilen lezzetlerinden biri olan Harput Köfte, özel baharatlarla yoğrulmuş bulgur ve yağsız kıymanın mükemmel uyumuyla sofralarınızı şenlendirmeye hazır!"
-    },
-    {
-      "name": "İÇLİ KÖFTE(DİYARBAKIR)",
-      "category": "yemek",
-      "unit": "kg",
-      "price": 1100,
-      "discount": 850,
-      "desc": "Güler Mutfak Lezzetleri’nden enfes içli köfte! 😋\nİncecik hamuru ve bol iç harcıyla, tam kıvamında hazırlanan içli köftelerimiz, ister haşlama, ister haşlayıp yumurtada kızartılarak sunabilirsiniz. El yapımı, katkısız ve taptaze!(Pişirilmeden verilecektir.)",
-      "isFavorite": true,
-      "image": [
-        "images/i_cli__kofte_disi_etsi_z__1775395761614_0.jpg",
-        "images/i_cli__kofte_di_yarbakir__1775939777683_1.jpg",
-        "images/i_cli__kofte_di_yarbakir__1775939778821_2.jpg"
-      ]
     },
     {
       "name": "LİMON SOSLU KEK",
