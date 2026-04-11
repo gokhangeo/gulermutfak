@@ -2,16 +2,15 @@
   "campaignText": "TANIŞMA FİYATLARI!",
   "products": [
     {
-      "name": "MARGARİNLİ ELMALI KURABİYE",
-      "price": 750,
-      "discount": 650,
+      "name": "FRAMBUAZLI CHEESECAKE",
+      "price": 1350,
+      "discount": 1250,
       "category": "tatli",
-      "unit": "Tepsi",
+      "unit": "Adet",
       "image": [
-        "images/margari_nli__elmali_kurabi_ye_1775941969070_0.jpg",
-        "images/margari_nli__elmali_kurabi_ye_1775941970472_1.jpg"
+        "images/frambuazli_cheesecake_1775942553051_0.jpg"
       ],
-      "desc": "Güler Mutfak Lezzetleri’nden mis gibi margarinli elmalı kurabiye! 🍏🍪 Ağızda dağılan hamuru, tarçınlı ve bol cevizli elma harcıyla çay saatlerinin vazgeçilmezi! Mis gibi kokusu ve lezzetiyle herkesi mest edecek bu kurabiyeleri denemek için hemen sipariş verin!"
+      "desc": "Güler Mutfak Lezzetleri’nden nefis Frambuazlı Cheesecake! 🍓🍰 İncecik, çıtır çıtır bisküvi tabanının üzerinde yükselen, ağızda eriyen ipeksi kreması ve taptaze frambuazların mayhoş dokunuşuyla hazırladığımız bu lezzet şöleni, her çatalda sizi büyüleyecek. Sofralarınızı şenlendirecek bu lezzeti kaçırmayın, hemen sipariş verin! 📞✨"
     },
     {
       "name": "TIRAMISU",
