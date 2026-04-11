@@ -2,37 +2,34 @@
   "campaignText": "TANIŞMA FİYATLARI!",
   "products": [
     {
-      "name": "FRAMBUAZLI CHEESECAKE",
-      "price": 1350,
-      "discount": 1250,
-      "category": "tatli",
-      "unit": "Adet",
-      "image": [
-        "images/frambuazli_cheesecake_1775942553051_0.jpg"
-      ],
-      "desc": "Güler Mutfak Lezzetleri’nden nefis Frambuazlı Cheesecake! 🍓🍰 İncecik, çıtır çıtır bisküvi tabanının üzerinde yükselen, ağızda eriyen ipeksi kreması ve taptaze frambuazların mayhoş dokunuşuyla hazırladığımız bu lezzet şöleni, her çatalda sizi büyüleyecek. Sofralarınızı şenlendirecek bu lezzeti kaçırmayın, hemen sipariş verin! 📞✨"
+      "name": "ACILI EKMEK(HATAY USULÜ)",
+      "price": 700,
+      "discount": 600,
+      "category": "tuzlu",
+      "unit": "tepsi",
+      "image": "images/acili_ekmek.jpg",
+      "desc": "Hatay usulü acılı ekmek! 🔥🍞\nBol baharatlı, ev yapımı salça, nefis kıvamlı harcı ve yumuşacık hamuruyla sofralarınıza lezzet katıyoruz!\nÇay saatine, kahvaltıya, her öğüne yakışan bu özel tat şimdi sipariş için hazır!"
     },
     {
-      "name": "TIRAMISU",
-      "price": 1100,
-      "discount": 900,
-      "category": "tatli",
-      "unit": "Adet(25 cm)",
+      "name": "ANALI KIZLI",
+      "price": 1200,
+      "discount": 1050,
+      "category": "yemek",
+      "unit": "kg",
       "image": [
-        "images/tiramisu_1775937752639_0.jpg"
+        "images/anali_kizli.jpg",
+        "images/anali_kizli_1775940300539_1.jpg"
       ],
-      "desc": "Taze kahve çekirdeklerinin aromasıyla hazırladığımız bu muazzam Tiramisu Keki, mascarpone kremasının ve kakao tozunun eşsiz uyumunu sofralarınıza taşıyor. Her bir diliminde Güler Mutfak Lezzetleri'nin o bilindik samimiyetini ve lezzetini hissedeceksiniz. En kaliteli malzemelerle, sevgiyle ve özenle hazırlanan bu tatlı, çay saatlerinizi ve özel anlarınızı taçlandırmak için bekliyor. Biz bu lezzete bayıldık, peki ya siz denemeye hazır mısınız?"
+      "desc": "Güler Mutfak Lezzetleri’nden Malatya yöresine ait Analı Kızlı! 🍲✨Bulgur ve içi dışı kıymalı etin mükemmel uyumu, ekleyeceğiniz nefis kıvamlı salçalı sosuyla sofralarınıza lezzet katıyor!\nGeleneksel mutfağımızın en özel tatlarından biri olan Analı Kızlı yemeğimizi denemek için sipariş verebilirsiniz!"
     },
     {
-      "name": "ÇIKOLATA GANAJLI TART PASTA",
-      "price": 950,
-      "discount": 800,
+      "name": "BROWNİ KURABİYE",
+      "price": 650,
+      "discount": 550,
       "category": "tatli",
-      "unit": "Adet(28 cm)",
-      "image": [
-        "images/cikolata_ganajli_tart_pasta_1775937009183_0.jpg"
-      ],
-      "desc": "Güler Mutfak'ın usta ellerinden çıkan bu çikolata ganajlı tart pasta, sadece bir tatlı değil; bir sanat eseri! Kakaolu kek tabanının üzerine yayılan o yoğun, ipeksi çikolata ganajı, damağınızda unutulmaz bir iz bırakacak. Tartımızın üzerindeki beyaz çikolata süslemeleri, kavrulmuş fındıklar ve tam ortadaki iki çilek dilimi, her bir dilimdeki lezzetin ve görselliğin bir kanıtı. Biz bu lezzete bayıldık, peki ya siz denemeye hazır mısınız?"
+      "unit": "24-28 Adet",
+      "image": "images/browni__kurabi_ye_1775341077492.jpg",
+      "desc": "Güler Mutfak Lezzetleri’nden enfes Browni Kurabiye! 🍫🍪\nÇikolatanın yoğun ve zengin tadıyla buluştuğu, her bir kurabiyenin özenle hazırlandığı eşsiz bir lezzet!\nTaze fıstıklarla süslenmiş bu nefis kurabiyeler, çay saatlerinizi ve tatlı anlarınızı taçlandıracak!\nBu harika lezzeti denemek için hemen siparişinizi verin!\n\nGüler Mutfak Lezzetleri ile her anı lezzetlendirin!"
     },
     {
       "name": "COCOSTAR PASTA",
@@ -47,13 +44,71 @@
       "desc": "Mersin'in taze çilekleriyle hazırladığımız bu muazzam pasta, kakao ve kremanın eşsiz uyumunu sofralarınıza taşıyor. Adını, içindeki o yoğun, Hindistan cevizi dolgulu efsanevi çikolatadan alan Hindistan Cevizli Cocostar Pastamız, tatlı tutkunları için bir rüyanın gerçekleşmesidir. Her bir diliminde Güler Mutfak Lezzetleri'nin o bilindik ev yapımı samimiyetini ve lezzetini hissedeceksiniz. Biz bu lezzete bayıldık, peki ya siz denemeye hazır mısınız?\n"
     },
     {
-      "name": "BROWNİ KURABİYE",
+      "name": "CUP KEK",
       "price": 650,
       "discount": 550,
       "category": "tatli",
-      "unit": "24-28 Adet",
-      "image": "images/browni__kurabi_ye_1775341077492.jpg",
-      "desc": "Güler Mutfak Lezzetleri’nden enfes Browni Kurabiye! 🍫🍪\nÇikolatanın yoğun ve zengin tadıyla buluştuğu, her bir kurabiyenin özenle hazırlandığı eşsiz bir lezzet!\nTaze fıstıklarla süslenmiş bu nefis kurabiyeler, çay saatlerinizi ve tatlı anlarınızı taçlandıracak!\nBu harika lezzeti denemek için hemen siparişinizi verin!\n\nGüler Mutfak Lezzetleri ile her anı lezzetlendirin!"
+      "unit": "24 adet",
+      "image": "images/cup_kek.jpg",
+      "desc": "Güler Mutfak Lezzetleri’nden nefis çikolatalı cup kek! 🍫🧁\nYumuşacık dokusu, kakao, çikolata damlası ve ceviz parçalarıyla her lokmada mutluluk veren bu cup kekleri denemelisiniz!\nÇay ve kahve saatlerinizin vazgeçilmezi olacak!"
+    },
+    {
+      "name": "ÇIKOLATA GANAJLI TART PASTA",
+      "price": 950,
+      "discount": 800,
+      "category": "tatli",
+      "unit": "Adet(28 cm)",
+      "image": [
+        "images/cikolata_ganajli_tart_pasta_1775937009183_0.jpg"
+      ],
+      "desc": "Güler Mutfak'ın usta ellerinden çıkan bu çikolata ganajlı tart pasta, sadece bir tatlı değil; bir sanat eseri! Kakaolu kek tabanının üzerine yayılan o yoğun, ipeksi çikolata ganajı, damağınızda unutulmaz bir iz bırakacak. Tartımızın üzerindeki beyaz çikolata süslemeleri, kavrulmuş fındıklar ve tam ortadaki iki çilek dilimi, her bir dilimdeki lezzetin ve görselliğin bir kanıtı. Biz bu lezzete bayıldık, peki ya siz denemeye hazır mısınız?"
+    },
+    {
+      "name": "ELAZIĞ İÇLİ KÖFTE",
+      "price": 1200,
+      "discount": 1050,
+      "category": "yemek",
+      "unit": "kg",
+      "image": "images/elazig_icli_kofte.jpg",
+      "desc": "Güler Mutfak Lezzetleri’nden Elazığ usulü içli köfte! 🥩🔥\nÖzenle hazırlanan dış hamuru, baharatlarla lezzetlendirilmiş bol kıymalı iç harcı, cevizli ve özel şekliyle Elazığ mutfağının vazgeçilmez lezzetini sunuyoruz!"
+    },
+    {
+      "name": "ETLİ YAPRAK SARMA",
+      "price": 800,
+      "discount": 700,
+      "category": "yemek",
+      "unit": "kg",
+      "image": "images/etli_yaprak_sarma.jpg",
+      "desc": "Güler Mutfak Lezzetleri’nden enfes etli yaprak sarma! 🍖🍃\nİncecik asma yapraklarına sarılmış, kıymalı ve baharatlarla lezzetlendirilmiş, tam kıvamında pişmiş sarma lezzeti!\nGeleneksel sofralarınız için vazgeçilmez bir tat!"
+    },
+    {
+      "name": "FINDIK PORTAKALLI ANNE KURABİYESİ",
+      "price": 650,
+      "discount": 530,
+      "category": "tatli",
+      "unit": "24 adet",
+      "image": "images/findik_portakallı_anne_kurabiyesi.jpg",
+      "desc": "Güler Mutfak Lezzetleri’nden fındıklı portakallı anne kurabiyesi! 🍊🥜\nMis gibi portakal kokusu ve fındık parçalarıyla taçlandırılmış, yumuşacık kıvamı ve kıyır kıyır dokusuyla çocukluğunuzun lezzetini sunuyoruz!"
+    },
+    {
+      "name": "FRAMBUAZLI CHEESECAKE",
+      "price": 1350,
+      "discount": 1250,
+      "category": "tatli",
+      "unit": "Adet",
+      "image": [
+        "images/frambuazli_cheesecake_1775942553051_0.jpg"
+      ],
+      "desc": "Güler Mutfak Lezzetleri’nden nefis Frambuazlı Cheesecake! 🍓🍰 İncecik, çıtır çıtır bisküvi tabanının üzerinde yükselen, ağızda eriyen ipeksi kreması ve taptaze frambuazların mayhoş dokunuşuyla hazırladığımız bu lezzet şöleni, her çatalda sizi büyüleyecek. Sofralarınızı şenlendirecek bu lezzeti kaçırmayın, hemen sipariş verin! 📞✨"
+    },
+    {
+      "name": "HARPUT KÖFTE",
+      "price": 1100,
+      "discount": 950,
+      "category": "yemek",
+      "unit": "kg",
+      "image": "images/harput_kofte.jpg",
+      "desc": "Güler Mutfak Lezzetleri’nden yöresel Harput Köfte! 🍲✨\nElazığ mutfağının en sevilen lezzetlerinden biri olan Harput Köfte, özel baharatlarla yoğrulmuş bulgur ve yağsız kıymanın mükemmel uyumuyla sofralarınızı şenlendirmeye hazır!"
     },
     {
       "name": "İÇLİ KÖFTE(DIŞI ETLİ)",
@@ -81,13 +136,33 @@
       "desc": "Güler Mutfak Lezzetleri’nden enfes içli köfte! 😋\nİncecik hamuru ve bol iç harcıyla, tam kıvamında hazırlanan içli köftelerimiz, ister haşlama, ister haşlayıp yumurtada kızartılarak sunabilirsiniz. El yapımı, katkısız ve taptaze!(Pişirilmeden verilecektir.)"
     },
     {
-      "name": "SARAY SARMASI",
+      "name": "LİMON SOSLU KEK",
+      "price": 600,
+      "discount": 520,
+      "category": "tatli",
+      "unit": "Adet",
+      "image": [
+        "images/li_mon_soslu_kek_1775941387939_0.jpg"
+      ],
+      "desc": "Güler Mutfak Lezzetleri’nden ferahlatan limon soslu kek! 🍋🍰\nMis gibi limon kokusu, yumuşacık dokusu ve hafif ekşi tatlı uyumuyla çay saatlerinizin favorisi olacak!\nTaptaze ve el yapımı bu lezzeti kaçırmayın!"
+    },
+    {
+      "name": "MAYALI POĞAÇA(PEYNİRLİ)",
+      "price": 700,
+      "discount": 600,
+      "category": "tuzlu",
+      "unit": "tepsi",
+      "image": "images/mayali_pogaca_peynirli.jpg",
+      "desc": "Güler Mutfak Lezzetleri’nden yumuşacık mayalı poğaça! 🥖✨\nTel tel ayrılan, mis gibi kokan ve lezzetiyle herkesi mest eden poğaçalarımız kahvaltı ve çay saatlerinizin yıldızı olacak!\nSıcak sıcak, taptaze siparişler için hemen bize ulaşın!"
+    },
+    {
+      "name": "MAYALI POĞAÇA(SADE)",
       "price": 650,
       "discount": 550,
-      "category": "tatli",
+      "category": "tuzlu",
       "unit": "tepsi",
-      "image": "images/saray_sarmasi.jpg",
-      "desc": "Güler Mutfak Lezzetleri’nden enfes Saray Sarması! 🍫✨\nYumuşacık kıvamı, bol kreması ve yoğun çikolata lezzetiyle tatlı keyfinizi taçlandırıyoruz.\nHindistan ceviziyle kaplı bu lezzeti mutlaka denemelisiniz!"
+      "image": "images/mayali_pogaca_sade.jpg",
+      "desc": "Güler Mutfak Lezzetleri’nden yumuşacık mayalı poğaça! 🥖✨\nTel tel ayrılan, mis gibi kokan ve lezzetiyle herkesi mest eden poğaçalarımız kahvaltı ve çay saatlerinizin yıldızı olacak!\nSıcak sıcak, taptaze siparişler için hemen bize ulaşın!"
     },
     {
       "name": "PROFİTEROL",
@@ -99,13 +174,22 @@
       "desc": "Güler Mutfak Lezzetleri’nden nefis profiterol! 🍫😍\nDışı çıtır, içi bol kremalı, üstü yoğun çikolata sosuyla kaplı bu eşsiz lezzet tatlı krizlerinize birebir!\nHer lokmada mutluluk garantili!"
     },
     {
-      "name": "ACILI EKMEK(HATAY USULÜ)",
+      "name": "SARAY SARMASI",
+      "price": 650,
+      "discount": 550,
+      "category": "tatli",
+      "unit": "tepsi",
+      "image": "images/saray_sarmasi.jpg",
+      "desc": "Güler Mutfak Lezzetleri’nden enfes Saray Sarması! 🍫✨\nYumuşacık kıvamı, bol kreması ve yoğun çikolata lezzetiyle tatlı keyfinizi taçlandırıyoruz.\nHindistan ceviziyle kaplı bu lezzeti mutlaka denemelisiniz!"
+    },
+    {
+      "name": "SÜTLÜ KAYMAKLI SARAY SARMASI",
       "price": 700,
       "discount": 600,
-      "category": "tuzlu",
-      "unit": "tepsi",
-      "image": "images/acili_ekmek.jpg",
-      "desc": "Hatay usulü acılı ekmek! 🔥🍞\nBol baharatlı, ev yapımı salça, nefis kıvamlı harcı ve yumuşacık hamuruyla sofralarınıza lezzet katıyoruz!\nÇay saatine, kahvaltıya, her öğüne yakışan bu özel tat şimdi sipariş için hazır!"
+      "category": "tatli",
+      "unit": "Tepsi",
+      "image": "images/sutlu_kaymakli_saray_sarmasi.jpg",
+      "desc": "Güler Mutfak Lezzetleri’nden sütlü kaymaklı Saray Sarması! 🥛🍰\nYumuşacık kıvamı, bol kaymak dolgusu ve hindistan ceviziyle kaplanmış lezzetiyle ağızda eriyen bir tatlı keyfi sunuyoruz!"
     },
     {
       "name": "TEREYAĞLI ELMALI KURABİYE",
@@ -120,22 +204,24 @@
       "desc": "Güler Mutfak Lezzetleri’nden mis gibi köy tereyağlı elmalı kurabiye! 🍏🍪 Ağızda dağılan hamuru, tarçınlı ve bol cevizli elma harcıyla çay saatlerinin vazgeçilmezi! Mis gibi kokusu ve lezzetiyle herkesi mest edecek bu kurabiyeleri denemek için hemen sipariş verin!"
     },
     {
-      "name": "MAYALI POĞAÇA(SADE)",
-      "price": 650,
-      "discount": 550,
+      "name": "TEREYAĞLI TUZLU KURABİYE",
+      "price": 600,
+      "discount": 500,
       "category": "tuzlu",
       "unit": "tepsi",
-      "image": "images/mayali_pogaca_sade.jpg",
-      "desc": "Güler Mutfak Lezzetleri’nden yumuşacık mayalı poğaça! 🥖✨\nTel tel ayrılan, mis gibi kokan ve lezzetiyle herkesi mest eden poğaçalarımız kahvaltı ve çay saatlerinizin yıldızı olacak!\nSıcak sıcak, taptaze siparişler için hemen bize ulaşın!"
+      "image": "images/tuzlu_kurabiye.jpg",
+      "desc": "Güler Mutfak Lezzetleri’nden kıyır kıyır tuzlu kurabiye! 🥨✨\nAğızda dağılan nefis kıvamı, susam, çörek otu ve çekirdek içiyle lezzetlendirilmiş harika tuzlu kurabiyeler çay saatlerinize eşlik etmeye hazır!"
     },
     {
-      "name": "MAYALI POĞAÇA(PEYNİRLİ)",
-      "price": 700,
-      "discount": 600,
-      "category": "tuzlu",
-      "unit": "tepsi",
-      "image": "images/mayali_pogaca_peynirli.jpg",
-      "desc": "Güler Mutfak Lezzetleri’nden yumuşacık mayalı poğaça! 🥖✨\nTel tel ayrılan, mis gibi kokan ve lezzetiyle herkesi mest eden poğaçalarımız kahvaltı ve çay saatlerinizin yıldızı olacak!\nSıcak sıcak, taptaze siparişler için hemen bize ulaşın!"
+      "name": "TIRAMISU",
+      "price": 1100,
+      "discount": 900,
+      "category": "tatli",
+      "unit": "Adet(25 cm)",
+      "image": [
+        "images/tiramisu_1775937752639_0.jpg"
+      ],
+      "desc": "Taze kahve çekirdeklerinin aromasıyla hazırladığımız bu muazzam Tiramisu Keki, mascarpone kremasının ve kakao tozunun eşsiz uyumunu sofralarınıza taşıyor. Her bir diliminde Güler Mutfak Lezzetleri'nin o bilindik samimiyetini ve lezzetini hissedeceksiniz. En kaliteli malzemelerle, sevgiyle ve özenle hazırlanan bu tatlı, çay saatlerinizi ve özel anlarınızı taçlandırmak için bekliyor. Biz bu lezzete bayıldık, peki ya siz denemeye hazır mısınız?"
     },
     {
       "name": "ZEYTİNYAĞLI SARMA",
@@ -147,90 +233,17 @@
       "desc": "Güler Mutfak Lezzetleri’nden nefis zeytinyağlı sarma! 🍃🍋\nİncecik sarılmış asma yapraklarının, bol iç harcı ve mis gibi zeytinyağı ile buluştuğu eşsiz bir lezzet!\nLokum gibi kıvamıyla sofralarınızı şenlendirecek bu lezzeti kaçırmayın!"
     },
     {
-      "name": "ETLİ YAPRAK SARMA",
-      "price": 800,
-      "discount": 700,
-      "category": "yemek",
-      "unit": "kg",
-      "image": "images/etli_yaprak_sarma.jpg",
-      "desc": "Güler Mutfak Lezzetleri’nden enfes etli yaprak sarma! 🍖🍃\nİncecik asma yapraklarına sarılmış, kıymalı ve baharatlarla lezzetlendirilmiş, tam kıvamında pişmiş sarma lezzeti!\nGeleneksel sofralarınız için vazgeçilmez bir tat!"
-    },
-    {
-      "name": "CUP KEK",
-      "price": 650,
-      "discount": 550,
-      "category": "tatli",
-      "unit": "24 adet",
-      "image": "images/cup_kek.jpg",
-      "desc": "Güler Mutfak Lezzetleri’nden nefis çikolatalı cup kek! 🍫🧁\nYumuşacık dokusu, kakao, çikolata damlası ve ceviz parçalarıyla her lokmada mutluluk veren bu cup kekleri denemelisiniz!\nÇay ve kahve saatlerinizin vazgeçilmezi olacak!"
-    },
-    {
-      "name": "ANALI KIZLI",
-      "price": 1200,
-      "discount": 1050,
-      "category": "yemek",
-      "unit": "kg",
-      "image": [
-        "images/anali_kizli.jpg",
-        "images/anali_kizli_1775940300539_1.jpg"
-      ],
-      "desc": "Güler Mutfak Lezzetleri’nden Malatya yöresine ait Analı Kızlı! 🍲✨Bulgur ve içi dışı kıymalı etin mükemmel uyumu, ekleyeceğiniz nefis kıvamlı salçalı sosuyla sofralarınıza lezzet katıyor!\nGeleneksel mutfağımızın en özel tatlarından biri olan Analı Kızlı yemeğimizi denemek için sipariş verebilirsiniz!"
-    },
-    {
-      "name": "TEREYAĞLI TUZLU KURABİYE",
-      "price": 600,
-      "discount": 500,
+      "name": "TEREYAĞLI MINI SADE POĞAÇA",
       "category": "tuzlu",
-      "unit": "tepsi",
-      "image": "images/tuzlu_kurabiye.jpg",
-      "desc": "Güler Mutfak Lezzetleri’nden kıyır kıyır tuzlu kurabiye! 🥨✨\nAğızda dağılan nefis kıvamı, susam, çörek otu ve çekirdek içiyle lezzetlendirilmiş harika tuzlu kurabiyeler çay saatlerinize eşlik etmeye hazır!"
-    },
-    {
-      "name": "LİMON SOSLU KEK",
-      "price": 600,
-      "discount": 520,
-      "category": "tatli",
-      "unit": "Adet",
-      "image": [
-        "images/li_mon_soslu_kek_1775941387939_0.jpg"
-      ],
-      "desc": "Güler Mutfak Lezzetleri’nden ferahlatan limon soslu kek! 🍋🍰\nMis gibi limon kokusu, yumuşacık dokusu ve hafif ekşi tatlı uyumuyla çay saatlerinizin favorisi olacak!\nTaptaze ve el yapımı bu lezzeti kaçırmayın!"
-    },
-    {
-      "name": "HARPUT KÖFTE",
-      "price": 1100,
-      "discount": 950,
-      "category": "yemek",
-      "unit": "kg",
-      "image": "images/harput_kofte.jpg",
-      "desc": "Güler Mutfak Lezzetleri’nden yöresel Harput Köfte! 🍲✨\nElazığ mutfağının en sevilen lezzetlerinden biri olan Harput Köfte, özel baharatlarla yoğrulmuş bulgur ve yağsız kıymanın mükemmel uyumuyla sofralarınızı şenlendirmeye hazır!"
-    },
-    {
-      "name": "FINDIK PORTAKALLI ANNE KURABİYESİ",
-      "price": 650,
-      "discount": 530,
-      "category": "tatli",
-      "unit": "24 adet",
-      "image": "images/findik_portakallı_anne_kurabiyesi.jpg",
-      "desc": "Güler Mutfak Lezzetleri’nden fındıklı portakallı anne kurabiyesi! 🍊🥜\nMis gibi portakal kokusu ve fındık parçalarıyla taçlandırılmış, yumuşacık kıvamı ve kıyır kıyır dokusuyla çocukluğunuzun lezzetini sunuyoruz!"
-    },
-    {
-      "name": "SÜTLÜ KAYMAKLI SARAY SARMASI",
+      "unit": "Tepsi",
       "price": 700,
       "discount": 600,
-      "category": "tatli",
-      "unit": "Tepsi",
-      "image": "images/sutlu_kaymakli_saray_sarmasi.jpg",
-      "desc": "Güler Mutfak Lezzetleri’nden sütlü kaymaklı Saray Sarması! 🥛🍰\nYumuşacık kıvamı, bol kaymak dolgusu ve hindistan ceviziyle kaplanmış lezzetiyle ağızda eriyen bir tatlı keyfi sunuyoruz!"
-    },
-    {
-      "name": "ELAZIĞ İÇLİ KÖFTE",
-      "price": 1200,
-      "discount": 1050,
-      "category": "yemek",
-      "unit": "kg",
-      "image": "images/elazig_icli_kofte.jpg",
-      "desc": "Güler Mutfak Lezzetleri’nden Elazığ usulü içli köfte! 🥩🔥\nÖzenle hazırlanan dış hamuru, baharatlarla lezzetlendirilmiş bol kıymalı iç harcı, cevizli ve özel şekliyle Elazığ mutfağının vazgeçilmez lezzetini sunuyoruz!"
+      "desc": "Fırından yeni çıkmış, üzeri nar gibi kızarmış bu minik lezzet topları tam bir iştah kabartıcı! Pamuk gibi yumuşacık dokusu ve ağızda dağılan kıvamıyla, çay saatlerinizin ve kahvaltı sofralarınızın vazgeçilmez eşlikçisi olacak. Sofralarınızı şenlendirecek bu lezzeti kaçırmayın!",
+      "isFavorite": false,
+      "image": [
+        "images/tereya_l__mini_sade_po_a_a_1775943497305_0.jpg",
+        "images/tereya_l__mini_sade_po_a_a_1775943498454_1.jpg"
+      ]
     }
   ]
 }
