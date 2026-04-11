@@ -394,12 +394,28 @@
       padding: 14px 30px; border-radius: 30px; display: none; z-index: 4000; font-weight: 700; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
     
+    /* Mobil Düzeni - Yan Yana İki Kart */
     @media (max-width: 768px) {
-      .flip-card { width: 100%; max-width: 320px; margin-bottom: 25px; }
       .header-title { font-size: 1.6rem; }
       #theme-toggle { top: 15px; right: 15px; }
       .category-tabs { gap: 8px; }
       .tab-btn { padding: 8px 16px; font-size: 0.85rem; }
+      
+      #products { padding: 1rem 0.5rem; gap: 10px; }
+      .flip-card { width: calc(50% - 5px); height: 380px; max-width: none; margin-bottom: 10px; }
+      .card-image-container { height: 130px; }
+      .card-content { padding: 10px 8px; }
+      .card-content h3 { font-size: 0.95rem; margin-bottom: 3px; }
+      .discount-price-area { font-size: 1.05rem; }
+      .original-price { font-size: 0.8rem; margin-bottom: 0; }
+      .add-to-cart-btn { font-size: 0.85rem; padding: 8px 5px; width: 100%; }
+      .click-detail-hint { font-size: 0.65rem; margin-bottom: 5px; }
+      .discount-tag { font-size: 0.7rem; padding: 4px 8px; top: 10px; right: -5px; }
+      .flip-card-back { padding: 15px; }
+      .flip-card-back h3 { font-size: 1.1rem; margin-bottom: 8px; }
+      .flip-card-back p { font-size: 0.85rem; line-height: 1.4; }
+      .admin-card-controls { bottom: -45px; gap: 4px; padding: 0 5px; }
+      .admin-card-controls button { padding: 5px; font-size: 0.85rem; }
     }
   </style>
 </head>
@@ -557,14 +573,13 @@
       
       renderProducts();
       
-      // Animasyonu kapat (Süresi uzatıldı)
       setTimeout(() => {
         const loader = document.getElementById('page-loader');
         if (loader) {
           loader.style.opacity = '0';
           setTimeout(() => loader.style.display = 'none', 500);
         }
-      }, 2500); // 800'den 2500'e çıkarıldı
+      }, 2500); 
     }
 
     function setCategory(cat, btnElement) {
