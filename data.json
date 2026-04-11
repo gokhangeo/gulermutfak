@@ -2,6 +2,18 @@
   "campaignText": "TANIŞMA FİYATLARI!",
   "products": [
     {
+      "name": "MARGARİNLİ ELMALI KURABİYE",
+      "price": 750,
+      "discount": 650,
+      "category": "tatli",
+      "unit": "Tepsi",
+      "image": [
+        "images/margari_nli__elmali_kurabi_ye_1775941969070_0.jpg",
+        "images/margari_nli__elmali_kurabi_ye_1775941970472_1.jpg"
+      ],
+      "desc": "Güler Mutfak Lezzetleri’nden mis gibi margarinli elmalı kurabiye! 🍏🍪 Ağızda dağılan hamuru, tarçınlı ve bol cevizli elma harcıyla çay saatlerinin vazgeçilmezi! Mis gibi kokusu ve lezzetiyle herkesi mest edecek bu kurabiyeleri denemek için hemen sipariş verin!"
+    },
+    {
       "name": "TIRAMISU",
       "price": 1100,
       "discount": 900,
