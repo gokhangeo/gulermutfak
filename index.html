@@ -72,7 +72,6 @@
       border-bottom-left-radius: 20px;
       border-bottom-right-radius: 20px;
     }
-    body.dark-mode header { background: linear-gradient(135deg, #d35400, #a04000); box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
     
     .header-title {
       font-size: 2.2rem;
@@ -113,7 +112,6 @@
     .section-title::before, .section-title::after { content: ""; flex: 1; height: 2px; background: #ffe0d2; max-width: 100px; }
     .fav-title { color: #f1c40f; } 
 
-    /* Arama ve Filtreleme Düzeni */
     .controls {
       display: flex;
       flex-direction: column;
@@ -144,7 +142,6 @@
     .search-box input:focus { border-color: #ff7e5f; box-shadow: 0 4px 15px rgba(255,126,95,0.15); }
     body.dark-mode .search-box input { background: #2a2a2a; color: #fff; border-color: #444; }
 
-    /* Buton Tasarımları (Kategoriler) */
     .category-tabs {
       display: flex;
       justify-content: center;
@@ -174,7 +171,6 @@
     body.dark-mode .tab-btn:hover { background: #331a0b; }
     body.dark-mode .tab-btn.active { background: #d35400; color: white; }
 
-    /* Ürün Kartları Genel Düzen */
     #products, #favorites-section {
       display: flex; flex-wrap: wrap; justify-content: center; padding: 1.5rem; gap: 30px; max-width: 1250px; margin: 0 auto;
     }
@@ -200,7 +196,6 @@
     .card-image-container { width: 100%; height: 200px; position: relative; }
     .card-image-container img { width: 100%; height: 100%; object-fit: cover; }
     
-    /* Çoklu Resim (Carousel) Yapısı */
     .carousel { position: relative; width: 100%; height: 100%; touch-action: pan-y; }
     .carousel img { position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.3s; }
     .carousel img.active { opacity: 1; }
@@ -240,7 +235,6 @@
     .flip-card-back p { font-size: 1rem; line-height: 1.6; color: #666; font-weight: 500;}
     body.dark-mode .flip-card-back p { color: #bbb; }
 
-    /* Yönetici Kontrolleri */
     .admin-card-controls {
       position: absolute; bottom: -50px; left: 0; width: 100%; display: flex; justify-content: space-between; gap: 8px; padding: 0 10px;
     }
@@ -253,7 +247,6 @@
       background: #8e44ad; color: white; border-radius: 50%; font-size: 30px; border: none; z-index: 1000; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
     
-    /* Sepet Kısmı */
     #cart {
       background: #fff; padding: 2rem; margin: 4rem auto 2rem; max-width: 700px; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     }
@@ -268,17 +261,28 @@
     .remove-button { background: #ffebee; color: #e74c3c; border: none; padding: 5px 12px; border-radius: 6px; cursor: pointer; margin-left: 10px; font-weight: bold;}
     #total-price { font-weight: 800; font-size: 1.5rem; margin-bottom: 1.5rem; color: #27ae60;}
     
-    .action-btn { background: #ff7e5f; color: #fff; padding: 14px 24px; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 1.05rem; margin: 5px; transition: 0.3s; }
+    .btn-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+      margin-top: 15px;
+    }
+    .action-btn { 
+      width: 100%; max-width: 350px; background: #ff7e5f; color: #fff; padding: 12px 20px; 
+      border: none; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 1.05rem; transition: 0.3s; 
+    }
     .action-btn:hover { background: #e86b4c; }
     .order-btn { background: #2ecc71; }
     .order-btn:hover { background: #27ae60; }
+    .insta-btn { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+    .insta-btn:hover { filter: brightness(1.1); }
     
     #notification {
       position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%); background: #2c3e50; color: white;
-      padding: 14px 30px; border-radius: 30px; display: none; z-index: 4000; font-weight: bold;
+      padding: 14px 30px; border-radius: 30px; display: none; z-index: 4000; font-weight: bold; text-align: center;
     }
 
-    /* Modal / Admin Form */
     #admin-modal {
       display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(0,0,0,0.85); z-index: 2000; justify-content: center; align-items: center;
@@ -306,7 +310,7 @@
     
     @media (max-width: 768px) {
       #products, #favorites-section { padding: 1rem 0.5rem; gap: 10px; }
-      .flip-card { width: calc(50% - 5px); height: 380px; }
+      .flip-card { width: calc(50% - 5px); height: 380px; max-width: none; margin-bottom: 10px; }
       .card-image-container { height: 130px; }
       .card-content { padding: 10px 8px; }
       .card-content h3 { font-size: 0.95rem; }
@@ -342,7 +346,6 @@
     </div>
   </div>
 
-  <!-- En Çok Sevilenler Bölümü -->
   <div id="favorites-container" style="display:none;">
     <h2 class="section-title fav-title">⭐ En Çok Sevilenler</h2>
     <section id="favorites-section"></section>
@@ -355,7 +358,11 @@
     <h2>🛒 Sepetiniz</h2>
     <ul id="cart-items"></ul>
     <p id="total-price">Toplam: 0₺</p>
-    <button class="action-btn order-btn" onclick="placeOrder()">WhatsApp'tan Sipariş Ver</button>
+    <div class="btn-container">
+      <button class="action-btn" onclick="copyCart()">Sepeti Kopyala</button>
+      <button class="action-btn order-btn" onclick="placeOrderWA()">WhatsApp'tan Sipariş Ver</button>
+      <button class="action-btn insta-btn" onclick="placeOrderInsta()">Instagram'dan Sipariş Ver</button>
+    </div>
   </section>
 
   <section id="contact" style="text-align:center; padding-bottom:3rem;">
@@ -438,12 +445,34 @@
       return "ghp_1Im" + "4128xUP" + "1uC8Oov8yB" + "d7oahk2S6a0aGBTj";
     }
 
+    // Helper function to copy text to clipboard using fallback for iframe restrictions
+    function copyToClipboard(text) {
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      textArea.style.position = "fixed";
+      textArea.style.left = "-9999px";
+      textArea.style.top = "0";
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        return true;
+      } catch (err) {
+        console.error('Kopyalama hatası:', err);
+        return false;
+      } finally {
+        document.body.removeChild(textArea);
+      }
+    }
+
     window.onload = loadData;
 
     async function loadData() {
       try {
         const repoOwner = "gokhangeo";
         const repoName = "gulermutfak";
+        const filePath = "data.json";
         const rawUrl = `https://raw.githubusercontent.com/${repoOwner}/${repoName}/main/data.json?t=${Date.now()}`;
         const response = await fetch(rawUrl, { cache: "no-store" });
         if (response.ok) {
@@ -460,9 +489,12 @@
         document.getElementById('floating-logout-btn').style.display = 'block';
       }
       setTimeout(() => { 
-        document.getElementById('page-loader').style.opacity = '0';
-        setTimeout(() => document.getElementById('page-loader').style.display = 'none', 500); 
-      }, 1500);
+        const loader = document.getElementById('page-loader');
+        if (loader) {
+          loader.style.opacity = '0';
+          setTimeout(() => loader.style.display = 'none', 500); 
+        }
+      }, 2000);
     }
 
     function sortAndRender() {
@@ -470,6 +502,7 @@
         const getRoot = (name) => name.split(' ').pop().toLowerCase();
         const rootA = getRoot(a.name);
         const rootB = getRoot(b.name);
+        
         if (rootA === rootB) return a.name.localeCompare(b.name, 'tr');
         return a.name.localeCompare(b.name, 'tr');
       });
@@ -580,11 +613,37 @@
       document.getElementById('total-price').textContent = `Toplam: ${total}₺`;
     }
 
-    function placeOrder() {
+    function copyCart() {
+      if (!cart.length) return alert("Sepet boş!");
+      let msg = "Merhaba, siparişim:\n";
+      cart.forEach(i => msg += `• ${i.name} (${i.qty} adet)\n`);
+      if (copyToClipboard(msg)) {
+        showNotif("Sipariş metni kopyalandı! Yapıştırarak gönderebilirsiniz.");
+      } else {
+        alert("Kopyalama başarısız, lütfen manuel kopyalayınız.");
+      }
+    }
+
+    function placeOrderWA() {
       if (!cart.length) return alert("Sepet boş!");
       let msg = "Merhaba, siparişim:\n";
       cart.forEach(i => msg += `• ${i.name} (${i.qty} adet)\n`);
       window.open(`https://wa.me/905319428244?text=${encodeURIComponent(msg)}`, "_blank");
+    }
+
+    function placeOrderInsta() {
+      if (!cart.length) return alert("Sepet boş!");
+      let msg = "Merhaba, siparişim:\n";
+      cart.forEach(i => msg += `• ${i.name} (${i.qty} adet)\n`);
+      
+      if (copyToClipboard(msg)) {
+        showNotif("Sipariş kopyalandı! Instagram mesaj kutusuna yapıştırınız.");
+        setTimeout(() => {
+          window.open("https://ig.me/m/guler_mutfak_lezzetleri", "_blank");
+        }, 1500);
+      } else {
+        alert("Kopyalama başarısız oldu, lütfen önce Sepeti Kopyala butonunu kullanın.");
+      }
     }
 
     function openEdit(e, idx) {
@@ -672,18 +731,15 @@
       b.classList.add('active');
       renderProducts();
     }
-    
     function toggleTheme() { document.body.classList.toggle('dark-mode'); }
     function closeAdmin() { document.getElementById('admin-modal').style.display = 'none'; }
     function openAdminModal() { editIndex = -1; document.getElementById('admin-modal').style.display='flex'; document.getElementById('admin-name').value=""; document.getElementById('admin-is-favorite').checked = false; currentEditImages=[]; renderPreviews(); }
-    
     function renderPreviews() {
       const div = document.getElementById('admin-image-preview'); div.innerHTML = '';
       currentEditImages.forEach((img, i) => {
         div.innerHTML += `<div class="image-preview-item"><img src="${img}"><button type="button" onclick="currentEditImages.splice(${i},1);renderPreviews()">X</button></div>`;
       });
     }
-    
     document.getElementById('admin-image').addEventListener('change', async (e) => {
       for (let f of e.target.files) {
         const r = new FileReader();
@@ -691,7 +747,6 @@
         r.readAsDataURL(f);
       }
     });
-    
     function checkSecretAdmin() {
       let c = parseInt(this.dataset.c || 0) + 1; this.dataset.c = c;
       if (c === 5) {
@@ -703,11 +758,9 @@
       }
       setTimeout(() => this.dataset.c = 0, 2000);
     }
-    
     function logoutAdmin() { localStorage.removeItem('isAdmin'); location.reload(); }
     function showNotif(m) { const n = document.getElementById('notification'); n.textContent = m; n.style.display = "block"; setTimeout(() => n.style.display="none", 3000); }
     async function delProd(e, idx) { e.stopPropagation(); if(confirm("Silinsin mi?")) { productList.splice(idx, 1); await saveToGit("Ürün silindi"); } }
-    function b64DecodeUnicode(str) { return decodeURIComponent(atob(str).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join('')); }
     
     async function editCampaignText() {
       if(!isAdmin) return;
