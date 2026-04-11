@@ -176,8 +176,10 @@
       "price": 600,
       "discount": 520,
       "category": "tatli",
-      "unit": "bütün",
-      "image": "images/limon_soslu_kek.jpg",
+      "unit": "Adet",
+      "image": [
+        "images/li_mon_soslu_kek_1775941387939_0.jpg"
+      ],
       "desc": "Güler Mutfak Lezzetleri’nden ferahlatan limon soslu kek! 🍋🍰\nMis gibi limon kokusu, yumuşacık dokusu ve hafif ekşi tatlı uyumuyla çay saatlerinizin favorisi olacak!\nTaptaze ve el yapımı bu lezzeti kaçırmayın!"
     },
     {
