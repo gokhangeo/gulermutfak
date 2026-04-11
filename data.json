@@ -156,8 +156,11 @@
       "discount": 1050,
       "category": "yemek",
       "unit": "kg",
-      "image": "images/anali_kizli.jpg",
-      "desc": "Güler Mutfak Lezzetleri’nden geleneksel Analı Kızlı! 🍲✨\nBulgur ve etin mükemmel uyumu, ekleyeceğiniz nefis kıvamlı salçalı sosuyla sofralarınıza lezzet katıyor!\nGeleneksel mutfağımızın en özel tatlarından biri olan Analı Kızlı yemeğimizi denemek için sipariş verebilirsiniz!"
+      "image": [
+        "images/anali_kizli.jpg",
+        "images/anali_kizli_1775940300539_1.jpg"
+      ],
+      "desc": "Güler Mutfak Lezzetleri’nden Malatya yöresine ait Analı Kızlı! 🍲✨Bulgur ve içi dışı kıymalı etin mükemmel uyumu, ekleyeceğiniz nefis kıvamlı salçalı sosuyla sofralarınıza lezzet katıyor!\nGeleneksel mutfağımızın en özel tatlarından biri olan Analı Kızlı yemeğimizi denemek için sipariş verebilirsiniz!"
     },
     {
       "name": "TEREYAĞLI TUZLU KURABİYE",
