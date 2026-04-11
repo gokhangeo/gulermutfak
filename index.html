@@ -47,7 +47,6 @@
     
     .header-title { font-size: 2.2rem; font-weight: 800; letter-spacing: 1px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); cursor: pointer; user-select: none; }
 
-    /* Sol Üst Kontroller (Mod) */
     .top-left-controls { position: absolute; top: 20px; left: 20px; display: flex; gap: 8px; z-index: 1002; }
     .top-btn {
       padding: 6px 12px; font-size: 0.8rem; font-weight: bold; background: rgba(0, 0, 0, 0.15);
@@ -55,7 +54,6 @@
     }
     .top-btn:hover { background: rgba(0, 0, 0, 0.3); }
 
-    /* Sepet İkonu ve Badge Stili */
     .cart-trigger {
       position: fixed; top: 20px; right: 20px; z-index: 1001; background: white; width: 50px; height: 50px;
       border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;
@@ -104,6 +102,15 @@
     body.dark-mode .tab-btn.active { background: #d35400; color: white; }
 
     #products { display: flex; flex-wrap: wrap; justify-content: center; padding: 1.5rem; gap: 30px; max-width: 1250px; margin: 0 auto; }
+    
+    /* Yatay Kaydırmalı Favoriler Bölümü */
+    #favorites-section {
+      display: flex; flex-wrap: nowrap; overflow-x: auto; padding: 1.5rem; gap: 20px; max-width: 1250px; margin: 0 auto;
+      scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+    }
+    #favorites-section::-webkit-scrollbar { display: none; }
+    #favorites-section .flip-card { flex: 0 0 300px; scroll-snap-align: center; }
+
     .flip-card { background: transparent; width: 300px; height: 440px; perspective: 1000px; cursor: pointer; position: relative; }
     .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1); transform-style: preserve-3d; }
     .flip-card-inner.flipped { transform: rotateY(180deg); }
@@ -122,7 +129,6 @@
 
     .discount-tag { position: absolute; top: 15px; right: -5px; background: #e74c3c; color: white; padding: 6px 20px; font-size: 0.85rem; font-weight: bold; border-radius: 20px; z-index: 20; box-shadow: 0 4px 10px rgba(231,76,60,0.3); }
     
-    /* En Çok Sevilenler Etiketi Yeni Tasarım */
     .favorite-badge {
       position: absolute; top: 15px; left: 10px; background: #f1c40f; color: #333;
       padding: 5px 12px; border-radius: 20px; display: flex; align-items: center; justify-content: center;
@@ -145,10 +151,11 @@
     .flip-card-back p { font-size: 1rem; line-height: 1.6; color: #666; font-weight: 500;}
     body.dark-mode .flip-card-back p { color: #bbb; }
 
-    .admin-card-controls { position: absolute; bottom: -50px; left: 0; width: 100%; display: flex; justify-content: space-between; gap: 8px; padding: 0 10px; }
-    .admin-card-controls button { flex: 1; padding: 8px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; color: white; }
-    .admin-edit-btn { background: #f39c12; }
-    .admin-del-btn { background: #c0392b; }
+    .admin-card-controls { position: absolute; bottom: -50px; left: 0; width: 100%; display: flex; justify-content: space-between; gap: 5px; padding: 0 5px; }
+    .admin-card-controls button { padding: 8px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; color: white; }
+    .admin-move-btn { background: #34495e; flex: 0.25; font-size: 1.1rem; padding: 8px 0; }
+    .admin-edit-btn { background: #f39c12; flex: 1; }
+    .admin-del-btn { background: #c0392b; flex: 1; }
 
     #floating-add-btn { display: none; position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #8e44ad; color: white; border-radius: 50%; font-size: 30px; border: none; z-index: 1000; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
     
@@ -185,13 +192,18 @@
     
     @media (max-width: 768px) {
       #products { padding: 1rem 0.5rem; gap: 10px; }
-      .flip-card { width: calc(50% - 5px); height: 380px; max-width: none; margin-bottom: 10px; }
+      #products .flip-card { width: calc(50% - 5px); height: 380px; max-width: none; margin-bottom: 10px; }
+      
+      #favorites-section { padding: 1rem; gap: 15px; }
+      #favorites-section .flip-card { flex: 0 0 75%; height: 380px; margin-bottom: 0; }
+      
       .card-image-container { height: 130px; }
       .card-content { padding: 10px 8px; }
       .card-content h3 { font-size: 0.95rem; }
       .add-to-cart-btn { font-size: 0.85rem; width: 100%; padding: 8px 5px;}
       .discount-price-area { font-size: 1.05rem; }
       .admin-card-controls { bottom: -45px; gap: 4px; padding: 0 5px; }
+      .admin-card-controls button { padding: 5px; font-size: 0.85rem; }
       .top-left-controls { top: 15px; left: 15px; }
       .cart-trigger { top: 15px; right: 15px; width: 40px; height: 40px; }
       .cart-trigger svg { width: 20px; height: 20px; }
@@ -230,6 +242,11 @@
       <button class="tab-btn" onclick="setCategory('tuzlu', this)">Tuzlular</button>
       <button class="tab-btn" onclick="setCategory('yemek', this)">Yemekler</button>
     </div>
+  </div>
+
+  <div id="favorites-container" style="display:none;">
+    <h2 class="section-title fav-title">⭐ En Çok Sevilenler</h2>
+    <section id="favorites-section"></section>
   </div>
 
   <h2 class="section-title" id="main-list-title">🍴 Menümüz</h2>
@@ -341,7 +358,8 @@
         }
       } catch (e) { console.error(e); }
       
-      sortAndRender();
+      renderProducts();
+      
       if (isAdmin) {
         document.getElementById('floating-add-btn').style.display = 'block';
         document.getElementById('floating-logout-btn').style.display = 'block';
@@ -354,28 +372,17 @@
 
     function scrollToCart() { document.getElementById('cart').scrollIntoView({ behavior: 'smooth' }); }
 
-    // En Çok Sevilenleri başa, diğerlerini alfabetik (kök ismine göre) sıralama
-    function sortAndRender() {
-      productList.sort((a, b) => {
-        // Favori olanlar her zaman en üstte
-        if (a.isFavorite && !b.isFavorite) return -1;
-        if (!a.isFavorite && b.isFavorite) return 1;
-
-        // Kalanları benzer isimleri yan yana gelecek şekilde sırala
-        const getRoot = (name) => name.split(' ').pop().toLowerCase();
-        const rootA = getRoot(a.name);
-        const rootB = getRoot(b.name);
-        if (rootA === rootB) return a.name.localeCompare(b.name, 'tr');
-        return a.name.localeCompare(b.name, 'tr');
-      });
-      renderProducts();
-    }
-
+    // Admin kartın yerini sağa/sola (yukarı/aşağı) taşıyabilsin diye taşıma fonksiyonunu geri getirdik.
+    // Otomatik isim veya favori sıralamasını iptal ettik, böylece liste sadece sen nasıl dizersen öyle kalır.
     function renderProducts() {
       const mainContainer = document.getElementById('products');
+      const favContainer = document.getElementById('favorites-section');
+      const favWrapper = document.getElementById('favorites-container');
       const search = document.getElementById('search-bar').value.toLowerCase();
       
       mainContainer.innerHTML = '';
+      favContainer.innerHTML = '';
+      let hasFavs = false;
 
       productList.forEach((product, index) => {
         if (!product.name.toLowerCase().includes(search)) return;
@@ -391,6 +398,19 @@
         images.forEach((img, i) => { carouselHtml += `<img src="${img}" class="${i===0?'active':''}" onerror="this.src='https://via.placeholder.com/300x200?text=Resim+Yok'">`; });
         if(images.length > 1) carouselHtml += `<button class="carousel-btn left" onclick="cS(event, ${index}, -1)">&#10094;</button><button class="carousel-btn right" onclick="cS(event, ${index}, 1)">&#10095;</button>`;
         carouselHtml += `</div>`;
+
+        let adminControlsHtml = '';
+        if (isAdmin) {
+          // Kartları sağa sola (yukarı aşağı) hareket ettirme butonları eklendi
+          adminControlsHtml = `
+            <div class="admin-card-controls">
+              <button class="admin-move-btn" title="Sola/Yukarı" onclick="moveProductLocal(event, ${index}, -1)" ${index === 0 ? 'disabled' : ''}>◀</button>
+              <button class="admin-edit-btn" onclick="openEdit(event, ${index})">Düzenle</button>
+              <button class="admin-del-btn" onclick="delProd(event, ${index})">Sil</button>
+              <button class="admin-move-btn" title="Sağa/Aşağı" onclick="moveProductLocal(event, ${index}, 1)" ${index === productList.length - 1 ? 'disabled' : ''}>▶</button>
+            </div>
+          `;
+        }
 
         const card = `
           <div class="flip-card" onclick="flip(this, event)">
@@ -413,13 +433,15 @@
                 <p>${product.desc ? product.desc.replace(/\n/g, '<br>') : 'Özel tarifimizle hazırlandı.'}</p>
               </div>
             </div>
-            ${isAdmin ? `<div class="admin-card-controls"><button class="admin-edit-btn" onclick="openEdit(event, ${index})">Düzenle</button><button class="admin-del-btn" onclick="delProd(event, ${index})">Sil</button></div>` : ''}
+            ${adminControlsHtml}
           </div>
         `;
 
+        if (product.isFavorite && search === "" && currentCategory === 'all') { favContainer.insertAdjacentHTML('beforeend', card); hasFavs = true; }
         mainContainer.insertAdjacentHTML('beforeend', card);
       });
 
+      favWrapper.style.display = hasFavs ? 'block' : 'none';
       if(mainContainer.innerHTML === '') mainContainer.innerHTML = '<h3 style="color:#888; margin-top:20px;">Kayıt bulunamadı.</h3>';
     }
 
@@ -442,6 +464,24 @@
     }
     
     function flip(el, e) { if (e.target.tagName !== 'BUTTON') el.querySelector('.flip-card-inner').classList.toggle('flipped'); }
+
+    // Kartları sağa/sola kaydırma işlemi
+    async function moveProductLocal(e, index, direction) {
+      e.stopPropagation();
+      if (direction === -1 && index > 0) {
+        const temp = productList[index];
+        productList[index] = productList[index - 1];
+        productList[index - 1] = temp;
+        renderProducts(); 
+        await saveToGit("Ürün sırası değiştirildi");
+      } else if (direction === 1 && index < productList.length - 1) {
+        const temp = productList[index];
+        productList[index] = productList[index + 1];
+        productList[index + 1] = temp;
+        renderProducts(); 
+        await saveToGit("Ürün sırası değiştirildi");
+      }
+    }
 
     function addCart(e, idx) {
       e.stopPropagation();
@@ -561,7 +601,7 @@
       const content = { campaignText, products: productList };
       await fetch(url, { method: "PUT", headers: { "Authorization": `Bearer ${tkn}` }, body: JSON.stringify({ message: msg, content: btoa(unescape(encodeURIComponent(JSON.stringify(content, null, 2)))), sha: sha, branch: "main" }) });
       document.getElementById('loader').style.display = 'none';
-      sortAndRender(); showNotif("Başarıyla kaydedildi!");
+      renderProducts(); showNotif("Başarıyla kaydedildi!");
     }
 
     function setCategory(c, b) { currentCategory = c; document.querySelectorAll('.tab-btn').forEach(x => x.classList.remove('active')); b.classList.add('active'); renderProducts(); }
