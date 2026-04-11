@@ -27,7 +27,6 @@
     }
     body.dark-mode { background: #1a1a1a; color: #f0f0f0; }
     
-    /* Sayfa Açılış Yükleme Ekranı */
     #page-loader {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -347,6 +346,16 @@
     .contact-icons img { width: 55px; height: 55px; cursor: pointer; transition: transform 0.3s; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));}
     .contact-icons img:hover { transform: scale(1.15); }
     
+    .location-text {
+      margin-top: 15px;
+      font-size: 1.1rem;
+      color: #7f8c8d;
+      font-weight: 600;
+    }
+    body.dark-mode .location-text {
+      color: #bbb;
+    }
+
     #admin-modal {
       display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(0,0,0,0.85); z-index: 2000; justify-content: center; align-items: center;
@@ -394,28 +403,12 @@
       padding: 14px 30px; border-radius: 30px; display: none; z-index: 4000; font-weight: 700; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
     
-    /* Mobil Düzeni - Yan Yana İki Kart */
     @media (max-width: 768px) {
+      .flip-card { width: 100%; max-width: 320px; margin-bottom: 25px; }
       .header-title { font-size: 1.6rem; }
       #theme-toggle { top: 15px; right: 15px; }
       .category-tabs { gap: 8px; }
       .tab-btn { padding: 8px 16px; font-size: 0.85rem; }
-      
-      #products { padding: 1rem 0.5rem; gap: 10px; }
-      .flip-card { width: calc(50% - 5px); height: 380px; max-width: none; margin-bottom: 10px; }
-      .card-image-container { height: 130px; }
-      .card-content { padding: 10px 8px; }
-      .card-content h3 { font-size: 0.95rem; margin-bottom: 3px; }
-      .discount-price-area { font-size: 1.05rem; }
-      .original-price { font-size: 0.8rem; margin-bottom: 0; }
-      .add-to-cart-btn { font-size: 0.85rem; padding: 8px 5px; width: 100%; }
-      .click-detail-hint { font-size: 0.65rem; margin-bottom: 5px; }
-      .discount-tag { font-size: 0.7rem; padding: 4px 8px; top: 10px; right: -5px; }
-      .flip-card-back { padding: 15px; }
-      .flip-card-back h3 { font-size: 1.1rem; margin-bottom: 8px; }
-      .flip-card-back p { font-size: 0.85rem; line-height: 1.4; }
-      .admin-card-controls { bottom: -45px; gap: 4px; padding: 0 5px; }
-      .admin-card-controls button { padding: 5px; font-size: 0.85rem; }
     }
   </style>
 </head>
@@ -465,6 +458,7 @@
         <img src="images/whatsapp_logo.png" alt="WhatsApp" onerror="this.src='https://cdn-icons-png.flaticon.com/512/733/733585.png'">
       </a>
     </div>
+    <div class="location-text">📍 Mersin / Mezitli</div>
   </section>
 
   <div id="admin-modal">
