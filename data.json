@@ -250,6 +250,19 @@
       "unit": "kg",
       "image": "images/zeytinyagli_sarma.jpg",
       "desc": "Güler Mutfak Lezzetleri’nden nefis zeytinyağlı sarma! 🍃🍋\nİncecik sarılmış asma yapraklarının, bol iç harcı ve mis gibi zeytinyağı ile buluştuğu eşsiz bir lezzet!\nLokum gibi kıvamıyla sofralarınızı şenlendirecek bu lezzeti kaçırmayın!"
+    },
+    {
+      "name": "DEREOTLU SADE POĞAÇA(TEREYAĞLI)",
+      "category": "tuzlu",
+      "unit": "Tepsi",
+      "price": 800,
+      "discount": 700,
+      "desc": "Güler Mutfak Lezzetleri’nden nefis Dereotlu Sade Poğaça! 🌿🥯 Kıyır kıyır ağızda dağılan dokusu ve taze dereotunun mis gibi aromasıyla hazırladığımız bu poğaçalar, ev yapımı sıcaklığını sofralarınıza taşıyor. Dışı nar gibi kızarmış, çay saatlerinizin en sevilen eşlikçisi olmaya aday. Sofralarınızı şenlendirecek bu lezzeti kaçırmayın! ✨",
+      "isFavorite": false,
+      "image": [
+        "images/dereotlu_sade_po_a_a_tereya_l___1775944961143_0.jpg",
+        "images/dereotlu_sade_po_a_a_tereya_l___1775944962300_1.jpg"
+      ]
     }
   ]
 }
