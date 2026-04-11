@@ -2,6 +2,17 @@
   "campaignText": "TANIŞMA FİYATLARI!",
   "products": [
     {
+      "name": "ÇIKOLATA GANAJLI TART PASTA",
+      "price": 950,
+      "discount": 800,
+      "category": "tatli",
+      "unit": "Adet(28 cm)",
+      "image": [
+        "images/cikolata_ganajli_tart_pasta_1775937009183_0.jpg"
+      ],
+      "desc": "Güler Mutfak'ın usta ellerinden çıkan bu çikolata ganajlı tart pasta, sadece bir tatlı değil; bir sanat eseri! Kakaolu kek tabanının üzerine yayılan o yoğun, ipeksi çikolata ganajı, damağınızda unutulmaz bir iz bırakacak. Tartımızın üzerindeki beyaz çikolata süslemeleri, kavrulmuş fındıklar ve tam ortadaki iki çilek dilimi, her bir dilimdeki lezzetin ve görselliğin bir kanıtı. Biz bu lezzete bayıldık, peki ya siz denemeye hazır mısınız?"
+    },
+    {
       "name": "COCOSTAR PASTA",
       "price": 950,
       "discount": 800,
