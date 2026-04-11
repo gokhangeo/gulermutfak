@@ -258,7 +258,7 @@
       "price": 800,
       "discount": 700,
       "desc": "Güler Mutfak Lezzetleri’nden nefis Dereotlu Sade Poğaça! 🌿🥯 Kıyır kıyır ağızda dağılan dokusu ve taze dereotunun mis gibi aromasıyla hazırladığımız bu poğaçalar, ev yapımı sıcaklığını sofralarınıza taşıyor. Dışı nar gibi kızarmış, çay saatlerinizin en sevilen eşlikçisi olmaya aday. Sofralarınızı şenlendirecek bu lezzeti kaçırmayın! ✨",
-      "isFavorite": false,
+      "isFavorite": true,
       "image": [
         "images/dereotlu_sade_po_a_a_tereya_l___1775944961143_0.jpg",
         "images/dereotlu_sade_po_a_a_tereya_l___1775944962300_1.jpg"
