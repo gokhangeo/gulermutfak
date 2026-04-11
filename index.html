@@ -110,14 +110,18 @@
     #favorites-section::-webkit-scrollbar { display: none; }
     #favorites-section .flip-card { flex: 0 0 300px; scroll-snap-align: center; }
 
-    .flip-card { background: transparent; width: 300px; height: 440px; perspective: 1000px; cursor: pointer; position: relative; }
+    /* Kart Animasyonları ve Ön/Arka Yüz */
+    .flip-card { background: transparent; width: 300px; height: 440px; perspective: 1000px; cursor: pointer; position: relative; transition: z-index 0.3s; }
+    .flip-card.active-card { z-index: 100; } /* Tıklanınca öne çıkması için */
+    
     .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1); transform-style: preserve-3d; }
     .flip-card-inner.flipped { transform: rotateY(180deg); }
+    
     .flip-card-front, .flip-card-back { 
       position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; 
       border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); background: #fff; display: flex; flex-direction: column; overflow: hidden; border: 1px solid rgba(0,0,0,0.03); 
     }
-    .flip-card-back { transform: rotateY(180deg); padding: 20px 10px; justify-content: center; align-items: center; }
+    .flip-card-back { transform: rotateY(180deg); padding: 15px; justify-content: flex-start; align-items: center; }
     body.dark-mode .flip-card-front, body.dark-mode .flip-card-back { background: #242424; color: #f0f0f0; border-color: #333; }
     
     .card-image-container { width: 100%; height: 200px; position: relative; }
@@ -129,15 +133,11 @@
     .carousel-btn.left { left: 5px; }
     .carousel-btn.right { right: 5px; }
 
-    /* Rozetlerde Ters Görünme Düzeltmesi (Backface Hidden) */
     .discount-tag, .favorite-badge {
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-      transform: translateZ(1px); /* Safari 3D donanım ivmesi düzeltmesi */
+      -webkit-backface-visibility: hidden; backface-visibility: hidden; transform: translateZ(1px); 
     }
 
     .discount-tag { position: absolute; top: 15px; right: -5px; background: #e74c3c; color: white; padding: 6px 20px; font-size: 0.85rem; font-weight: bold; border-radius: 20px; z-index: 20; box-shadow: 0 4px 10px rgba(231,76,60,0.3); }
-    
     .favorite-badge {
       position: absolute; top: 15px; left: 10px; background: #f1c40f; color: #333;
       padding: 5px 12px; border-radius: 20px; display: flex; align-items: center; justify-content: center;
@@ -156,18 +156,17 @@
     .add-to-cart-btn { background: #ff7e5f; color: white; padding: 10px; font-size: 1rem; border: none; border-radius: 12px; cursor: pointer; width: 80%; margin: 0 auto; font-weight: bold; transition: 0.3s; }
     .add-to-cart-btn:hover { background: #e86b4c; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(255,126,95,0.3); }
 
-    .flip-card-back h3 { margin-bottom: 10px; color: #ff7e5f; font-size: 1.3rem;}
+    .flip-card-back h3 { margin-bottom: 10px; margin-top: 10px; color: #ff7e5f; font-size: 1.3rem; flex-shrink: 0;}
     
-    /* Kart Arkası Uzun Yazı Kaydırma (Scroll) Çözümü */
-    .flip-card-back p { 
-      font-size: 0.95rem; line-height: 1.6; color: #666; font-weight: 500; 
-      overflow-y: auto; max-height: 75%; width: 100%; padding: 0 10px; 
-      scrollbar-width: thin; scrollbar-color: #ff7e5f transparent;
+    .desc-content { 
+      font-size: 0.9rem; line-height: 1.5; color: #666; font-weight: 500; 
+      overflow-y: auto; max-height: 100%; width: 100%; padding: 5px; 
+      scrollbar-width: thin; scrollbar-color: #ff7e5f transparent; text-align: center; flex-grow: 1;
     }
-    .flip-card-back p::-webkit-scrollbar { width: 4px; }
-    .flip-card-back p::-webkit-scrollbar-thumb { background: #ff7e5f; border-radius: 4px; }
-    body.dark-mode .flip-card-back p { color: #bbb; scrollbar-color: #d35400 transparent;}
-    body.dark-mode .flip-card-back p::-webkit-scrollbar-thumb { background: #d35400; }
+    .desc-content::-webkit-scrollbar { width: 4px; }
+    .desc-content::-webkit-scrollbar-thumb { background: #ff7e5f; border-radius: 4px; }
+    body.dark-mode .desc-content { color: #bbb; scrollbar-color: #d35400 transparent;}
+    body.dark-mode .desc-content::-webkit-scrollbar-thumb { background: #d35400; }
 
     .admin-card-controls { position: absolute; bottom: -50px; left: 0; width: 100%; display: flex; justify-content: space-between; gap: 8px; padding: 0 10px; }
     .admin-card-controls button { flex: 1; padding: 8px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; color: white; }
@@ -208,6 +207,7 @@
     .admin-save-btn { background: #27ae60; color: white; border: none; padding: 12px 25px; border-radius: 10px; cursor: pointer; font-weight: bold;}
     .admin-close-btn { background: #e74c3c; color: white; border: none; padding: 12px 25px; border-radius: 10px; cursor: pointer; font-weight: bold;}
     
+    /* Mobil Düzeni ve Büyüme (Scale) Efekti */
     @media (max-width: 768px) {
       #products { padding: 1rem 0.5rem; gap: 10px; }
       #products .flip-card { width: calc(50% - 5px); height: 380px; max-width: none; margin-bottom: 10px; }
@@ -215,6 +215,8 @@
       #favorites-section { padding: 1rem; gap: 15px; }
       #favorites-section .flip-card { flex: 0 0 75%; height: 380px; margin-bottom: 0; }
       
+      .flip-card.active-card .flip-card-inner { transform: rotateY(180deg) scale(1.05); }
+
       .card-image-container { height: 130px; }
       .card-content { padding: 10px 8px; }
       .card-content h3 { font-size: 0.95rem; }
@@ -390,6 +392,61 @@
 
     function scrollToCart() { document.getElementById('cart').scrollIntoView({ behavior: 'smooth' }); }
 
+    function buildCardHtml(product, index, prefix) {
+      const hasDiscount = product.discount && product.discount < product.price;
+      const priceHtml = hasDiscount 
+        ? `<span class="original-price">${product.price}₺</span><div class="discount-price-area">${product.discount}₺ <span style="font-size:0.8rem;color:#888;">(${product.unit})</span></div>`
+        : `<div class="discount-price-area">${product.price}₺ <span style="font-size:0.8rem;color:#888;">(${product.unit})</span></div>`;
+
+      let images = Array.isArray(product.image) ? product.image : [product.image];
+      let carouselHtml = `<div class="carousel" id="carousel-${prefix}-${index}" ontouchstart="tS(event)" ontouchend="tE(event, '${prefix}-${index}')" onclick="cClick(event)">`;
+      images.forEach((img, i) => { carouselHtml += `<img src="${img}" class="${i===0?'active':''}" onerror="this.src='https://via.placeholder.com/300x200?text=Resim+Yok'">`; });
+      if(images.length > 1) {
+        carouselHtml += `<button class="carousel-btn left" onclick="cS(event, '${prefix}-${index}', -1)">&#10094;</button><button class="carousel-btn right" onclick="cS(event, '${prefix}-${index}', 1)">&#10095;</button>`;
+      }
+      carouselHtml += `</div>`;
+
+      let adminControlsHtml = '';
+      if (isAdmin && prefix === 'main') {
+        adminControlsHtml = `
+          <div class="admin-card-controls">
+            <button class="admin-move-btn" title="Sola/Yukarı" onclick="moveProductLocal(event, ${index}, -1)" ${index === 0 ? 'disabled' : ''}>◀</button>
+            <button class="admin-edit-btn" onclick="openEdit(event, ${index})">Düzenle</button>
+            <button class="admin-del-btn" onclick="delProd(event, ${index})">Sil</button>
+            <button class="admin-move-btn" title="Sağa/Aşağı" onclick="moveProductLocal(event, ${index}, 1)" ${index === productList.length - 1 ? 'disabled' : ''}>▶</button>
+          </div>
+        `;
+      }
+
+      // Favoriler hepsi kısmında en başta listelensin diye CSS Order kullanıyoruz.
+      let orderStyle = product.isFavorite && prefix === 'main' ? 'order: -1;' : 'order: 0;';
+
+      return `
+        <div class="flip-card" style="${orderStyle}" onclick="flip(this, event)">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="card-image-container">
+                ${carouselHtml}
+                ${product.isFavorite ? '<div class="favorite-badge">⭐ En Çok Sevilenler</div>' : ''}
+                ${hasDiscount ? '<div class="discount-tag">Fırsat!</div>' : ''}
+              </div>
+              <div class="card-content">
+                <h3>${product.name}</h3>
+                <div class="price-area">${priceHtml}</div>
+                <div class="click-detail-hint">Detaylar için karta dokun 👆</div>
+                <button class="add-to-cart-btn" onclick="addCart(event, ${index})">Sepete Ekle</button>
+              </div>
+            </div>
+            <div class="flip-card-back">
+              <h3>Detaylar</h3>
+              <div class="desc-content">${product.desc ? product.desc.replace(/\n/g, '<br>') : 'Özel tarifimizle hazırlandı.'}</div>
+            </div>
+          </div>
+          ${adminControlsHtml}
+        </div>
+      `;
+    }
+
     function renderProducts() {
       const mainContainer = document.getElementById('products');
       const favContainer = document.getElementById('favorites-section');
@@ -404,62 +461,11 @@
         if (!product.name.toLowerCase().includes(search)) return;
         if (currentCategory !== 'all' && product.category !== currentCategory) return;
 
-        const hasDiscount = product.discount && product.discount < product.price;
-        const priceHtml = hasDiscount 
-          ? `<span class="original-price">${product.price}₺</span><div class="discount-price-area">${product.discount}₺ <span style="font-size:0.8rem;color:#888;">(${product.unit})</span></div>`
-          : `<div class="discount-price-area">${product.price}₺ <span style="font-size:0.8rem;color:#888;">(${product.unit})</span></div>`;
-
-        let images = Array.isArray(product.image) ? product.image : [product.image];
-        let carouselHtml = `<div class="carousel" id="carousel-${index}" ontouchstart="tS(event)" ontouchend="tE(event, ${index})" onclick="cClick(event)">`;
-        images.forEach((img, i) => { carouselHtml += `<img src="${img}" class="${i===0?'active':''}" onerror="this.src='https://via.placeholder.com/300x200?text=Resim+Yok'">`; });
-        if(images.length > 1) carouselHtml += `<button class="carousel-btn left" onclick="cS(event, ${index}, -1)">&#10094;</button><button class="carousel-btn right" onclick="cS(event, ${index}, 1)">&#10095;</button>`;
-        carouselHtml += `</div>`;
-
-        let adminControlsHtml = '';
-        if (isAdmin) {
-          adminControlsHtml = `
-            <div class="admin-card-controls">
-              <button class="admin-move-btn" title="Sola/Yukarı" onclick="moveProductLocal(event, ${index}, -1)" ${index === 0 ? 'disabled' : ''}>◀</button>
-              <button class="admin-edit-btn" onclick="openEdit(event, ${index})">Düzenle</button>
-              <button class="admin-del-btn" onclick="delProd(event, ${index})">Sil</button>
-              <button class="admin-move-btn" title="Sağa/Aşağı" onclick="moveProductLocal(event, ${index}, 1)" ${index === productList.length - 1 ? 'disabled' : ''}>▶</button>
-            </div>
-          `;
-        }
-
-        // Favorileri görsel olarak CSS Flex Order ile başa alıyoruz. Listeyi veya Array yapısını bozmadan.
-        let orderStyle = product.isFavorite ? 'order: -1;' : 'order: 0;';
-
-        const card = `
-          <div class="flip-card" style="${orderStyle}" onclick="flip(this, event)">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="card-image-container">
-                  ${carouselHtml}
-                  ${product.isFavorite ? '<div class="favorite-badge">⭐ En Çok Sevilenler</div>' : ''}
-                  ${hasDiscount ? '<div class="discount-tag">Fırsat!</div>' : ''}
-                </div>
-                <div class="card-content">
-                  <h3>${product.name}</h3>
-                  <div class="price-area">${priceHtml}</div>
-                  <div class="click-detail-hint">Detaylar için karta dokun 👆</div>
-                  <button class="add-to-cart-btn" onclick="addCart(event, ${index})">Sepete Ekle</button>
-                </div>
-              </div>
-              <div class="flip-card-back">
-                <h3>Detaylar</h3>
-                <p>${product.desc ? product.desc.replace(/\n/g, '<br>') : 'Özel tarifimizle hazırlandı.'}</p>
-              </div>
-            </div>
-            ${adminControlsHtml}
-          </div>
-        `;
-
         if (product.isFavorite && search === "" && currentCategory === 'all') { 
-          favContainer.insertAdjacentHTML('beforeend', card); 
+          favContainer.insertAdjacentHTML('beforeend', buildCardHtml(product, index, 'fav')); 
           hasFavs = true; 
         }
-        mainContainer.insertAdjacentHTML('beforeend', card);
+        mainContainer.insertAdjacentHTML('beforeend', buildCardHtml(product, index, 'main'));
       });
 
       favWrapper.style.display = hasFavs ? 'block' : 'none';
@@ -468,15 +474,15 @@
 
     let wasSwiped = false;
     function tS(e) { touchStartX = e.changedTouches[0].screenX; wasSwiped = false; }
-    function tE(e, idx) { 
+    function tE(e, idString) { 
       let x = e.changedTouches[0].screenX; 
-      if (Math.abs(touchStartX - x) > 40) { wasSwiped = true; cS(null, idx, touchStartX > x ? 1 : -1); }
+      if (Math.abs(touchStartX - x) > 40) { wasSwiped = true; cS(null, idString, touchStartX > x ? 1 : -1); }
     }
     function cClick(e) { if(wasSwiped) { e.stopPropagation(); wasSwiped = false; } }
     
-    function cS(e, idx, dir) {
+    function cS(e, idString, dir) {
       if(e) e.stopPropagation();
-      const imgs = document.querySelectorAll(`#carousel-${idx} img`);
+      const imgs = document.querySelectorAll(`#carousel-${idString} img`);
       if(imgs.length === 0) return;
       let cur = Array.from(imgs).findIndex(i => i.classList.contains('active'));
       if(cur === -1) cur = 0;
@@ -484,7 +490,12 @@
       imgs[(cur + dir + imgs.length) % imgs.length].classList.add('active');
     }
     
-    function flip(el, e) { if (e.target.tagName !== 'BUTTON') el.querySelector('.flip-card-inner').classList.toggle('flipped'); }
+    function flip(el, e) { 
+      if (e.target.tagName !== 'BUTTON') {
+        el.classList.toggle('active-card');
+        el.querySelector('.flip-card-inner').classList.toggle('flipped'); 
+      }
+    }
 
     async function moveProductLocal(e, index, direction) {
       e.stopPropagation();
