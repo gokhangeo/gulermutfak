@@ -42,19 +42,6 @@
       ]
     },
     {
-      "name": "ISPANAKLI KIYMALI İÇLİ KÖFTE",
-      "category": "yemek",
-      "unit": "kg",
-      "price": 900,
-      "discount": 750,
-      "desc": "İncecik, tam kıvamında dış bulgur kaplaması ve içindeki bol ıspanaklı, kıymalı harcın muazzam uyumuyla, el emeği göz nuru bir lezzet deneyimi. Geleneksel içli köfteye taptaze ve besleyici bir yorum getirdik; dışı çıtır, içi ise ağızda dağılan yumuşacık bir dolguyla dolu. Sofralarınızı şenlendirecek bu lezzeti kaçırmayın! ✨🥄",
-      "isFavorite": true,
-      "image": [
-        "images/ispanakli_kiymali___l__k_fte_1776021384559_0.jpg",
-        "images/ispanakli_kiymali___l__k_fte_1776021385800_1.jpg"
-      ]
-    },
-    {
       "name": "İÇLİ KÖFTE(DİYARBAKIR)",
       "category": "yemek",
       "unit": "kg",
@@ -66,6 +53,19 @@
         "images/i_cli__kofte_disi_etsi_z__1775395761614_0.jpg",
         "images/i_cli__kofte_di_yarbakir__1775939777683_1.jpg",
         "images/i_cli__kofte_di_yarbakir__1775939778821_2.jpg"
+      ]
+    },
+    {
+      "name": "ISPANAKLI KIYMALI İÇLİ KÖFTE",
+      "category": "yemek",
+      "unit": "kg",
+      "price": 900,
+      "discount": 750,
+      "desc": "İncecik, tam kıvamında dış bulgur kaplaması ve içindeki bol ıspanaklı, kıymalı harcın muazzam uyumuyla, el emeği göz nuru bir lezzet deneyimi. Geleneksel içli köfteye taptaze ve besleyici bir yorum getirdik; dışı çıtır, içi ise ağızda dağılan yumuşacık bir dolguyla dolu. Sofralarınızı şenlendirecek bu lezzeti kaçırmayın! ✨🥄",
+      "isFavorite": true,
+      "image": [
+        "images/ispanakli_kiymali___l__k_fte_1776021384559_0.jpg",
+        "images/ispanakli_kiymali___l__k_fte_1776021385800_1.jpg"
       ]
     },
     {
