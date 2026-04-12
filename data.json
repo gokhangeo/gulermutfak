@@ -313,12 +313,15 @@
     },
     {
       "name": "TEREYAĞLI TUZLU KURABİYE",
-      "price": 600,
-      "discount": 500,
       "category": "tuzlu",
       "unit": "tepsi",
-      "image": "images/tuzlu_kurabiye.jpg",
-      "desc": "Güler Mutfak Lezzetleri’nden kıyır kıyır tuzlu kurabiye! 🥨✨\nAğızda dağılan nefis kıvamı, susam, çörek otu ve çekirdek içiyle lezzetlendirilmiş harika tuzlu kurabiyeler çay saatlerinize eşlik etmeye hazır!"
+      "price": 700,
+      "discount": 600,
+      "desc": "Güler Mutfak Lezzetleri’nden kıyır kıyır tuzlu kurabiye! 🥨✨\nAğızda dağılan nefis kıvamı, susam, çörek otu ve çekirdek içiyle lezzetlendirilmiş harika tuzlu kurabiyeler çay saatlerinize eşlik etmeye hazır!",
+      "isFavorite": false,
+      "image": [
+        "images/tuzlu_kurabiye.jpg"
+      ]
     },
     {
       "name": "TIRAMISU",
