@@ -247,15 +247,6 @@
       "desc": "Güler Mutfak Lezzetleri’nden yumuşacık mayalı poğaça! 🥖✨\nTel tel ayrılan, mis gibi kokan ve lezzetiyle herkesi mest eden poğaçalarımız kahvaltı ve çay saatlerinizin yıldızı olacak!\nSıcak sıcak, taptaze siparişler için hemen bize ulaşın!"
     },
     {
-      "name": "MAYALI POĞAÇA(SADE)",
-      "price": 650,
-      "discount": 550,
-      "category": "tuzlu",
-      "unit": "tepsi",
-      "image": "images/mayali_pogaca_sade.jpg",
-      "desc": "Güler Mutfak Lezzetleri’nden yumuşacık mayalı poğaça! 🥖✨\nTel tel ayrılan, mis gibi kokan ve lezzetiyle herkesi mest eden poğaçalarımız kahvaltı ve çay saatlerinizin yıldızı olacak!\nSıcak sıcak, taptaze siparişler için hemen bize ulaşın!"
-    },
-    {
       "name": "ZEYTİNYAĞLI SARMA",
       "price": 700,
       "discount": 600,
@@ -263,6 +254,15 @@
       "unit": "kg",
       "image": "images/zeytinyagli_sarma.jpg",
       "desc": "Güler Mutfak Lezzetleri’nden nefis zeytinyağlı sarma! 🍃🍋\nİncecik sarılmış asma yapraklarının, bol iç harcı ve mis gibi zeytinyağı ile buluştuğu eşsiz bir lezzet!\nLokum gibi kıvamıyla sofralarınızı şenlendirecek bu lezzeti kaçırmayın!"
+    },
+    {
+      "name": "MAYALI POĞAÇA(SADE)",
+      "price": 650,
+      "discount": 550,
+      "category": "tuzlu",
+      "unit": "tepsi",
+      "image": "images/mayali_pogaca_sade.jpg",
+      "desc": "Güler Mutfak Lezzetleri’nden yumuşacık mayalı poğaça! 🥖✨\nTel tel ayrılan, mis gibi kokan ve lezzetiyle herkesi mest eden poğaçalarımız kahvaltı ve çay saatlerinizin yıldızı olacak!\nSıcak sıcak, taptaze siparişler için hemen bize ulaşın!"
     },
     {
       "name": "PROFİTEROL",
