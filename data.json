@@ -2,6 +2,19 @@
   "campaignText": "TANIŞMA FİYATLARI!",
   "products": [
     {
+      "name": "ISPANAKLI GÜL BÖREĞI 🌿🥐",
+      "category": "tatli",
+      "unit": "Tepsi(20 adet)",
+      "price": 700,
+      "discount": 550,
+      "desc": "İncecik açılmış el açması tadındaki yufkanın içinde, mevsiminde toplanmış taptaze ıspanakların bol iç harcıyla buluştuğu bir lezzet şöleni! Her biri özenle sarılan, dışı çıtır çıtır içi ise yumuşacık dokusuyla damaklarda unutulmaz bir tat bırakan bu börekler, çay saatlerinizin vazgeçilmezi olacak. Sofralarınızı şenlendirecek bu lezzeti kaçırmayın! ✨☕",
+      "isFavorite": false,
+      "image": [
+        "images/ispanakl__g_l_b_re_i______1776025329734_0.jpg",
+        "images/ispanakl__g_l_b_re_i______1776025330897_1.jpg"
+      ]
+    },
+    {
       "name": "ATOM KURABİYE",
       "category": "tatli",
       "unit": "Tepsi(20 adet)",
@@ -64,7 +77,9 @@
       "desc": "MALATYA(POLAT) İÇLİ KÖFTE. Güler Mutfak Lezzetleri’nden bol kıymalı ve özel baharatları ile içli köfte! 🥩🔥\nİncecik dış hamuru, bol kıymalı iç harcı ve eşsiz lezzetiyle içli köftelerimiz sofralarınızı şenlendirmeye hazır!\nEl yapımı, katkısız ve taptaze!",
       "isFavorite": true,
       "image": [
-        "images/__l__k_fte_di_i_etl___1776025192069_0.jpg"
+        "images/__l__k_fte_di_i_etl___1776024459596_0.jpg",
+        "images/__l__k_fte_di_i_etl___1776024460671_1.jpg",
+        "images/__l__k_fte_di_i_etl___1776024461652_2.jpg"
       ]
     },
     {
