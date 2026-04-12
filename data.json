@@ -299,6 +299,15 @@
       "desc": "Güler Mutfak Lezzetleri’nden mis gibi köy tereyağlı elmalı kurabiye! 🍏🍪 Ağızda dağılan hamuru, tarçınlı ve bol cevizli elma harcıyla çay saatlerinin vazgeçilmezi! Mis gibi kokusu ve lezzetiyle herkesi mest edecek bu kurabiyeleri denemek için hemen sipariş verin!"
     },
     {
+      "name": "ZEYTİNYAĞLI SARMA",
+      "price": 700,
+      "discount": 600,
+      "category": "yemek",
+      "unit": "kg",
+      "image": "images/zeytinyagli_sarma.jpg",
+      "desc": "Güler Mutfak Lezzetleri’nden nefis zeytinyağlı sarma! 🍃🍋\nİncecik sarılmış asma yapraklarının, bol iç harcı ve mis gibi zeytinyağı ile buluştuğu eşsiz bir lezzet!\nLokum gibi kıvamıyla sofralarınızı şenlendirecek bu lezzeti kaçırmayın!"
+    },
+    {
       "name": "TEREYAĞLI MINI SADE POĞAÇA",
       "category": "tuzlu",
       "unit": "Tepsi",
@@ -310,15 +319,6 @@
         "images/tereya_l__mini_sade_po_a_a_1775943497305_0.jpg",
         "images/tereya_l__mini_sade_po_a_a_1775943498454_1.jpg"
       ]
-    },
-    {
-      "name": "ZEYTİNYAĞLI SARMA",
-      "price": 700,
-      "discount": 600,
-      "category": "yemek",
-      "unit": "kg",
-      "image": "images/zeytinyagli_sarma.jpg",
-      "desc": "Güler Mutfak Lezzetleri’nden nefis zeytinyağlı sarma! 🍃🍋\nİncecik sarılmış asma yapraklarının, bol iç harcı ve mis gibi zeytinyağı ile buluştuğu eşsiz bir lezzet!\nLokum gibi kıvamıyla sofralarınızı şenlendirecek bu lezzeti kaçırmayın!"
     },
     {
       "name": "TEREYAĞLI TUZLU KURABİYE",
