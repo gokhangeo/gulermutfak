@@ -2,6 +2,19 @@
   "campaignText": "TANIŞMA FİYATLARI!",
   "products": [
     {
+      "name": "ATOM KURABİYE",
+      "category": "tuzlu",
+      "unit": "Tepsi(20 adet)",
+      "price": 850,
+      "discount": 750,
+      "desc": "Dışı kıyır kıyır, içi ise tam bir enerji deposu! İçeriğindeki incir, üzüm, kayısı, elma ve cevizin muazzam uyumuyla hazırlanan bol iç harcı, her ısırıkta size doğal bir lezzet şöleni sunuyor. Hem göze hem damağa hitap eden bu sevimli baykuş figürlü kurabiyelerimiz, tazeliğiyle favoriniz olacak. Sofralarınızı şenlendirecek bu lezzeti kaçırmayın! ☕🍎",
+      "isFavorite": false,
+      "image": [
+        "images/atom_kurab_ye_1776024353804_0.jpg",
+        "images/atom_kurab_ye_1776024355042_1.jpg"
+      ]
+    },
+    {
       "name": "BAYKUŞ KURABIYE 🦉🍪",
       "category": "tatli",
       "unit": "Tepsi",
