@@ -2,19 +2,6 @@
   "campaignText": "TANIŞMA FİYATLARI!",
   "products": [
     {
-      "name": "ATOM KURABİYE",
-      "category": "tuzlu",
-      "unit": "Tepsi(20 adet)",
-      "price": 850,
-      "discount": 750,
-      "desc": "Dışı kıyır kıyır, içi ise tam bir enerji deposu! İçeriğindeki incir, üzüm, kayısı, elma ve cevizin muazzam uyumuyla hazırlanan bol iç harcı, her ısırıkta size doğal bir lezzet şöleni sunuyor. Hem göze hem damağa hitap eden bu sevimli baykuş figürlü kurabiyelerimiz, tazeliğiyle favoriniz olacak. Sofralarınızı şenlendirecek bu lezzeti kaçırmayın! ☕🍎",
-      "isFavorite": false,
-      "image": [
-        "images/atom_kurab_ye_1776024353804_0.jpg",
-        "images/atom_kurab_ye_1776024355042_1.jpg"
-      ]
-    },
-    {
       "name": "BAYKUŞ KURABIYE 🦉🍪",
       "category": "tatli",
       "unit": "Tepsi",
@@ -50,9 +37,9 @@
       "desc": "MALATYA(POLAT) İÇLİ KÖFTE. Güler Mutfak Lezzetleri’nden bol kıymalı ve özel baharatları ile içli köfte! 🥩🔥\nİncecik dış hamuru, bol kıymalı iç harcı ve eşsiz lezzetiyle içli köftelerimiz sofralarınızı şenlendirmeye hazır!\nEl yapımı, katkısız ve taptaze!",
       "isFavorite": true,
       "image": [
-        "images/__l__k_fte_di_i_etl___1776024192853_0.jpg",
-        "images/__l__k_fte_di_i_etl___1776024194073_1.jpg",
-        "images/__l__k_fte_di_i_etl___1776024194869_2.jpg"
+        "images/__l__k_fte_di_i_etl___1776024459596_0.jpg",
+        "images/__l__k_fte_di_i_etl___1776024460671_1.jpg",
+        "images/__l__k_fte_di_i_etl___1776024461652_2.jpg"
       ]
     },
     {
