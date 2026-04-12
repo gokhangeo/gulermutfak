@@ -2,6 +2,20 @@
   "campaignText": "TANIŞMA FİYATLARI!",
   "products": [
     {
+      "name": "BAYKUŞ KURABIYE 🦉🍪",
+      "category": "tatli",
+      "unit": "Tepsi",
+      "price": 750,
+      "discount": 650,
+      "desc": "Güler Mutfak Lezzetleri’nden nefis Baykuş Kurabiyeler! 🦉🍪Kıyır kıyır dokusu ve her lokmada damak çatlatan lezzetiyle, çay saatlerinizin en sevimli eşlikçisi olmaya aday. Taptaze malzemelerle, sevgiyle hazırlanan bu kurabiyeler hem göze hem damağa hitap ediyor. 😍 Sofralarınızı şenlendirecek bu lezzeti kaçırmayın! Güler Mutfak Lezzetleri ile her anı lezzetlendirin!",
+      "isFavorite": false,
+      "image": [
+        "images/bayku__kurabiye______1775992458827_0.jpg",
+        "images/bayku__kurabiye______1775992460028_1.jpg",
+        "images/bayku__kurabiye______1775992461163_2.jpg"
+      ]
+    },
+    {
       "name": "ANALI KIZLI(MALATYA)",
       "category": "yemek",
       "unit": "kg",
