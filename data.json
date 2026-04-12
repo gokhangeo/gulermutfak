@@ -256,6 +256,15 @@
       "desc": "Güler Mutfak Lezzetleri’nden yumuşacık mayalı poğaça! 🥖✨\nTel tel ayrılan, mis gibi kokan ve lezzetiyle herkesi mest eden poğaçalarımız kahvaltı ve çay saatlerinizin yıldızı olacak!\nSıcak sıcak, taptaze siparişler için hemen bize ulaşın!"
     },
     {
+      "name": "ZEYTİNYAĞLI SARMA",
+      "price": 700,
+      "discount": 600,
+      "category": "yemek",
+      "unit": "kg",
+      "image": "images/zeytinyagli_sarma.jpg",
+      "desc": "Güler Mutfak Lezzetleri’nden nefis zeytinyağlı sarma! 🍃🍋\nİncecik sarılmış asma yapraklarının, bol iç harcı ve mis gibi zeytinyağı ile buluştuğu eşsiz bir lezzet!\nLokum gibi kıvamıyla sofralarınızı şenlendirecek bu lezzeti kaçırmayın!"
+    },
+    {
       "name": "PROFİTEROL",
       "category": "tatli",
       "unit": "Tepsi(20 adet)",
@@ -267,15 +276,6 @@
         "images/prof_terol_1775991146531_0.jpg",
         "images/prof_terol_1775991147902_1.jpg"
       ]
-    },
-    {
-      "name": "ZEYTİNYAĞLI SARMA",
-      "price": 700,
-      "discount": 600,
-      "category": "yemek",
-      "unit": "kg",
-      "image": "images/zeytinyagli_sarma.jpg",
-      "desc": "Güler Mutfak Lezzetleri’nden nefis zeytinyağlı sarma! 🍃🍋\nİncecik sarılmış asma yapraklarının, bol iç harcı ve mis gibi zeytinyağı ile buluştuğu eşsiz bir lezzet!\nLokum gibi kıvamıyla sofralarınızı şenlendirecek bu lezzeti kaçırmayın!"
     },
     {
       "name": "SARAY SARMASI",
