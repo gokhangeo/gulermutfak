@@ -2,19 +2,6 @@
   "campaignText": "TANIŞMA FİYATLARI!",
   "products": [
     {
-      "name": "TEPSI BÖREĞI 🥧✨",
-      "category": "tatli",
-      "unit": "Tepsi",
-      "price": 800,
-      "discount": 700,
-      "desc": "Dışı altın sarısı gibi kızarmış, çıtır çıtır katmanların arasında damak zevkinize göre seçebileceğiniz patatesli, peynirli ve ıspanaklı çeşitleriyle gerçek bir ev böreği ziyafeti! El emeğiyle hazırlanan incecik yufkaların bol iç harçla buluştuğu bu tepsi böreği, fırından yeni çıkmış sıcaklığı ve üzerindeki çörek otu kokusuyla iştahınızı kabartacak. Sofralarınızı şenlendirecek bu lezzeti kaçırmayın! ✨🥄",
-      "isFavorite": false,
-      "image": [
-        "images/tepsi_b_re_i_____1776025877404_0.jpg",
-        "images/tepsi_b_re_i_____1776025878646_1.jpg"
-      ]
-    },
-    {
       "name": "ISPANAKLI GÜL BÖREĞI 🌿🥐",
       "category": "tatli",
       "unit": "Tepsi(20 adet)",
@@ -171,12 +158,15 @@
     },
     {
       "name": "CUP KEK",
-      "price": 650,
-      "discount": 550,
       "category": "tatli",
       "unit": "24 adet",
-      "image": "images/cup_kek.jpg",
-      "desc": "Güler Mutfak Lezzetleri’nden nefis çikolatalı cup kek! 🍫🧁\nYumuşacık dokusu, kakao, çikolata damlası ve ceviz parçalarıyla her lokmada mutluluk veren bu cup kekleri denemelisiniz!\nÇay ve kahve saatlerinizin vazgeçilmezi olacak!"
+      "price": 650,
+      "discount": 600,
+      "desc": "Güler Mutfak Lezzetleri’nden nefis çikolatalı cup kek! 🍫🧁\nYumuşacık dokusu, kakao, çikolata damlası ve ceviz parçalarıyla her lokmada mutluluk veren bu cup kekleri denemelisiniz!\nÇay ve kahve saatlerinizin vazgeçilmezi olacak!",
+      "isFavorite": false,
+      "image": [
+        "images/cup_kek.jpg"
+      ]
     },
     {
       "name": "ÇIKOLATA GANAJLI TART PASTA",
