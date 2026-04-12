@@ -199,25 +199,42 @@
     /* Mobil Düzeni */
     @media (max-width: 768px) {
       .header-title { font-size: 1.6rem; }
-      #products { padding: 1rem 0.5rem; gap: 12px; }
-      #products .flip-card { width: calc(50% - 6px); height: 400px; max-width: none; margin-bottom: 15px; }
+      #products { padding: 1rem 0.5rem; gap: 10px; }
+      #products .flip-card { width: calc(50% - 5px); height: 380px; max-width: none; margin-bottom: 10px; }
       
-      #favorites-container { padding: 0 15px; }
-      #favorites-section .flip-card { flex: 0 0 85%; height: 400px; }
+      #favorites-container { padding: 0 10px; }
+      #favorites-section .flip-card { flex: 0 0 85%; height: 380px; margin-bottom: 0;}
       .fav-nav-btn { display: none; } 
       
-      .flip-card.active-card .flip-card-inner { transform: rotateY(180deg) scale(1.1); }
-      .card-image-container { height: 160px; }
-      .card-content { padding: 12px 10px; }
-      .card-content h3 { font-size: 1rem; }
-      .discount-price-area { font-size: 1.15rem; }
-      .add-to-cart-btn { font-size: 0.9rem; width: 100%; padding: 10px 5px;}
+      .flip-card.active-card .flip-card-inner { transform: rotateY(180deg) scale(1.05); }
+      .card-image-container { height: 130px; }
+      .card-content { padding: 10px 6px; }
+      
+      /* İsimleri taşmaması için 2 satıra sabitleme */
+      .card-content h3 { 
+        font-size: 0.85rem; 
+        line-height: 1.3;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      
+      .add-to-cart-btn { font-size: 0.8rem; width: 100%; padding: 8px 2px;}
+      .discount-price-area { font-size: 1rem; flex-wrap: wrap; justify-content: center; }
+      .original-price { font-size: 0.75rem; }
+      
+      .flip-card-back h3 { font-size: 1.1rem; }
+      
+      .admin-card-controls { bottom: -45px; gap: 4px; padding: 0 5px; }
+      .admin-card-controls button { padding: 5px; font-size: 0.8rem; }
+      
       .top-left-controls { top: 15px; left: 15px; }
-      .cart-trigger { top: 15px; right: 15px; width: 45px; height: 45px; }
-      .cart-trigger svg { width: 22px; height: 22px; }
-      .favorite-badge { font-size: 0.7rem; padding: 4px 10px; }
-      .admin-card-controls { bottom: -50px; gap: 4px; padding: 0 5px; }
-      .admin-card-controls button { padding: 8px; font-size: 0.8rem; }
+      .cart-trigger { top: 15px; right: 15px; width: 40px; height: 40px; }
+      .cart-trigger svg { width: 20px; height: 20px; }
+      .favorite-badge { font-size: 0.65rem; padding: 4px 6px; left: 5px; top: 10px; }
+      .discount-tag { font-size: 0.7rem; padding: 4px 10px; right: -5px; top: 10px; }
     }
   </style>
 </head>
