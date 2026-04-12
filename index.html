@@ -133,11 +133,23 @@
     
     .card-image-container { width: 100%; height: 210px; position: relative; overflow: hidden; }
     .card-image-container img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+    
+    /* Carousel ve Dots */
     .carousel { position: relative; width: 100%; height: 100%; touch-action: pan-y; }
-    .carousel img { position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.4s; width: 100%; height: 100%; }
+    .carousel img { position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.6s ease-in-out; width: 100%; height: 100%; }
     .carousel img.active { opacity: 1; }
     .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.3); color: white; border: none; padding: 8px 12px; cursor: pointer; border-radius: 8px; z-index: 10; font-size: 1rem; }
     .carousel-btn.left { left: 8px; } .carousel-btn.right { right: 8px; }
+
+    .carousel-dots {
+      position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 6px; z-index: 15;
+    }
+    .dot {
+      width: 8px; height: 8px; background: rgba(255,255,255,0.5); border-radius: 50%;
+      transition: 0.3s;
+    }
+    .dot.active { background: white; transform: scale(1.3); box-shadow: 0 0 5px rgba(0,0,0,0.3); }
 
     /* Rozetler */
     .discount-tag, .favorite-badge { transition: opacity 0.3s, visibility 0.3s; z-index: 20; }
@@ -210,7 +222,6 @@
       .card-image-container { height: 130px; }
       .card-content { padding: 10px 6px; }
       
-      /* İsimleri taşmaması için 2 satıra sabitleme */
       .card-content h3 { 
         font-size: 0.85rem; 
         line-height: 1.3;
@@ -240,7 +251,6 @@
 </head>
 <body>
 
-  <!-- Başlangıç Animasyonu -->
   <div id="page-loader">
     <div class="spinning-plate">🥗</div>
     <div class="loading-text">LEZZETLER HAZIRLANIYOR...</div>
@@ -365,6 +375,18 @@
     let currentCategory = 'all';
     let touchStartX = 0;
     let clickCount = 0;
+    let autoplayTimer;
+
+    // Görünürlük Takipçisi (Akıllı Geçiş Sistemi İçin)
+    const carouselObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        } else {
+          entry.target.classList.remove('in-view');
+        }
+      });
+    }, { threshold: 0.3 }); // Kartın en az %30'u görünüyorsa çalıştır
 
     function getGithubToken() { return "ghp_1Im" + "4128xUP" + "1uC8Oov8yB" + "d7oahk2S6a0aGBTj"; }
 
@@ -422,6 +444,11 @@
       
       if(images.length > 1) {
         carouselHtml += `<button class="carousel-btn left" onclick="cS(event, '${carouselId}', -1)">&#10094;</button><button class="carousel-btn right" onclick="cS(event, '${carouselId}', 1)">&#10095;</button>`;
+        carouselHtml += `<div class="carousel-dots">`;
+        images.forEach((_, i) => {
+          carouselHtml += `<span class="dot ${i===0?'active':''}"></span>`;
+        });
+        carouselHtml += `</div>`;
       }
       carouselHtml += `</div>`;
 
@@ -484,6 +511,36 @@
 
       favWrapper.style.display = hasFavs ? 'block' : 'none';
       if(mainContainer.innerHTML === '') mainContainer.innerHTML = '<h3 style="color:#888; margin-top:20px;">Aradığınız kriterde ürün bulunamadı.</h3>';
+
+      // Yeni oluşturulan carousel'leri gözlemciye ekliyoruz
+      document.querySelectorAll('.carousel').forEach(el => carouselObserver.observe(el));
+      
+      startAutoplay(); 
+    }
+
+    /* Akıllı Otomatik Geçiş Sistemi */
+    function startAutoplay() {
+      clearInterval(autoplayTimer);
+      autoplayTimer = setInterval(() => {
+        // Sadece ekranda görünür olan (in-view class'ına sahip) görselleri çevir
+        const carousels = document.querySelectorAll('.carousel.in-view');
+        carousels.forEach(carousel => {
+          const imgs = carousel.querySelectorAll('img');
+          const dots = carousel.querySelectorAll('.dot');
+          if (imgs.length > 1) {
+            let cur = Array.from(imgs).findIndex(i => i.classList.contains('active'));
+            if(cur === -1) cur = 0;
+            
+            imgs[cur].classList.remove('active');
+            if(dots.length) dots[cur].classList.remove('active');
+            
+            let nextIdx = (cur + 1) % imgs.length;
+            
+            imgs[nextIdx].classList.add('active');
+            if(dots.length) dots[nextIdx].classList.add('active');
+          }
+        });
+      }, 3500); 
     }
 
     let wasSwiped = false;
@@ -496,13 +553,24 @@
     
     function cS(e, idString, dir) {
       if(e) e.stopPropagation();
-      const imgs = document.querySelectorAll(`#carousel-${idString} img`);
+      const carousel = document.getElementById(idString);
+      if(!carousel) return;
+      const imgs = carousel.querySelectorAll('img');
+      const dots = carousel.querySelectorAll('.dot');
       if(imgs.length <= 1) return;
+      
       let cur = Array.from(imgs).findIndex(i => i.classList.contains('active'));
       if(cur === -1) cur = 0;
+      
       imgs[cur].classList.remove('active');
+      if(dots.length) dots[cur].classList.remove('active');
+      
       let nextIdx = (cur + dir + imgs.length) % imgs.length;
+      
       imgs[nextIdx].classList.add('active');
+      if(dots.length) dots[nextIdx].classList.add('active');
+
+      startAutoplay(); 
     }
     
     function flip(el, e) { 
