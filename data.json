@@ -42,19 +42,6 @@
       ]
     },
     {
-      "name": "TRİLİÇE",
-      "category": "tatli",
-      "unit": "Tepsi",
-      "price": 1100,
-      "discount": 850,
-      "desc": "Triliçe tatlısını dilerseniz kendi getireceğiniz dikdörtgen borcamda, dilerseniz alüminyum folyoda özenle hazırlayıp sizlere sunuyorum. Triliçe keki fırın tepsisinde pişirilip ardından folyoda soslanmaktadır. Büyük boyda 12 dilim, küçük boyda ise 16 dilim çıkmaktadır.",
-      "isFavorite": true,
-      "image": [
-        "images/tr_l__e_1776020028264_0.jpg",
-        "images/tr_l__e_1776020029425_1.jpg"
-      ]
-    },
-    {
       "name": "İÇLİ KÖFTE(DİYARBAKIR)",
       "category": "yemek",
       "unit": "kg",
@@ -66,6 +53,19 @@
         "images/i_cli__kofte_disi_etsi_z__1775395761614_0.jpg",
         "images/i_cli__kofte_di_yarbakir__1775939777683_1.jpg",
         "images/i_cli__kofte_di_yarbakir__1775939778821_2.jpg"
+      ]
+    },
+    {
+      "name": "TRİLİÇE",
+      "category": "tatli",
+      "unit": "Tepsi",
+      "price": 1100,
+      "discount": 850,
+      "desc": "Triliçe tatlısını dilerseniz kendi getireceğiniz dikdörtgen borcamda, dilerseniz alüminyum folyoda özenle hazırlayıp sizlere sunuyorum. Triliçe keki fırın tepsisinde pişirilip ardından folyoda soslanmaktadır. Büyük boyda 12 dilim, küçük boyda ise 16 dilim çıkmaktadır.",
+      "isFavorite": true,
+      "image": [
+        "images/tr_l__e_1776020028264_0.jpg",
+        "images/tr_l__e_1776020029425_1.jpg"
       ]
     },
     {
