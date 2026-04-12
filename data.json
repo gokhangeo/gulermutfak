@@ -2,6 +2,20 @@
   "campaignText": "TANIŞMA FİYATLARI!",
   "products": [
     {
+      "name": "PATATESLİ GÜL BÖREĞİ",
+      "category": "tatli",
+      "unit": "Tepsi(20 adet)",
+      "price": 650,
+      "discount": 550,
+      "desc": "Nar gibi kızarmış, dışı çıtır çıtır yufkası ve içerisinde özenle hazırlanan bol baharatlı patates harcıyla tam bir klasik! İncecik açılan yufkaların arasında gizlenen yumuşacık dolgusu ve üzerindeki çörek otu-susam dokunuşuyla her ısırıkta ev yapımı sıcaklığını hissedeceksiniz. Sofralarınızı şenlendirecek bu lezzeti kaçırmayın! ✨☕",
+      "isFavorite": false,
+      "image": [
+        "images/patatesl__g_l_b_re___1776024650681_0.jpg",
+        "images/patatesl__g_l_b_re___1776024652023_1.jpg",
+        "images/patatesl__g_l_b_re___1776024652837_2.jpg"
+      ]
+    },
+    {
       "name": "BAYKUŞ KURABIYE 🦉🍪",
       "category": "tatli",
       "unit": "Tepsi",
