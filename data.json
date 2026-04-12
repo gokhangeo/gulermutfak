@@ -313,15 +313,21 @@
     },
     {
       "name": "TEREYAĞLI TUZLU KURABİYE",
+      "price": 600,
+      "discount": 500,
       "category": "tuzlu",
       "unit": "tepsi",
+      "image": "images/tuzlu_kurabiye.jpg",
+      "desc": "Güler Mutfak Lezzetleri’nden kıyır kıyır tuzlu kurabiye! 🥨✨\nAğızda dağılan nefis kıvamı, susam, çörek otu ve çekirdek içiyle lezzetlendirilmiş harika tuzlu kurabiyeler çay saatlerinize eşlik etmeye hazır!"
+    },
+    {
+      "name": "ZEYTİNYAĞLI SARMA",
       "price": 700,
       "discount": 600,
-      "desc": "Güler Mutfak Lezzetleri’nden kıyır kıyır tuzlu kurabiye! 🥨✨\nAğızda dağılan nefis kıvamı, susam, çörek otu ve çekirdek içiyle lezzetlendirilmiş harika tuzlu kurabiyeler çay saatlerinize eşlik etmeye hazır!",
-      "isFavorite": false,
-      "image": [
-        "images/tuzlu_kurabiye.jpg"
-      ]
+      "category": "yemek",
+      "unit": "kg",
+      "image": "images/zeytinyagli_sarma.jpg",
+      "desc": "Güler Mutfak Lezzetleri’nden nefis zeytinyağlı sarma! 🍃🍋\nİncecik sarılmış asma yapraklarının, bol iç harcı ve mis gibi zeytinyağı ile buluştuğu eşsiz bir lezzet!\nLokum gibi kıvamıyla sofralarınızı şenlendirecek bu lezzeti kaçırmayın!"
     },
     {
       "name": "TIRAMISU",
@@ -334,15 +340,6 @@
       "image": [
         "images/tiramisu_1775937752639_0.jpg"
       ]
-    },
-    {
-      "name": "ZEYTİNYAĞLI SARMA",
-      "price": 700,
-      "discount": 600,
-      "category": "yemek",
-      "unit": "kg",
-      "image": "images/zeytinyagli_sarma.jpg",
-      "desc": "Güler Mutfak Lezzetleri’nden nefis zeytinyağlı sarma! 🍃🍋\nİncecik sarılmış asma yapraklarının, bol iç harcı ve mis gibi zeytinyağı ile buluştuğu eşsiz bir lezzet!\nLokum gibi kıvamıyla sofralarınızı şenlendirecek bu lezzeti kaçırmayın!"
     },
     {
       "name": "DEREOTLU SADE POĞAÇA(TEREYAĞLI)",
