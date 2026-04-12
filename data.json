@@ -278,15 +278,6 @@
       "desc": "Güler Mutfak Lezzetleri’nden enfes Saray Sarması! 🍫✨\nYumuşacık kıvamı, bol kreması ve yoğun çikolata lezzetiyle tatlı keyfinizi taçlandırıyoruz.\nHindistan ceviziyle kaplı bu lezzeti mutlaka denemelisiniz!"
     },
     {
-      "name": "SÜTLÜ KAYMAKLI SARAY SARMASI",
-      "price": 700,
-      "discount": 600,
-      "category": "tatli",
-      "unit": "Tepsi",
-      "image": "images/sutlu_kaymakli_saray_sarmasi.jpg",
-      "desc": "Güler Mutfak Lezzetleri’nden sütlü kaymaklı Saray Sarması! 🥛🍰\nYumuşacık kıvamı, bol kaymak dolgusu ve hindistan ceviziyle kaplanmış lezzetiyle ağızda eriyen bir tatlı keyfi sunuyoruz!"
-    },
-    {
       "name": "ZEYTİNYAĞLI SARMA",
       "price": 700,
       "discount": 600,
@@ -294,6 +285,15 @@
       "unit": "kg",
       "image": "images/zeytinyagli_sarma.jpg",
       "desc": "Güler Mutfak Lezzetleri’nden nefis zeytinyağlı sarma! 🍃🍋\nİncecik sarılmış asma yapraklarının, bol iç harcı ve mis gibi zeytinyağı ile buluştuğu eşsiz bir lezzet!\nLokum gibi kıvamıyla sofralarınızı şenlendirecek bu lezzeti kaçırmayın!"
+    },
+    {
+      "name": "SÜTLÜ KAYMAKLI SARAY SARMASI",
+      "price": 700,
+      "discount": 600,
+      "category": "tatli",
+      "unit": "Tepsi",
+      "image": "images/sutlu_kaymakli_saray_sarmasi.jpg",
+      "desc": "Güler Mutfak Lezzetleri’nden sütlü kaymaklı Saray Sarması! 🥛🍰\nYumuşacık kıvamı, bol kaymak dolgusu ve hindistan ceviziyle kaplanmış lezzetiyle ağızda eriyen bir tatlı keyfi sunuyoruz!"
     },
     {
       "name": "TEREYAĞLI ELMALI KURABİYE",
