@@ -2,19 +2,6 @@
   "campaignText": "TANIŞMA FİYATLARI!",
   "products": [
     {
-      "name": "ISPANAKLI KIYMALI İÇLİ KÖFTE",
-      "category": "yemek",
-      "unit": "kg",
-      "price": 900,
-      "discount": 750,
-      "desc": "İncecik, tam kıvamında dış bulgur kaplaması ve içindeki bol ıspanaklı, kıymalı harcın muazzam uyumuyla, el emeği göz nuru bir lezzet deneyimi. Geleneksel içli köfteye taptaze ve besleyici bir yorum getirdik; dışı çıtır, içi ise ağızda dağılan yumuşacık bir dolguyla dolu. Sofralarınızı şenlendirecek bu lezzeti kaçırmayın! ✨🥄",
-      "isFavorite": true,
-      "image": [
-        "images/ispanakli_kiymali___l__k_fte_1776021384559_0.jpg",
-        "images/ispanakli_kiymali___l__k_fte_1776021385800_1.jpg"
-      ]
-    },
-    {
       "name": "BAYKUŞ KURABIYE 🦉🍪",
       "category": "tatli",
       "unit": "Tepsi",
@@ -26,6 +13,19 @@
         "images/bayku__kurabiye______1775993260147_0.jpg",
         "images/bayku__kurabiye______1775993261281_1.jpg",
         "images/bayku__kurabiye______1775993262187_2.jpg"
+      ]
+    },
+    {
+      "name": "ISPANAKLI KIYMALI İÇLİ KÖFTE",
+      "category": "yemek",
+      "unit": "kg",
+      "price": 900,
+      "discount": 750,
+      "desc": "İncecik, tam kıvamında dış bulgur kaplaması ve içindeki bol ıspanaklı, kıymalı harcın muazzam uyumuyla, el emeği göz nuru bir lezzet deneyimi. Geleneksel içli köfteye taptaze ve besleyici bir yorum getirdik; dışı çıtır, içi ise ağızda dağılan yumuşacık bir dolguyla dolu. Sofralarınızı şenlendirecek bu lezzeti kaçırmayın! ✨🥄",
+      "isFavorite": true,
+      "image": [
+        "images/ispanakli_kiymali___l__k_fte_1776021384559_0.jpg",
+        "images/ispanakli_kiymali___l__k_fte_1776021385800_1.jpg"
       ]
     },
     {
