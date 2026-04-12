@@ -172,12 +172,16 @@
     },
     {
       "name": "PROFİTEROL",
-      "price": 850,
-      "discount": 700,
       "category": "tatli",
       "unit": "kg",
-      "image": "images/profiterol.jpg",
-      "desc": "Güler Mutfak Lezzetleri’nden nefis profiterol! 🍫😍\nDışı çıtır, içi bol kremalı, üstü yoğun çikolata sosuyla kaplı bu eşsiz lezzet tatlı krizlerinize birebir!\nHer lokmada mutluluk garantili!"
+      "price": 850,
+      "discount": 700,
+      "desc": "Güler Mutfak Lezzetleri’nden nefis profiterol! 🍫😍\nDışı çıtır, içi bol kremalı, üstü yoğun çikolata sosuyla kaplı bu eşsiz lezzet tatlı krizlerinize birebir!\nHer lokmada mutluluk garantili!",
+      "isFavorite": true,
+      "image": [
+        "images/prof_terol_1775991146531_0.jpg",
+        "images/prof_terol_1775991147902_1.jpg"
+      ]
     },
     {
       "name": "SARAY SARMASI",
