@@ -198,15 +198,6 @@
       "desc": "Güler Mutfak Lezzetleri’nden enfes etli yaprak sarma! 🍖🍃\nİncecik asma yapraklarına sarılmış, kıymalı ve baharatlarla lezzetlendirilmiş, tam kıvamında pişmiş sarma lezzeti!\nGeleneksel sofralarınız için vazgeçilmez bir tat!"
     },
     {
-      "name": "FINDIK PORTAKALLI ANNE KURABİYESİ",
-      "price": 650,
-      "discount": 530,
-      "category": "tatli",
-      "unit": "24 adet",
-      "image": "images/findik_portakallı_anne_kurabiyesi.jpg",
-      "desc": "Güler Mutfak Lezzetleri’nden fındıklı portakallı anne kurabiyesi! 🍊🥜\nMis gibi portakal kokusu ve fındık parçalarıyla taçlandırılmış, yumuşacık kıvamı ve kıyır kıyır dokusuyla çocukluğunuzun lezzetini sunuyoruz!"
-    },
-    {
       "name": "ZEYTİNYAĞLI SARMA",
       "price": 700,
       "discount": 600,
@@ -214,6 +205,15 @@
       "unit": "kg",
       "image": "images/zeytinyagli_sarma.jpg",
       "desc": "Güler Mutfak Lezzetleri’nden nefis zeytinyağlı sarma! 🍃🍋\nİncecik sarılmış asma yapraklarının, bol iç harcı ve mis gibi zeytinyağı ile buluştuğu eşsiz bir lezzet!\nLokum gibi kıvamıyla sofralarınızı şenlendirecek bu lezzeti kaçırmayın!"
+    },
+    {
+      "name": "FINDIK PORTAKALLI ANNE KURABİYESİ",
+      "price": 650,
+      "discount": 530,
+      "category": "tatli",
+      "unit": "24 adet",
+      "image": "images/findik_portakallı_anne_kurabiyesi.jpg",
+      "desc": "Güler Mutfak Lezzetleri’nden fındıklı portakallı anne kurabiyesi! 🍊🥜\nMis gibi portakal kokusu ve fındık parçalarıyla taçlandırılmış, yumuşacık kıvamı ve kıyır kıyır dokusuyla çocukluğunuzun lezzetini sunuyoruz!"
     },
     {
       "name": "FRAMBUAZLI CHEESECAKE",
