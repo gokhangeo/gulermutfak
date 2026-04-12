@@ -2,19 +2,6 @@
   "campaignText": "TANIŞMA FİYATLARI!",
   "products": [
     {
-      "name": "TRİLİÇE",
-      "category": "tatli",
-      "unit": "Tepsi",
-      "price": 1100,
-      "discount": 850,
-      "desc": "Triliçe tatlısını dilerseniz kendi getireceğiniz dikdörtgen borcamda, dilerseniz alüminyum folyoda özenle hazırlayıp sizlere sunuyorum. Triliçe keki fırın tepsisinde pişirilip ardından folyoda soslanmaktadır. Büyük boyda 12 dilim, küçük boyda ise 16 dilim çıkmaktadır.",
-      "isFavorite": true,
-      "image": [
-        "images/tr_l__e_1776020028264_0.jpg",
-        "images/tr_l__e_1776020029425_1.jpg"
-      ]
-    },
-    {
       "name": "BAYKUŞ KURABIYE 🦉🍪",
       "category": "tatli",
       "unit": "Tepsi",
@@ -26,6 +13,19 @@
         "images/bayku__kurabiye______1775993260147_0.jpg",
         "images/bayku__kurabiye______1775993261281_1.jpg",
         "images/bayku__kurabiye______1775993262187_2.jpg"
+      ]
+    },
+    {
+      "name": "TRİLİÇE",
+      "category": "tatli",
+      "unit": "Tepsi",
+      "price": 1100,
+      "discount": 850,
+      "desc": "Triliçe tatlısını dilerseniz kendi getireceğiniz dikdörtgen borcamda, dilerseniz alüminyum folyoda özenle hazırlayıp sizlere sunuyorum. Triliçe keki fırın tepsisinde pişirilip ardından folyoda soslanmaktadır. Büyük boyda 12 dilim, küçük boyda ise 16 dilim çıkmaktadır.",
+      "isFavorite": true,
+      "image": [
+        "images/tr_l__e_1776020028264_0.jpg",
+        "images/tr_l__e_1776020029425_1.jpg"
       ]
     },
     {
