@@ -118,8 +118,17 @@
     .fav-nav-btn:hover { background: #ff7e5f; color: white; transform: translateY(-50%) scale(1.1); }
     .fav-prev { left: 0; } .fav-next { right: 0; }
 
-    /* Kart Tasarımı */
-    .flip-card { background: transparent; width: 300px; height: 450px; perspective: 1200px; cursor: pointer; position: relative; transition: z-index 0.3s; }
+    /* Kart Tasarımı ve Hover/Büyüme Efekti */
+    .flip-card { 
+      background: transparent; width: 300px; height: 450px; perspective: 1200px; cursor: pointer; position: relative; 
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), z-index 0.3s; 
+    }
+    
+    /* Büyüme (Scale) Efekti */
+    .flip-card:hover, .flip-card.is-hovered { 
+      transform: scale(1.05); z-index: 100; 
+    }
+    
     .flip-card.active-card { z-index: 100; }
     .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1); transform-style: preserve-3d; }
     .flip-card-inner.flipped { transform: rotateY(180deg); }
@@ -136,7 +145,7 @@
     
     /* Carousel ve Dots */
     .carousel { position: relative; width: 100%; height: 100%; touch-action: pan-y; }
-    .carousel img { position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.6s ease-in-out; width: 100%; height: 100%; }
+    .carousel img { position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.4s ease-in-out; width: 100%; height: 100%; }
     .carousel img.active { opacity: 1; }
     .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.3); color: white; border: none; padding: 8px 12px; cursor: pointer; border-radius: 8px; z-index: 10; font-size: 1rem; }
     .carousel-btn.left { left: 8px; } .carousel-btn.right { right: 8px; }
@@ -145,10 +154,7 @@
       position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
       display: flex; gap: 6px; z-index: 15;
     }
-    .dot {
-      width: 8px; height: 8px; background: rgba(255,255,255,0.5); border-radius: 50%;
-      transition: 0.3s;
-    }
+    .dot { width: 8px; height: 8px; background: rgba(255,255,255,0.5); border-radius: 50%; transition: 0.3s; }
     .dot.active { background: white; transform: scale(1.3); box-shadow: 0 0 5px rgba(0,0,0,0.3); }
 
     /* Rozetler */
@@ -218,18 +224,15 @@
       #favorites-section .flip-card { flex: 0 0 85%; height: 380px; margin-bottom: 0;}
       .fav-nav-btn { display: none; } 
       
-      .flip-card.active-card .flip-card-inner { transform: rotateY(180deg) scale(1.05); }
+      /* Mobilde aktif kartın büyümesi */
+      .flip-card.active-card .flip-card-inner { transform: rotateY(180deg); }
+      
       .card-image-container { height: 130px; }
       .card-content { padding: 10px 6px; }
       
       .card-content h3 { 
-        font-size: 0.85rem; 
-        line-height: 1.3;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        font-size: 0.85rem; line-height: 1.3; display: -webkit-box;
+        -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;
       }
       
       .add-to-cart-btn { font-size: 0.8rem; width: 100%; padding: 8px 2px;}
@@ -375,18 +378,9 @@
     let currentCategory = 'all';
     let touchStartX = 0;
     let clickCount = 0;
-    let autoplayTimer;
-
-    // Görünürlük Takipçisi (Akıllı Geçiş Sistemi İçin)
-    const carouselObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-        } else {
-          entry.target.classList.remove('in-view');
-        }
-      });
-    }, { threshold: 0.3 }); // Kartın en az %30'u görünüyorsa çalıştır
+    
+    // Kartların kendi özel zamanlayıcılarını tutacak obje
+    let cardTimers = {};
 
     function getGithubToken() { return "ghp_1Im" + "4128xUP" + "1uC8Oov8yB" + "d7oahk2S6a0aGBTj"; }
 
@@ -436,7 +430,8 @@
 
       let images = Array.isArray(product.image) ? product.image : [product.image];
       let carouselId = `crsl-${prefix}-${index}`;
-      let carouselHtml = `<div class="carousel" id="${carouselId}" ontouchstart="tS(event)" ontouchend="tE(event, '${carouselId}')" onclick="cClick(event)">`;
+      
+      let carouselHtml = `<div class="carousel" id="${carouselId}">`;
       
       images.forEach((img, i) => { 
         carouselHtml += `<img src="${img}" class="${i===0?'active':''}" onerror="this.src='https://via.placeholder.com/300x200?text=Resim+Yok'">`; 
@@ -464,8 +459,13 @@
 
       let orderStyle = (product.isFavorite && currentCategory === 'all' && prefix === 'main') ? 'order: -1;' : 'order: 0;';
 
+      // onmouseenter (PC hover) ve ontouchstart (Mobil dokunma) eklendi
       return `
-        <div class="flip-card" style="${orderStyle}" onclick="flip(this, event)">
+        <div class="flip-card" style="${orderStyle}" 
+             onclick="flip(this, event)" 
+             onmouseenter="startHover(this, '${carouselId}')" 
+             onmouseleave="stopHover(this, '${carouselId}')"
+             ontouchstart="startHover(this, '${carouselId}')">
           <div class="flip-card-inner">
             <div class="flip-card-front">
               <div class="card-image-container">
@@ -497,6 +497,10 @@
       
       mainContainer.innerHTML = ''; favContainer.innerHTML = '';
       let hasFavs = false;
+      
+      // Temizlik: eski zamanlayıcıları sıfırla
+      for (let id in cardTimers) { clearInterval(cardTimers[id]); }
+      cardTimers = {};
 
       productList.forEach((product, index) => {
         if (!product.name.toLowerCase().includes(search)) return;
@@ -511,46 +515,39 @@
 
       favWrapper.style.display = hasFavs ? 'block' : 'none';
       if(mainContainer.innerHTML === '') mainContainer.innerHTML = '<h3 style="color:#888; margin-top:20px;">Aradığınız kriterde ürün bulunamadı.</h3>';
-
-      // Yeni oluşturulan carousel'leri gözlemciye ekliyoruz
-      document.querySelectorAll('.carousel').forEach(el => carouselObserver.observe(el));
-      
-      startAutoplay(); 
     }
 
-    /* Akıllı Otomatik Geçiş Sistemi */
-    function startAutoplay() {
-      clearInterval(autoplayTimer);
-      autoplayTimer = setInterval(() => {
-        // Sadece ekranda görünür olan (in-view class'ına sahip) görselleri çevir
-        const carousels = document.querySelectorAll('.carousel.in-view');
-        carousels.forEach(carousel => {
-          const imgs = carousel.querySelectorAll('img');
-          const dots = carousel.querySelectorAll('.dot');
-          if (imgs.length > 1) {
-            let cur = Array.from(imgs).findIndex(i => i.classList.contains('active'));
-            if(cur === -1) cur = 0;
-            
-            imgs[cur].classList.remove('active');
-            if(dots.length) dots[cur].classList.remove('active');
-            
-            let nextIdx = (cur + 1) % imgs.length;
-            
-            imgs[nextIdx].classList.add('active');
-            if(dots.length) dots[nextIdx].classList.add('active');
-          }
+    /* Sadece Karta Gelindiğinde Çalışan Akıllı Geçiş Sistemi */
+    function startHover(el, carouselId) {
+      if(!cardTimers[carouselId]) {
+        el.classList.add('is-hovered'); // CSS Büyüme efektini tetikler
+        cardTimers[carouselId] = setInterval(() => { 
+          cS(null, carouselId, 1); 
+        }, 1200); // Üzerindeyken 1.2 saniyede bir fotoğrafı değiştirir
+      }
+    }
+
+    function stopHover(el, carouselId) {
+      if(cardTimers[carouselId]) {
+        el.classList.remove('is-hovered');
+        clearInterval(cardTimers[carouselId]);
+        cardTimers[carouselId] = null;
+      }
+    }
+
+    // Mobil cihazlarda başka bir yere dokununca açık olan animasyonları durdurmak için
+    document.addEventListener('touchstart', function(e) {
+      if (!e.target.closest('.flip-card')) {
+        document.querySelectorAll('.flip-card.is-hovered').forEach(card => {
+          card.classList.remove('is-hovered');
         });
-      }, 3500); 
-    }
+        for (let id in cardTimers) {
+          clearInterval(cardTimers[id]);
+          cardTimers[id] = null;
+        }
+      }
+    });
 
-    let wasSwiped = false;
-    function tS(e) { touchStartX = e.changedTouches[0].screenX; wasSwiped = false; }
-    function tE(e, idString) { 
-      let x = e.changedTouches[0].screenX; 
-      if (Math.abs(touchStartX - x) > 40) { wasSwiped = true; cS(null, idString, touchStartX > x ? 1 : -1); }
-    }
-    function cClick(e) { if(wasSwiped) { e.stopPropagation(); wasSwiped = false; } }
-    
     function cS(e, idString, dir) {
       if(e) e.stopPropagation();
       const carousel = document.getElementById(idString);
@@ -569,8 +566,6 @@
       
       imgs[nextIdx].classList.add('active');
       if(dots.length) dots[nextIdx].classList.add('active');
-
-      startAutoplay(); 
     }
     
     function flip(el, e) { 
