@@ -227,6 +227,15 @@
       "desc": "Güler Mutfak Lezzetleri’nden yöresel Harput Köfte! 🍲✨\nElazığ mutfağının en sevilen lezzetlerinden biri olan Harput Köfte, özel baharatlarla yoğrulmuş bulgur ve yağsız kıymanın mükemmel uyumuyla sofralarınızı şenlendirmeye hazır!"
     },
     {
+      "name": "ZEYTİNYAĞLI SARMA",
+      "price": 700,
+      "discount": 600,
+      "category": "yemek",
+      "unit": "kg",
+      "image": "images/zeytinyagli_sarma.jpg",
+      "desc": "Güler Mutfak Lezzetleri’nden nefis zeytinyağlı sarma! 🍃🍋\nİncecik sarılmış asma yapraklarının, bol iç harcı ve mis gibi zeytinyağı ile buluştuğu eşsiz bir lezzet!\nLokum gibi kıvamıyla sofralarınızı şenlendirecek bu lezzeti kaçırmayın!"
+    },
+    {
       "name": "LİMON SOSLU KEK",
       "price": 600,
       "discount": 520,
@@ -236,15 +245,6 @@
         "images/li_mon_soslu_kek_1775941387939_0.jpg"
       ],
       "desc": "Güler Mutfak Lezzetleri’nden ferahlatan limon soslu kek! 🍋🍰\nMis gibi limon kokusu, yumuşacık dokusu ve hafif ekşi tatlı uyumuyla çay saatlerinizin favorisi olacak!\nTaptaze ve el yapımı bu lezzeti kaçırmayın!"
-    },
-    {
-      "name": "ZEYTİNYAĞLI SARMA",
-      "price": 700,
-      "discount": 600,
-      "category": "yemek",
-      "unit": "kg",
-      "image": "images/zeytinyagli_sarma.jpg",
-      "desc": "Güler Mutfak Lezzetleri’nden nefis zeytinyağlı sarma! 🍃🍋\nİncecik sarılmış asma yapraklarının, bol iç harcı ve mis gibi zeytinyağı ile buluştuğu eşsiz bir lezzet!\nLokum gibi kıvamıyla sofralarınızı şenlendirecek bu lezzeti kaçırmayın!"
     },
     {
       "name": "MAYALI POĞAÇA(PEYNİRLİ)",
