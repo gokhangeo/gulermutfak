@@ -373,7 +373,6 @@
   <div id="notification"></div>
 
   <script>
-    // Firebase ayarları güvenli parça sistemi ile kodlandı (Realtime Database için)
     const firebaseConfig = {
       apiKey: "AIzaSy" + "AiVltx" + "hPLeoH" + "4Cqlij" + "79yw3y" + "6G1m1d" + "T8Y",
       authDomain: "foto-68872.firebaseapp.com",
@@ -384,7 +383,6 @@
       appId: "BURAYA_APP_ID_YAZILACAK" 
     };
     
-    // Firebase Başlatma
     firebase.initializeApp(firebaseConfig);
     const storage = firebase.storage();
     const db = firebase.database(); 
@@ -459,9 +457,9 @@
           await fetchFromGithubAndSave();
         }
       } catch (e) { 
-        if (e.message.includes('permission_denied') || e.code === 'PERMISSION_DENIED') {
+        if (e.message && (e.message.includes('permission_denied') || e.code === 'PERMISSION_DENIED')) {
           console.error("Firebase Kuralları Hatası: Okuma izni yok.");
-          if (isAdmin) alert("Admin Uyarı: Firebase 'Realtime Database' kurallarınız (Rules) kilitli. Lütfen Firebase panelinize gidin, Realtime Database > Rules sekmesinden '.read' ve '.write' değerlerini 'true' yapıp yayımlayın.");
+          if (isAdmin) alert("Admin Uyarı: Firebase 'Realtime Database' kurallarınız kilitli. Lütfen Firebase paneline gidin, Realtime Database > Rules sekmesinden '.read' ve '.write' değerlerini 'true' yapıp yayımlayın.");
         } else {
           console.error("Veritabanı bağlantı hatası, eski veriler yükleniyor:", e);
         }
@@ -493,9 +491,6 @@
           await db.ref('settings/menu').set({ products: productList, campaignText: campaignText });
         } catch(err) { 
           console.error("Firebase ilk kayıt hatası:", err); 
-          if (err.message.includes('permission_denied') || err.code === 'PERMISSION_DENIED') {
-            if (isAdmin) alert("İlk veri aktarımı başarısız: Lütfen Firebase Realtime Database 'Rules' (Kurallar) kısmından .read ve .write izinlerini 'true' yapın.");
-          }
         }
       }
     }
@@ -767,7 +762,7 @@
     }
 
     async function deleteImageFromFirebase(imageUrl) {
-      if (!imageUrl.includes('firebasestorage')) return; 
+      if (!imageUrl || typeof imageUrl !== 'string' || !imageUrl.includes('firebasestorage')) return; 
       try {
         const fileRef = firebase.storage().refFromURL(imageUrl);
         await fileRef.delete();
@@ -793,9 +788,10 @@
       document.getElementById('loader-msg').textContent = "Fotoğraflar ayarlanıyor...";
 
       if (editIndex > -1) {
-        const oldImages = Array.isArray(productList[editIndex].image) ? productList[editIndex].image : [productList[editIndex].image];
+        let oldImage = productList[editIndex].image;
+        let oldImages = oldImage ? (Array.isArray(oldImage) ? oldImage : [oldImage]) : [];
         for (let oldImg of oldImages) {
-          if (!currentEditImages.includes(oldImg)) {
+          if (oldImg && !currentEditImages.includes(oldImg)) {
             await deleteImageFromFirebase(oldImg);
           }
         }
@@ -805,10 +801,10 @@
         pData.image = [fallbackImg];
       } else {
         for(let i=0; i<currentEditImages.length; i++) {
-          if (currentEditImages[i].startsWith("data:")) {
+          if (currentEditImages[i] && currentEditImages[i].startsWith("data:")) {
             const path = await uploadImg(currentEditImages[i], name, i);
             if (path) pData.image.push(path);
-          } else {
+          } else if (currentEditImages[i]) {
             pData.image.push(currentEditImages[i]);
           }
         }
@@ -848,7 +844,7 @@
         console.error(e);
         document.getElementById('loader').style.display = 'none';
         
-        if (e.message.includes('permission_denied') || e.code === 'PERMISSION_DENIED') {
+        if (e.message && (e.message.includes('permission_denied') || e.code === 'PERMISSION_DENIED')) {
           alert("Kayıt Başarısız! Lütfen Firebase panelinden 'Realtime Database -> Rules' kısmına girip '.read': true ve '.write': true yapıp 'Publish' butonuna basın.");
         } else {
           alert("Kaydetme hatası! Veritabanı bağlantınızı kontrol edin.");
@@ -891,8 +887,8 @@
         document.getElementById('loader').style.display = 'flex';
         document.getElementById('loader-msg').textContent = "Sistem temizleniyor...";
         let p = productList[idx];
-        let imgs = Array.isArray(p.image) ? p.image : [p.image];
-        for (let img of imgs) { await deleteImageFromFirebase(img); } // Github URL'leri görmezden gelinir.
+        let imgs = p.image ? (Array.isArray(p.image) ? p.image : [p.image]) : [];
+        for (let img of imgs) { if(img) await deleteImageFromFirebase(img); }
         productList.splice(idx, 1); 
         await saveToFirebase(); 
       } 
