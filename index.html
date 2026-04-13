@@ -382,7 +382,6 @@
 
     function getGithubToken() { return "ghp_1Im" + "4128xUP" + "1uC8Oov8yB" + "d7oahk2S6a0aGBTj"; }
 
-    // Resimleri cihazda sıkıştıran fonksiyon
     function compressImage(file, maxWidth = 800, maxHeight = 800, quality = 0.7) {
       return new Promise((resolve) => {
         const reader = new FileReader();
@@ -764,11 +763,22 @@
     }
 
     async function uploadImg(base64, name, idx) {
-      const tkn = getGithubToken();
-      const safe = name.replace(/[^a-z0-9]/gi, '_').toLowerCase() + "_" + Date.now() + "_" + idx;
-      const url = `https://api.github.com/repos/gokhangeo/gulermutfak/contents/images/${safe}.jpg`;
-      const res = await fetch(url, { method: "PUT", headers: { "Authorization": `Bearer ${tkn}` }, body: JSON.stringify({ message: "Görsel yükle", content: base64.split(',')[1], branch: "main" }) });
-      return res.ok ? `images/${safe}.jpg` : null;
+      const clientId = "e501d1679dc6eb9"; // Imgur Anonim Yükleme ID'si
+      const formData = new FormData();
+      formData.append("image", base64.split(',')[1]);
+
+      try {
+        const res = await fetch("https://api.imgur.com/3/image", {
+          method: "POST",
+          headers: { "Authorization": "Client-ID " + clientId },
+          body: formData
+        });
+        const data = await res.json();
+        return data.success ? data.data.link : null;
+      } catch (e) {
+        console.error("Imgur yükleme hatası:", e);
+        return null;
+      }
     }
 
     async function saveToGit(msg) {
@@ -787,13 +797,12 @@
     function toggleTheme() { document.body.classList.toggle('dark-mode'); }
     function closeAdmin() { document.getElementById('admin-modal').style.display = 'none'; }
     
-    // Fotoğraf yüklerken sıkıştırma sisteminin devreye girmesi
     document.getElementById('admin-image').addEventListener('change', async (e) => {
       document.getElementById('loader').style.display = 'flex';
       document.getElementById('loader-msg').textContent = "Fotoğraflar sıkıştırılıyor...";
       
       for (let f of e.target.files) {
-        const compressedBase64 = await compressImage(f, 800, 800, 0.7); // Genişlik, Yükseklik, Kalite %70
+        const compressedBase64 = await compressImage(f, 800, 800, 0.7);
         currentEditImages.push(compressedBase64);
       }
       
