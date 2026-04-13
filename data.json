@@ -69,18 +69,6 @@
       ]
     },
     {
-      "name": "İÇLİ KÖFTE(DIŞI ETLİ)",
-      "category": "yemek",
-      "unit": "kg",
-      "price": 1350,
-      "discount": 1200,
-      "desc": "MALATYA(POLAT) İÇLİ KÖFTE. Güler Mutfak Lezzetleri’nden bol kıymalı ve özel baharatları ile içli köfte! 🥩🔥\nİncecik dış hamuru, bol kıymalı iç harcı ve eşsiz lezzetiyle içli köftelerimiz sofralarınızı şenlendirmeye hazır!\nEl yapımı, katkısız ve taptaze",
-      "isFavorite": true,
-      "image": [
-        "images/__l__k_fte_di_i_etl___1776098883014_0.jpg"
-      ]
-    },
-    {
       "name": "İÇLİ KÖFTE(DİYARBAKIR)",
       "category": "yemek",
       "unit": "kg",
