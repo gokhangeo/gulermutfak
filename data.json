@@ -2,6 +2,20 @@
   "campaignText": "TANIŞMA FİYATLARI!",
   "products": [
     {
+      "name": "İÇLİ KÖFTE(DIŞI ETLİ)",
+      "category": "yemek",
+      "unit": "kg",
+      "price": 1350,
+      "discount": 1200,
+      "desc": "Geleneksel mutfağın en maharet isteyen lezzeti, tam kıvamında dış kaplaması ve bol baharatlı, nefis iç harcıyla tabaklarınıza geliyor. İncecik açılan, gerçek etle yoğrulmuş dış hamuru ve içinden sızan o eşsiz lezzetle, her lokmada gerçek bir gastronomi deneyimi yaşayacaksınız. Sofralarınızı şenlendirecek bu ev yapımı lezzeti kaçırmayın!",
+      "isFavorite": true,
+      "image": [
+        "images/__l__k_fte_di_i_etl___1776100625578_0.jpg",
+        "images/__l__k_fte_di_i_etl___1776100627125_1.jpg",
+        "images/__l__k_fte_di_i_etl___1776100628445_2.jpg"
+      ]
+    },
+    {
       "name": "ISPANAKLI GÜL BÖREĞI 🌿🥐",
       "category": "tatli",
       "unit": "Tepsi(20 adet)",
