@@ -2,6 +2,16 @@
   "campaignText": "TANIŞMA FİYATLARI!",
   "products": [
     {
+      "name": "İÇLİ KÖFTE(DIŞI ETLİ)",
+      "category": "yemek",
+      "unit": "kg",
+      "price": 1350,
+      "discount": 1200,
+      "desc": "Güler Mutfak Lezzetleri’nden nefis içli köfte dışı etli! 🥟🔥İncecik dış kaplaması ve bol iç harcıyla ağızda dağılan bir lezzet şöleni! 🤩 Her lokmada hissedilen tazelik ve özgün tarif, sofralarınızı şenlendirecek. 🍽️ Sofralarınızı şenlendirecek bu lezzeti kaçırmayın! Hemen siparişinizi verin! ",
+      "isFavorite": true,
+      "image": []
+    },
+    {
       "name": "ISPANAKLI GÜL BÖREĞI 🌿🥐",
       "category": "tatli",
       "unit": "Tepsi(20 adet)",
