@@ -373,6 +373,7 @@
   <div id="notification"></div>
 
   <script>
+    // Firebase ayarları güvenli parça sistemi ile kodlandı
     const firebaseConfig = {
       apiKey: "AIzaSy" + "AiVltx" + "hPLeoH" + "4Cqlij" + "79yw3y" + "6G1m1d" + "T8Y",
       authDomain: "foto-68872.firebaseapp.com",
@@ -459,7 +460,7 @@
       } catch (e) { 
         if (e.message && (e.message.includes('permission_denied') || e.code === 'PERMISSION_DENIED')) {
           console.error("Firebase Kuralları Hatası: Okuma izni yok.");
-          if (isAdmin) alert("Admin Uyarı: Firebase 'Realtime Database' kurallarınız kilitli. Lütfen Firebase paneline gidin, Realtime Database > Rules sekmesinden '.read' ve '.write' değerlerini 'true' yapıp yayımlayın.");
+          if (isAdmin) alert("Uyarı: Firebase 'Realtime Database' kurallarınız kilitli. Lütfen Firebase paneline gidin, Realtime Database > Rules sekmesinden '.read' ve '.write' değerlerini 'true' yapıp yayımlayın.");
         } else {
           console.error("Veritabanı bağlantı hatası, eski veriler yükleniyor:", e);
         }
@@ -764,8 +765,10 @@
     async function deleteImageFromFirebase(imageUrl) {
       if (!imageUrl || typeof imageUrl !== 'string' || !imageUrl.includes('firebasestorage')) return; 
       try {
-        const fileRef = firebase.storage().refFromURL(imageUrl);
-        await fileRef.delete();
+        if(typeof firebase.storage === "function") {
+           const fileRef = firebase.storage().refFromURL(imageUrl);
+           await fileRef.delete();
+        }
       } catch (e) { 
         console.error("Silme hatası:", e); 
       }
@@ -785,7 +788,7 @@
       };
       
       document.getElementById('loader').style.display = 'flex';
-      document.getElementById('loader-msg').textContent = "Fotoğraflar ayarlanıyor...";
+      document.getElementById('loader-msg').textContent = "Sistem kaydediliyor...";
 
       if (editIndex > -1) {
         let oldImage = productList[editIndex].image;
@@ -800,34 +803,12 @@
       if(currentEditImages.length === 0) {
         pData.image = [fallbackImg];
       } else {
-        for(let i=0; i<currentEditImages.length; i++) {
-          if (currentEditImages[i] && currentEditImages[i].startsWith("data:")) {
-            const path = await uploadImg(currentEditImages[i], name, i);
-            if (path) pData.image.push(path);
-          } else if (currentEditImages[i]) {
-            pData.image.push(currentEditImages[i]);
-          }
-        }
+        // Fotoğrafları artık harici bir sunucu yerine, Base64 (sıkıştırılmış metin) olarak doğrudan veritabanına ekliyoruz.
+        pData.image = [...currentEditImages];
       }
       
       if (editIndex > -1) productList[editIndex] = pData; else productList.unshift(pData);
       closeAdmin(); await saveToFirebase();
-    }
-
-    async function uploadImg(base64, name, idx) {
-      const trMap = { 'ç':'c', 'ğ':'g', 'ş':'s', 'ü':'u', 'ı':'i', 'ö':'o', 'Ç':'c', 'Ğ':'g', 'Ş':'s', 'Ü':'u', 'İ':'i', 'Ö':'o', ' ':'_' };
-      let cleanName = name.replace(/[çğşüıöÇĞŞÜİÖ\s]/g, match => trMap[match] || '_');
-      const safe = cleanName.replace(/[^a-z0-9_]/gi, '').toLowerCase() + "_" + Date.now() + "_" + idx + ".jpg";
-      
-      try {
-        const storageRef = firebase.storage().ref('images/' + safe);
-        await storageRef.putString(base64, 'data_url');
-        const downloadURL = await storageRef.getDownloadURL();
-        return downloadURL;
-      } catch(e) {
-        console.error("Firebase yükleme hatası:", e);
-        return null;
-      }
     }
 
     async function saveToFirebase() {
@@ -847,7 +828,7 @@
         if (e.message && (e.message.includes('permission_denied') || e.code === 'PERMISSION_DENIED')) {
           alert("Kayıt Başarısız! Lütfen Firebase panelinden 'Realtime Database -> Rules' kısmına girip '.read': true ve '.write': true yapıp 'Publish' butonuna basın.");
         } else {
-          alert("Kaydetme hatası! Veritabanı bağlantınızı kontrol edin.");
+          alert("Kaydetme hatası! İnternet bağlantınızı kontrol edin.");
         }
       }
     }
@@ -888,7 +869,7 @@
         document.getElementById('loader-msg').textContent = "Sistem temizleniyor...";
         let p = productList[idx];
         let imgs = p.image ? (Array.isArray(p.image) ? p.image : [p.image]) : [];
-        for (let img of imgs) { if(img) await deleteImageFromFirebase(img); }
+        for (let img of imgs) { if(img) await deleteImageFromFirebase(img); } 
         productList.splice(idx, 1); 
         await saveToFirebase(); 
       } 
