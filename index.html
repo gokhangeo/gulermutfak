@@ -34,16 +34,43 @@
     }
     body.dark-mode { background: #1a1a1a; color: #f0f0f0; }
     
-    /* Yükleme Ekranı */
+    /* Yükleme Ekranı ve Uçan Yemekler */
     #page-loader {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background: #fffaf5; z-index: 9999; display: flex; flex-direction: column;
       justify-content: center; align-items: center; transition: opacity 0.5s ease-out, visibility 0.5s;
     }
     body.dark-mode #page-loader { background: #1a1a1a; }
-    .spinning-plate { font-size: 5rem; animation: spin-plate 2s linear infinite; }
+    
+    .loader-content {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 150px;
+      height: 150px;
+    }
+    
+    .spinning-plate { font-size: 5rem; animation: spin-plate 2s linear infinite; position: relative; z-index: 2; }
     @keyframes spin-plate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    .loading-text { margin-top: 20px; font-size: 1.3rem; font-weight: 800; color: #ff7e5f; letter-spacing: 2px; animation: blink 1.5s infinite; }
+    
+    .flying-food {
+      position: absolute;
+      font-size: 2.5rem;
+      animation: floatAround 2s ease-in-out infinite alternate;
+      z-index: 1;
+    }
+    .f1 { top: -20px; left: -20px; animation-delay: 0s; }
+    .f2 { top: -20px; right: -20px; animation-delay: 0.5s; }
+    .f3 { bottom: -20px; left: -20px; animation-delay: 1s; }
+    .f4 { bottom: -20px; right: -20px; animation-delay: 1.5s; }
+    
+    @keyframes floatAround {
+      0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 0.7; }
+      100% { transform: translateY(-15px) scale(1.2) rotate(15deg); opacity: 1; }
+    }
+    
+    .loading-text { margin-top: 30px; font-size: 1.3rem; font-weight: 800; color: #ff7e5f; letter-spacing: 2px; animation: blink 1.5s infinite; }
 
     /* Header & Kontroller */
     header {
@@ -184,6 +211,27 @@
     .admin-edit-btn { background: #f39c12; } .admin-del-btn { background: #c0392b; }
     .admin-move-btn { background: #34495e; flex: 0.4; font-size: 1.2rem; }
 
+    /* Sabit WhatsApp İletişim Butonu */
+    .floating-wa-btn {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 60px;
+      height: 60px;
+      background-color: #25d366;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+      z-index: 1000;
+      text-decoration: none;
+      transition: transform 0.3s;
+    }
+    .floating-wa-btn:hover { transform: scale(1.1); }
+    .floating-wa-btn svg { width: 35px; height: 35px; fill: currentColor; }
+
     /* Modal / Admin Formu */
     #admin-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; justify-content: center; align-items: center; padding: 20px; }
     .admin-content { background: white; padding: 35px; border-radius: 25px; width: 100%; max-width: 600px; max-height: 90vh; overflow-y: auto; color: #333; box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
@@ -197,8 +245,8 @@
     .image-preview-item img { width: 100%; height: 100%; object-fit: cover; }
     .image-preview-item button { position: absolute; top: 2px; right: 2px; background: #e74c3c; color: white; border: none; border-radius: 50%; width: 24px; height: 24px; cursor: pointer; font-size: 12px; font-weight: bold; }
 
-    #floating-add-btn { display: none; position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px; background: #8e44ad; color: white; border-radius: 50%; font-size: 35px; border: none; z-index: 1000; cursor: pointer; box-shadow: 0 6px 20px rgba(0,0,0,0.3); font-weight: bold; }
-    #floating-logout-btn { display: none; position: fixed; bottom: 30px; left: 30px; padding: 12px 25px; border-radius: 30px; background: #c0392b; color: white; border: none; z-index: 1000; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+    #floating-add-btn { display: none; position: fixed; bottom: 20px; right: 90px; width: 60px; height: 60px; background: #8e44ad; color: white; border-radius: 50%; font-size: 30px; border: none; z-index: 1000; cursor: pointer; box-shadow: 0 6px 20px rgba(0,0,0,0.3); font-weight: bold; }
+    #floating-logout-btn { display: none; position: fixed; bottom: 90px; left: 20px; padding: 10px 20px; border-radius: 30px; background: #c0392b; color: white; border: none; z-index: 1000; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
 
     /* Sepet & Bildirim */
     #cart { background: #fff; padding: 2.5rem; margin: 4rem auto 2rem; max-width: 750px; border-radius: 25px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.06); }
@@ -252,14 +300,23 @@
       .cart-trigger svg { width: 20px; height: 20px; }
       .favorite-badge { font-size: 0.65rem; padding: 4px 6px; left: 5px; top: 10px; }
       .discount-tag { font-size: 0.7rem; padding: 4px 10px; right: -5px; top: 10px; }
+
+      .floating-wa-btn { width: 50px; height: 50px; bottom: 15px; left: 15px; }
+      .floating-wa-btn svg { width: 28px; height: 28px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Yükleme Animasyonu -->
+  <!-- Yükleme Animasyonu ve Uçuşan Yemekler -->
   <div id="page-loader">
-    <div class="spinning-plate">🥗</div>
+    <div class="loader-content">
+      <div class="spinning-plate">🥗</div>
+      <div class="flying-food f1">🍰</div>
+      <div class="flying-food f2">🍕</div>
+      <div class="flying-food f3">🍩</div>
+      <div class="flying-food f4">🍔</div>
+    </div>
     <div class="loading-text">LEZZETLER HAZIRLANIYOR...</div>
   </div>
 
@@ -313,6 +370,13 @@
   <section id="contact" style="text-align:center; padding: 2rem 0 4rem;">
     <p style="font-weight:bold; color: #888; font-size: 1.1rem;">📍 Mersin / Mezitli</p>
   </section>
+
+  <!-- Sabit WhatsApp İletişim Butonu (Hazır Mesajlı) -->
+  <a href="https://wa.me/905319428244?text=Merhaba,%20menü%20ve%20ürünler%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="floating-wa-btn" title="Bize Ulaşın">
+    <svg viewBox="0 0 32 32">
+      <path d="M16.05 1C7.75 1 1 7.75 1 16.05c0 2.65.68 5.23 1.97 7.53L1.05 31l7.58-1.99c2.22 1.19 4.71 1.83 7.32 1.83 8.3 0 15.05-6.75 15.05-15.05S24.35 1 16.05 1zm0 27.27c-2.22 0-4.4-.6-6.3-1.73l-.45-.27-4.68 1.23 1.25-4.56-.3-.47C4.6 20.65 4 18.4 4 16.05 4 9.4 9.4 4 16.05 4 22.7 4 28.1 9.4 28.1 16.05 28.1 22.7 22.7 28.27 16.05 28.27zm6.65-9.05c-.37-.18-2.16-1.07-2.5-1.19-.34-.12-.58-.18-.83.18-.24.37-.95 1.19-1.16 1.43-.21.24-.43.27-.8.09-.37-.18-1.54-.57-2.94-1.82-1.09-1.01-1.82-2.26-2.04-2.62-.21-.37-.02-.56.16-.75.16-.16.37-.43.55-.65.18-.21.24-.37.37-.62.12-.24.06-.46-.03-.65-.09-.18-.83-2-1.13-2.74-.3-.72-.61-.62-.83-.63h-.71c-.24 0-.64.09-.98.46s-1.28 1.25-1.28 3.06c0 1.8 1.31 3.55 1.5 3.79.18.24 2.58 3.93 6.25 5.51.87.38 1.55.6 2.08.77.88.28 1.68.24 2.31.15.71-.11 2.16-.88 2.47-1.74.3-.85.3-1.59.21-1.74-.09-.18-.34-.27-.71-.46z"/>
+    </svg>
+  </a>
 
   <!-- Ürün Ekle/Düzenle Modalı -->
   <div id="admin-modal">
@@ -373,7 +437,6 @@
   <div id="notification"></div>
 
   <script>
-    // Firebase ayarları güvenli parça sistemi ile kodlandı
     const firebaseConfig = {
       apiKey: "AIzaSy" + "AiVltx" + "hPLeoH" + "4Cqlij" + "79yw3y" + "6G1m1d" + "T8Y",
       authDomain: "foto-68872.firebaseapp.com",
@@ -803,7 +866,6 @@
       if(currentEditImages.length === 0) {
         pData.image = [fallbackImg];
       } else {
-        // Fotoğrafları artık harici bir sunucu yerine, Base64 (sıkıştırılmış metin) olarak doğrudan veritabanına ekliyoruz.
         pData.image = [...currentEditImages];
       }
       
